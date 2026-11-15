@@ -185,7 +185,7 @@ func rollbackUmbrielConfig(configPath string, original []byte, mode os.FileMode,
 func runUmbriel(args ...string) error {
 	path, err := exec.LookPath("umbriel")
 	if err != nil {
-		return fmt.Errorf("Umbriel blur settings require the umbriel command: %w", err)
+		return fmt.Errorf("umbriel blur settings require the umbriel command: %w", err)
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
