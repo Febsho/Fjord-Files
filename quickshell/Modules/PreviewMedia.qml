@@ -11,14 +11,19 @@ Item {
     id: root
 
     property url source: ""
+    property url posterSource: ""
     property bool video: false
-    property bool autoPlay: true
+    property bool autoPlay: false
+    property bool startMuted: false
     property bool compact: false
+    property bool mediaStarted: false
     property string currentSubtitle: ""
     readonly property string errorMessage: player.error !== MediaPlayer.NoError
         ? (player.errorString || I18n.tr("This file could not be opened", "large preview placeholder")) : ""
     readonly property alias player: player
     readonly property alias audioOutput: audioOutput
+    signal fullScreenRequested()
+    onStartMutedChanged: audioOutput.muted = startMuted
     readonly property var speeds: [0.5, 0.75, 1, 1.25, 1.5, 2]
     // QMediaMetaData keys: Title = 0, Author = 1, AlbumTitle = 18, AlbumArtist = 19.
     readonly property string mediaTitle: player.metaData.stringValue(0)
@@ -52,8 +57,13 @@ Item {
         videoOutput: videoOutput
         onSourceChanged: {
             root.currentSubtitle = "";
+            root.mediaStarted = false;
+            audioOutput.muted = root.startMuted;
             stop();
-            if (root.autoPlay && source.toString() !== "") play();
+            if (root.autoPlay && source.toString() !== "") {
+                root.mediaStarted = true;
+                play();
+            }
         }
     }
 
@@ -64,7 +74,22 @@ Item {
         anchors.right: parent.right
         anchors.bottom: options.top
         visible: root.video
-        fillMode: VideoOutput.PreserveAspectFit
+        fillMode: root.compact ? VideoOutput.PreserveAspectCrop : VideoOutput.PreserveAspectFit
+    }
+
+    Image {
+        anchors.fill: videoOutput
+        z: 1
+        visible: root.video && !root.mediaStarted && root.posterSource.toString() !== ""
+        source: root.posterSource
+        fillMode: Image.PreserveAspectCrop
+        asynchronous: true
+        cache: true
+    }
+
+    TapHandler {
+        acceptedButtons: Qt.LeftButton
+        onDoubleTapped: root.fullScreenRequested()
     }
 
     Connections {
@@ -124,6 +149,7 @@ Item {
 
     GlassViewerControls {
         id: controls
+        z: 2
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: options.top
@@ -136,9 +162,18 @@ Item {
             onClicked: {
                 if (player.playbackState === MediaPlayer.PlayingState)
                     player.pause();
-                else
+                else {
+                    root.mediaStarted = true;
                     player.play();
+                }
             }
+        }
+        DActionButton {
+            visible: root.video
+            iconName: audioOutput.muted ? "volume_off" : "volume_up"
+            tooltipText: audioOutput.muted ? I18n.tr("Unmute", "media preview audio") : I18n.tr("Mute", "media preview audio")
+            Accessible.name: tooltipText
+            onClicked: audioOutput.muted = !audioOutput.muted
         }
         StyledText {
             text: root.time(player.position)
@@ -176,6 +211,7 @@ Item {
             id: volume
             objectName: "mediaVolume"
             width: 110
+            visible: !root.compact
             from: 0
             to: 1
             value: audioOutput.volume

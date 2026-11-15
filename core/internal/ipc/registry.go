@@ -152,6 +152,7 @@ var Methods = []MethodSpec{
 
 	{Name: "system.capabilities", Group: "system", Desc: "What the environment permits: sandbox state, host access, bus policies, portal versions and the per-feature table with reason codes"},
 	{Name: "system.colorScheme.get", Group: "system", Desc: "Current portal color scheme (0 no-preference, 1 dark, 2 light)"},
+	{Name: "system.blur.configure", Group: "system", Desc: "Set Umbriel background blur for Fjord Files while preserving the prior global blur settings", Params: []ParamSpec{req("enabled", "whether Fjord Files should request Umbriel blur"), req("radius", "Umbriel blur radius from 0 to 100")}},
 	{Name: "system.elevation", Group: "system", Desc: "Whether failed operations can be retried as administrator, and why not"},
 	{Name: "system.fileManager.get", Group: "system", Desc: "Whether this instance owns org.freedesktop.FileManager1, and who does otherwise"},
 	{Name: "system.fileManager.set", Group: "system", Desc: "Request or release org.freedesktop.FileManager1; another owner is never replaced", Params: []ParamSpec{req("enabled", "true to request the name, false to release it")}},

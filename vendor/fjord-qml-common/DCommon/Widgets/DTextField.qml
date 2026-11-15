@@ -317,9 +317,17 @@ StyledRect {
     }
 
     MouseArea {
-        anchors.fill: parent
-        enabled: (root.outlined || root.expressive) && root.enabled
-        onPressed: root.forceActiveFocus()
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: Math.min(root.width, root.leftPadding)
+        enabled: root.enabled
+        acceptedButtons: Qt.LeftButton
+        cursorShape: Qt.IBeamCursor
+        onPressed: {
+            root.forceActiveFocus();
+            root.cursorPosition = 0;
+        }
     }
 
     Loader {

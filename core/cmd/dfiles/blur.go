@@ -27,6 +27,18 @@ var blurCheckCmd = &cobra.Command{
 	},
 }
 
+var blurUmbrielEnabled bool
+var blurUmbrielRadius int
+
+var blurUmbrielCmd = &cobra.Command{
+	Use:   "umbriel",
+	Short: "Set the Umbriel background blur for Fjord Files",
+	Args:  cobra.NoArgs,
+	RunE: func(_ *cobra.Command, _ []string) error {
+		return blur.ConfigureUmbriel(blurUmbrielEnabled, blurUmbrielRadius)
+	},
+}
+
 func blurVerdict(supported bool) string {
 	if supported {
 		return "supported"
@@ -35,5 +47,8 @@ func blurVerdict(supported bool) string {
 }
 
 func init() {
+	blurUmbrielCmd.Flags().BoolVar(&blurUmbrielEnabled, "enabled", false, "Enable blur for Fjord Files")
+	blurUmbrielCmd.Flags().IntVar(&blurUmbrielRadius, "radius", 8, "Blur radius from 0 to 100")
 	blurCmd.AddCommand(blurCheckCmd)
+	blurCmd.AddCommand(blurUmbrielCmd)
 }

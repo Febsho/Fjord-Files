@@ -3,6 +3,7 @@ package ipc
 import (
 	"context"
 
+	"github.com/duxlabs-dev/dux-files/core/internal/blur"
 	"github.com/duxlabs-dev/dux-files/core/internal/wire"
 	"github.com/duxlabs-dev/dux-go/files"
 
@@ -22,6 +23,14 @@ func HandleSystem(ctx context.Context, w *ConnWriter, req Request, deps Deps) {
 		w.Respond(req.ID, deps.ColorScheme.State())
 	case "system.capabilities":
 		w.Respond(req.ID, capabilities(deps))
+	case "system.blur.configure":
+		enabled := params.BoolLoose(req.Params, "enabled")
+		radius := params.IntOpt(req.Params, "radius", 8)
+		if err := blur.ConfigureUmbriel(enabled, radius); err != nil {
+			w.RespondError(req.ID, err.Error())
+			return
+		}
+		w.Respond(req.ID, map[string]any{"enabled": enabled, "radius": radius})
 	case "system.elevation":
 		if deps.FileOps == nil {
 			w.Respond(req.ID, map[string]any{"available": false, "reason": "NOROUTE"})

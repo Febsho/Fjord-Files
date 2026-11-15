@@ -1325,30 +1325,26 @@ Item {
                 }
 
                 SettingsToggleRow {
-                    text: I18n.tr("Foreground layers", "toggle keeping cards and panes solid over a see-through window")
-                    keywords: I18n.tr("cards panes contrast glass", "settings search keywords, space separated, add synonyms in your language")
-                    description: I18n.tr("Keeps cards and panes solid when the window is see-through.", "foreground layers toggle description")
-                    settingKey: "floatingWindowForegroundLayers"
-                }
-
-                SettingsSliderRow {
-                    text: I18n.tr("Layer opacity", "foreground layer opacity slider label")
-                    enabled: SettingsData.floatingWindowForegroundLayers
-                    minimum: 0
-                    maximum: 100
-                    unit: "%"
-                    value: Math.round(SettingsData.floatingWindowForegroundTransparency * 100)
-                    onSliderValueChanged: newValue => SettingsData.floatingWindowForegroundTransparency = newValue / 100
-                }
-
-                SettingsToggleRow {
                     visible: BlurService.supported
                     text: I18n.tr("Background blur", "toggle asking the compositor to blur behind see-through windows")
                     keywords: I18n.tr("frosted glass compositor", "settings search keywords, space separated, add synonyms in your language")
                     description: BlurService.compositorManaged
-                        ? I18n.tr("Request compositor blur for this window. Umbriel applies blur through its window rules.", "background blur toggle description for Umbriel")
+                        ? I18n.tr("Blurs behind Fjord Files using Umbriel. The strength also applies to other windows with blur enabled.", "background blur toggle description for Umbriel")
                         : I18n.tr("Blurs what shows through the window. Needs an opacity below 100%.", "background blur toggle description")
                     settingKey: "blurEnabled"
+                }
+
+                SettingsSliderRow {
+                    visible: BlurService.compositorManaged
+                    enabled: SettingsData.blurEnabled
+                    text: I18n.tr("Blur strength", "Umbriel background blur radius slider label")
+                    keywords: I18n.tr("background blur radius strength Umbriel", "settings search keywords, space separated, add synonyms in your language")
+                    minimum: 0
+                    maximum: 32
+                    step: 1
+                    unit: "px"
+                    value: SettingsData.blurRadius
+                    onSliderValueChanged: newValue => SettingsData.blurRadius = newValue
                 }
 
                 SettingsRow {

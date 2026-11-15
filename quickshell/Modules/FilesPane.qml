@@ -578,7 +578,7 @@ FocusScope {
         header: pane.filtering ? filterHeader : null
         pathBarTrailing: pane.framed ? paneStatus : null
         pathBarHost: pane.pathBarHost
-        pathBarColor: Theme.surfaceContainerLowest
+        pathBarColor: "transparent"
         emptyText: {
             if (pane.virtualActive)
                 return "";

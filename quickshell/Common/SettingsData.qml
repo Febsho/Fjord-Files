@@ -46,6 +46,7 @@ Singleton {
     property alias glassStrength: adapter.glassStrength
     property alias performanceMode: adapter.performanceMode
     property alias blurEnabled: adapter.blurEnabled
+    property alias blurRadius: adapter.blurRadius
     property alias language: adapter.language
     readonly property bool keepRunning: Quickshell.env("DFILES_KEEP_RUNNING") === "1"
     property alias terminal: adapter.terminal
@@ -141,6 +142,7 @@ Singleton {
             property string glassStrength: "balanced"
             property bool performanceMode: false
             property bool blurEnabled: false
+            property int blurRadius: 8
             property string language: ""
             property string terminal: ""
             property string opener: ""

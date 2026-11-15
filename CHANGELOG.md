@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.0] - 2026-11-16
+
+### Added
+
+- Video thumbnails and a clip selector in the sidebar, with previous and next video navigation in both sidebar and full preview.
+- Double-click video previews to expand them to fullscreen.
+- A background blur strength slider for Umbriel, which applies blur to Fjord Files through a managed window rule.
+
+### Improved
+
+- Video previews now wait for Play and start muted in the sidebar; the mute control can be switched on for sound.
+- Keep the video thumbnail visible until playback starts, including after hiding and reopening the sidebar.
+- Removed the foreground-layers setting and fixed the solid pane appearance as the default.
+- Unified the search and path bars and restored mouse caret placement in text fields.
+- Updated the README with the release AppImage download and checksum instructions.
+
 ## [0.2.0] - 2026-11-15
 
 ### Added

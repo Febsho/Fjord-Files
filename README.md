@@ -22,9 +22,24 @@ Fjord Files is a file manager for Wayland. A Go daemon handles file operations a
 - **Trash, recent files, and bookmarks:** Browse and restore trashed files, revisit recent files, and keep folders in the sidebar.
 - **Open and save dialogs:** Can optionally provide the XDG Desktop Portal file chooser to other applications.
 - **Desktop integration:** Supports `org.freedesktop.FileManager1` for “Show in Folder”. Registration as the default file manager stays off until enabled in Settings.
-- **Previews:** Images, text, audio, and video, with optional PDF and Office previews. Availability and codecs depend on installed Qt modules and helper tools.
+- **Previews:** Images, text, audio, and video, with optional PDF and Office previews. Video previews start paused and muted in the sidebar, show a thumbnail before playback, and let you choose nearby clips. Double-click a video to expand it. Availability and codecs depend on installed Qt modules and helper tools.
+- **Appearance:** Adjustable glass surfaces, separate window opacity, and compositor blur with a strength control on Umbriel.
 
 ## Installation
+
+### AppImage
+
+Download the latest x86_64 AppImage and its checksum from [GitHub Releases](https://github.com/Febsho/Fjord-Files/releases/latest):
+
+```bash
+curl -fLO https://github.com/Febsho/Fjord-Files/releases/latest/download/Fjord-Files-x86_64.AppImage
+curl -fLO https://github.com/Febsho/Fjord-Files/releases/latest/download/Fjord-Files-x86_64.AppImage.sha256
+sha256sum -c Fjord-Files-x86_64.AppImage.sha256
+chmod +x Fjord-Files-x86_64.AppImage
+./Fjord-Files-x86_64.AppImage
+```
+
+The AppImage bundles Qt and the Quickshell UI runtime. It still uses the host Wayland compositor and its blur support.
 
 ### From source
 
@@ -32,7 +47,7 @@ Requires Go 1.27.3 or newer and Quickshell with Qt 6. Shared QML components and 
 
 ```bash
 git clone https://github.com/Febsho/Fjord-Files.git
-cd Filemanager
+cd Fjord-Files
 make
 ./run-fjord
 ```
@@ -64,7 +79,7 @@ The flake provides NixOS and Home Manager modules. Home Manager example:
 
 ```nix
 {
-  inputs.fjord-files.url = "github:Febsho/Filemanager";
+  inputs.fjord-files.url = "github:Febsho/Fjord-Files";
 
   imports = [ inputs.fjord-files.homeModules.dux-files ];
   programs.dux-files.enable = true;

@@ -283,6 +283,50 @@ FloatingWindow {
         return activePane.selectedEntries;
     }
 
+    function videoNeighbor(direction) {
+        if ((direction !== -1 && direction !== 1) || !previewTarget || previewTarget.isDir)
+            return null;
+        const directory = activePane.body.directory;
+        let index = directory.indexOfPath(previewTarget.path);
+        if (index < 0)
+            return null;
+        while (true) {
+            index += direction;
+            if (index < 0 || index >= directory.count)
+                return null;
+            const entry = directory.entries.get(index);
+            if (entry && !entry.isDir && !entry.unreadable && !entry.symlinkBroken && (entry.mime ?? "").startsWith("video/"))
+                return entry;
+        }
+    }
+
+    function videoChoices() {
+        const directory = activePane.body.directory;
+        const count = directory.count;
+        const videos = [];
+        for (let index = 0; index < count; index++) {
+            const entry = directory.entries.get(index);
+            if (entry && !entry.isDir && !entry.unreadable && !entry.symlinkBroken && (entry.mime ?? "").startsWith("video/"))
+                videos.push({"name": entry.name, "path": entry.path});
+        }
+        return videos;
+    }
+
+    function stepSideVideo(direction) {
+        const entry = videoNeighbor(direction);
+        if (!entry)
+            return;
+        activePane.selection.clear();
+        activePane.selection.select(entry.path);
+    }
+
+    function selectSideVideo(path) {
+        if (!videoChoices().some(entry => entry.path === path))
+            return;
+        activePane.selection.clear();
+        activePane.selection.select(path);
+    }
+
     function firstSelected() {
         return selectedEntries()[0] ?? null;
     }
@@ -859,8 +903,19 @@ FloatingWindow {
                     source: active ? "PreviewMediaSide.qml" : ""
                     onLoaded: {
                         item.source = Qt.binding(() => FilePaths.toFileUrl(window.previewTarget?.path ?? ""));
+                        item.thumbnailSource = Qt.binding(() => FilePaths.toFileUrl(window.previewTarget?.thumbnail ?? ""));
                         item.video = Qt.binding(() => previewDrawer.verifiedMime.startsWith("video/"));
+                        item.videoChoices = Qt.binding(() => window.videoChoices());
+                        item.currentPath = Qt.binding(() => window.previewTarget?.path ?? "");
+                        item.canStepPrevious = Qt.binding(() => window.videoNeighbor(-1) !== null);
+                        item.canStepNext = Qt.binding(() => window.videoNeighbor(1) !== null);
                         item.expandRequested.connect(() => window.openFlow.quickLook(window.previewTarget));
+                        item.fullScreenRequested.connect(() => {
+                            window.openFlow.quickLook(window.previewTarget);
+                            window.visibility = Window.FullScreen;
+                        });
+                        item.clipStepRequested.connect(direction => window.stepSideVideo(direction));
+                        item.clipSelected.connect(path => window.selectSideVideo(path));
                     }
                 }
                 Loader {
@@ -936,6 +991,7 @@ FloatingWindow {
             onClosed: window.tabManager.closeContentTab()
             onSavedAs: entry => window.tabManager.updateContentEntry(entry)
             onGalleryStepRequested: direction => window.openFlow.galleryStep(direction, contentViewer, true)
+            onFullScreenRequested: window.visibility = Window.FullScreen
             onArchiveExtractRequested: (archive, member) => FileOpsService.extractMember(archive, member, FilePaths.parentOf(archive), window.opScope)
 
             function syncEntry() {
@@ -961,6 +1017,7 @@ FloatingWindow {
             anchors.fill: parent
             onClosed: window.activePane.focusBody()
             onGalleryStepRequested: direction => window.openFlow.galleryStep(direction, previewOverlay, false)
+            onFullScreenRequested: window.visibility = window.visibility === Window.FullScreen ? Window.Windowed : Window.FullScreen
             onArchiveExtractRequested: (archive, member) => FileOpsService.extractMember(archive, member, FilePaths.parentOf(archive), window.opScope)
         }
     }

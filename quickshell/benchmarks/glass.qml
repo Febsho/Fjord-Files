@@ -27,13 +27,13 @@ ShellRoot {
             return;
         finished = true;
         frameAnimation.running = false;
-        console.info("FJORD_GLASS_BENCHMARK " + JSON.stringify({
+        Log.info("FJORD_GLASS_BENCHMARK", {
             "mode": root.mode,
             "frames": measuredFrames,
             "seconds": measureSeconds,
             "fps": measuredFrames / measureSeconds,
             "compositorBlurProtocol": BlurService.probed ? BlurService.available : null
-        }));
+        });
         Qt.quit();
     }
 

@@ -671,7 +671,7 @@ GlassToolbar {
         width: topbar.searchTakesAll ? topbar.centerWidth : Math.max(FilesMetrics.searchMinWidth, Math.min(FilesMetrics.searchMaxWidth, topbar.centerWidth * FilesMetrics.searchShare))
         fieldHeight: FilesMetrics.topbarControlSize
         leftIconSize: Theme.iconSizeMedium
-        backgroundColor: Theme.withAlpha(Theme.glassTint, Theme.floatingWindowForegroundAlpha)
+        backgroundColor: "transparent"
         borderWidth: 0
         focusedBorderWidth: Math.max(Theme.outlineWidthFocused, Theme.focusRingWidth)
         placeholderText: I18n.tr("Search in Files", "placeholder in the search field")

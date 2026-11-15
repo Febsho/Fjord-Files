@@ -91,7 +91,8 @@ QtObject {
     }
 
     function galleryStep(direction, viewer, updateTab) {
-        if (!viewer.open || viewer.kind !== "image" || (direction !== -1 && direction !== 1))
+        const videoGallery = viewer.kind === "media" && viewer.mediaView?.video;
+        if (!viewer.open || (viewer.kind !== "image" && !videoGallery) || (direction !== -1 && direction !== 1))
             return;
         const directory = activePane.body.directory;
         const original = viewer.path;
@@ -105,11 +106,12 @@ QtObject {
                 index += direction;
                 if (index < 0 || index >= directory.count) return;
                 item = directory.entries.get(index);
-            } while (!item || item.isDir || item.unreadable || item.symlinkBroken || !(item.mime ?? "").startsWith("image/"));
+            } while (!item || item.isDir || item.unreadable || item.symlinkBroken
+                || !(item.mime ?? "").startsWith(videoGallery ? "video/" : "image/"));
             const candidate = Object.assign({}, item);
             flow.viewerResolver(candidate.path, result => {
                 if (serial !== flow.galleryRequest || !viewer.open || viewer.path !== original) return;
-                if (result.error || result.viewer !== "image") { Qt.callLater(next); return; }
+                if (result.error || result.viewer !== (videoGallery ? "media" : "image")) { Qt.callLater(next); return; }
                 const entry = Object.assign(candidate, {"mime": result.mime, "viewer": result.viewer});
                 viewer.present(entry);
                 if (updateTab) flow.mainWindow.tabManager.updateContentEntry(entry);

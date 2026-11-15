@@ -147,6 +147,7 @@ FocusScope {
 
     signal archiveExtractRequested(string archive, string member)
     signal galleryStepRequested(int direction)
+    signal fullScreenRequested()
     signal closed
     signal savedAs(var entry)
 
@@ -586,9 +587,9 @@ FocusScope {
                 anchors.right: galleryNext.left
                 anchors.rightMargin: Theme.spacingS
                 anchors.verticalCenter: parent.verticalCenter
-                visible: overlay.kind === "image"
+                visible: overlay.kind === "image" || (overlay.kind === "media" && mediaView?.video)
                 iconName: "chevron_left"
-                tooltipText: I18n.tr("Previous image", "image gallery navigation")
+                tooltipText: overlay.kind === "image" ? I18n.tr("Previous image", "image gallery navigation") : I18n.tr("Previous video", "video gallery navigation")
                 onClicked: overlay.galleryStepRequested(-1)
             }
             DActionButton {
@@ -597,9 +598,9 @@ FocusScope {
                 anchors.right: imageExportButton.left
                 anchors.rightMargin: Theme.spacingS
                 anchors.verticalCenter: parent.verticalCenter
-                visible: overlay.kind === "image"
+                visible: overlay.kind === "image" || (overlay.kind === "media" && mediaView?.video)
                 iconName: "chevron_right"
-                tooltipText: I18n.tr("Next image", "image gallery navigation")
+                tooltipText: overlay.kind === "image" ? I18n.tr("Next image", "image gallery navigation") : I18n.tr("Next video", "video gallery navigation")
                 onClicked: overlay.galleryStepRequested(1)
             }
 
@@ -770,7 +771,13 @@ FocusScope {
                 onLoaded: {
                     item.source = Qt.binding(() => FilePaths.toFileUrl(overlay.path));
                     item.video = Qt.binding(() => (overlay.entry?.mime ?? "").startsWith("video/"));
+                    item.posterSource = Qt.binding(() => FilePaths.toFileUrl(overlay.entry?.thumbnail ?? ""));
                 }
+            }
+
+            Connections {
+                target: media.item
+                function onFullScreenRequested() { overlay.fullScreenRequested(); }
             }
 
             Loader {

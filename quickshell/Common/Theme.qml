@@ -543,8 +543,8 @@ Singleton {
     }
 
     readonly property real floatingWindowTransparency: unitClamp(SettingsData.floatingWindowTransparency)
-    readonly property bool floatingWindowForegroundLayers: SettingsData.floatingWindowForegroundLayers
-    readonly property real floatingWindowForegroundTransparency: unitClamp(SettingsData.floatingWindowForegroundTransparency)
+    readonly property bool floatingWindowForegroundLayers: true
+    readonly property real floatingWindowForegroundTransparency: 1.0
     readonly property real floatingWindowForegroundAlpha: Surface.foregroundAlpha(floatingWindowForegroundLayers, floatingWindowForegroundTransparency)
     readonly property bool translucentWindows: floatingWindowTransparency < 1
     readonly property real popupTransparency: floatingWindowTransparency

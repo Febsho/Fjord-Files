@@ -15,6 +15,11 @@
   <url type="homepage">https://github.com/Febsho/Fjord-Files</url>
   <url type="vcs-browser">https://github.com/Febsho/Fjord-Files</url>
   <releases>
+    <release version="0.3.0" date="2026-11-16">
+      <description>
+        <p>Adds paused, muted video previews with thumbnails, clip selection, and fullscreen playback. Adds an Umbriel blur-strength control and improves search and path field interaction.</p>
+      </description>
+    </release>
     <release version="0.2.0" date="2026-11-15">
       <description>
         <p>Adds adjustable liquid-glass styling with a live preview, independent opacity controls, and an optional compositor-managed background blur setting. Refines the settings layout, tab overview, search-field clicks, and Fjord branding.</p>
