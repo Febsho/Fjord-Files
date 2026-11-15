@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="back" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8de5e1"/>
+      <stop offset="1" stop-color="#408dbb"/>
+    </linearGradient>
+    <linearGradient id="front" x1="0" y1="0" x2="0.9" y2="1">
+      <stop stop-color="#327d9e"/>
+      <stop offset="1" stop-color="#173e68"/>
+    </linearGradient>
+    <clipPath id="folder"><path d="M14 37c0-5 4-9 9-9h27l9 9h46c5 0 9 4 9 9v49c0 6-5 10-10 10H24c-6 0-10-4-10-10z"/></clipPath>
+  </defs>
+  <path d="M14 37c0-5 4-9 9-9h27l9 9h46c5 0 9 4 9 9v49c0 6-5 10-10 10H24c-6 0-10-4-10-10z" fill="url(#back)"/>
+  <g clip-path="url(#folder)">
+    <path d="M14 53h100v52H14z" fill="url(#front)"/>
+    <path d="M14 84 42 59l18 18 13-12 41 28v12H14z" fill="#64b5c3"/>
+    <path d="m14 94 28-22 19 16 13-9 40 23v3H14z" fill="#a4e2d9"/>
+    <path d="M14 99c22-11 34-12 51-4 17 7 30 8 49 0v10H14z" fill="#287e9e"/>
+    <path d="M14 105c23-8 35-7 51-2 17 5 32 5 49-1v8H14z" fill="#174e74"/>
+  </g>
+  <path d="M23 28h27l9 9h46" fill="none" stroke="#d7fcf2" stroke-opacity=".65" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,68 @@
+name: Build
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  library:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    container: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Archlinux
+            image: archlinux
+            libdir: lib
+          - name: Fedora
+            image: fedora:latest
+            libdir: lib64
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies (Arch)
+        if: matrix.image == 'archlinux'
+        run: |
+          pacman --noconfirm --noprogressbar -Syu
+          pacman --noconfirm --noprogressbar -S \
+            base-devel cmake ninja pkgconf \
+            qt6-base qt6-declarative qt6-wayland qt6-shadertools \
+            spirv-tools cli11 vulkan-headers \
+            wayland wayland-protocols libdrm libglvnd mesa libxcb libxkbcommon \
+            libpipewire pam polkit glib2
+
+      - name: Install dependencies (Fedora)
+        if: matrix.image == 'fedora:latest'
+        run: |
+          dnf install -y \
+            cmake gcc-c++ ninja-build pkgconfig \
+            'cmake(Qt6Core)' 'cmake(Qt6DBus)' 'cmake(Qt6Network)' 'cmake(Qt6Qml)' \
+            'cmake(Qt6Quick)' 'cmake(Qt6QuickControls2)' 'cmake(Qt6ShaderTools)' \
+            'cmake(Qt6WaylandClient)' 'cmake(Qt6Widgets)' qt6-qtbase-private-devel \
+            'pkgconfig(CLI11)' 'pkgconfig(egl)' 'pkgconfig(gbm)' 'pkgconfig(glib-2.0)' \
+            'pkgconfig(gobject-2.0)' 'pkgconfig(libdrm)' 'pkgconfig(libpipewire-0.3)' \
+            'pkgconfig(pam)' 'pkgconfig(polkit-agent-1)' 'pkgconfig(polkit-gobject-1)' \
+            'pkgconfig(wayland-client)' 'pkgconfig(wayland-protocols)' 'pkgconfig(xcb)' \
+            'pkgconfig(xkbcommon)' spirv-tools vulkan-headers wayland-devel
+
+      - name: Configure
+        run: |
+          cmake -GNinja -B build \
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DCMAKE_INSTALL_LIBDIR=${{ matrix.libdir }} \
+            -DDISTRIBUTOR="GitHub CI (${{ matrix.name }})" \
+            -DGIT_REVISION=${{ github.sha }}
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Install
+        run: DESTDIR="$PWD/dest" cmake --install build
+
+      - name: Check installed files
+        run: |
+          test -f dest/usr/${{ matrix.libdir }}/libdux-qt-base.so.0
+          test -f dest/usr/${{ matrix.libdir }}/pkgconfig/dux-qt-base.pc
+          test -f dest/usr/include/dux-qt-base/dux_qt_base.h
+          PKG_CONFIG_SYSROOT_DIR="$PWD/dest" PKG_CONFIG_LIBDIR="$PWD/dest/usr/${{ matrix.libdir }}/pkgconfig" \
+            pkg-config --libs --cflags dux-qt-base

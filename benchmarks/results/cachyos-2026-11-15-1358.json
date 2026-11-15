@@ -1,0 +1,83 @@
+{
+  "conditions": {
+    "platform": "Linux-6.18.60-2-cachyos-lts-x86_64-with-glibc2.44",
+    "cpu": "AMD Ryzen 5 7600X3D 6-Core Processor",
+    "logical_cpus": 12,
+    "mem_total": "MemTotal:       31938272 kB",
+    "filesystem": "tmpfs rw,noatime,inode64",
+    "binary_sha256": "4d18fd9ace552cd81f3a3aba7b5df47b7b719aec0c1ec55cf430cb265449c6b4",
+    "binary_version": "dfiles 2.1.0+git172.7a89d083 (commit 7a89d083, built 2026-11-15_12:52:25)",
+    "python_version": "3.14.10",
+    "sweep_version": null,
+    "fixture_files": 10000,
+    "fixture_bytes_each": 16,
+    "repeats": 3,
+    "large_copy_mib": 16,
+    "small_copy_files": 1000,
+    "cache": "uncontrolled; fixture creation and warmup precede samples",
+    "bus": "isolated/unavailable",
+    "timing": "wall-clock including CLI startup and IPC"
+  },
+  "measurements": {
+    "daemon_start_ready_ms": 7.892798,
+    "daemon_idle_rss": "VmRSS:\t   25084 kB",
+    "directory_first_page": {
+      "unit": "ms",
+      "samples": [
+        45.359806,
+        46.004601,
+        47.865714
+      ],
+      "median": 46.004601
+    },
+    "text_preview_head": {
+      "unit": "ms",
+      "samples": [
+        2.909737,
+        2.456203,
+        2.495709
+      ],
+      "median": 2.495709
+    },
+    "thumbnail_generate_512px": {
+      "unit": "ms",
+      "samples": [
+        11.551258,
+        11.374312,
+        12.051841
+      ],
+      "median": 11.551258
+    },
+    "search_direct_complete": {
+      "unit": "ms",
+      "samples": [
+        6.698254,
+        5.962344,
+        6.655323
+      ],
+      "median": 6.655323
+    },
+    "copy_large_complete": {
+      "unit": "ms",
+      "samples": [
+        17.596821,
+        17.994278,
+        18.172135
+      ],
+      "median": 17.994278
+    },
+    "copy_small_complete": {
+      "unit": "ms",
+      "samples": [
+        86.932565,
+        75.127894,
+        75.912577
+      ],
+      "median": 75.912577
+    }
+  },
+  "not_measured": {
+    "GUI startup": "headless daemon only; no window or rendering measured",
+    "Sweep scans": "sweep executable was not found in PATH"
+  }
+}

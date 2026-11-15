@@ -1,0 +1,91 @@
+{
+  "conditions": {
+    "platform": "Linux-6.18.60-2-cachyos-lts-x86_64-with-glibc2.44",
+    "cpu": "AMD Ryzen 5 7600X3D 6-Core Processor",
+    "logical_cpus": 12,
+    "mem_total": "MemTotal:       31938276 kB",
+    "filesystem": "tmpfs rw,noatime,inode64",
+    "binary_sha256": "fe18aa20f03bcc9fc3994b2d26315589c41be1fe89df1f87e81d13cd83f55cf4",
+    "binary_version": "dfiles 2.1.0+git172.7a89d083 (commit 7a89d083, built 2026-11-15_00:33:22)",
+    "python_version": "3.14.10",
+    "sweep_version": "0.5.2",
+    "fixture_files": 1000,
+    "fixture_bytes_each": 16,
+    "repeats": 3,
+    "large_copy_mib": 16,
+    "small_copy_files": 1000,
+    "cache": "uncontrolled; fixture creation and warmup precede samples",
+    "bus": "isolated/unavailable",
+    "timing": "wall-clock including CLI startup and IPC"
+  },
+  "measurements": {
+    "daemon_start_ready_ms": 7.555869,
+    "daemon_idle_rss": "VmRSS:\t   23032 kB",
+    "directory_first_page": {
+      "unit": "ms",
+      "samples": [
+        13.195962,
+        12.842261,
+        12.700041
+      ],
+      "median": 12.842261
+    },
+    "text_preview_head": {
+      "unit": "ms",
+      "samples": [
+        2.363275,
+        2.372071,
+        2.48696
+      ],
+      "median": 2.372071
+    },
+    "thumbnail_generate_512px": {
+      "unit": "ms",
+      "samples": [
+        11.26634,
+        9.699337,
+        11.086178
+      ],
+      "median": 11.086178
+    },
+    "sweep_scan_complete": {
+      "unit": "ms",
+      "samples": [
+        89.579838,
+        87.692695,
+        89.743558
+      ],
+      "median": 89.579838
+    },
+    "search_direct_complete": {
+      "unit": "ms",
+      "samples": [
+        2.922406,
+        3.321523,
+        3.047052
+      ],
+      "median": 3.047052
+    },
+    "copy_large_complete": {
+      "unit": "ms",
+      "samples": [
+        17.268872,
+        17.527903,
+        17.466436
+      ],
+      "median": 17.466436
+    },
+    "copy_small_complete": {
+      "unit": "ms",
+      "samples": [
+        74.228384,
+        73.972939,
+        73.864414
+      ],
+      "median": 73.972939
+    }
+  },
+  "not_measured": {
+    "GUI startup": "headless daemon only; no window or rendering measured"
+  }
+}

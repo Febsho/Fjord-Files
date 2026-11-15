@@ -1,0 +1,33 @@
+# Local snapshot recipe. Generate its source archive and checksum with snapshot.py.
+pkgname=fjord-files
+pkgver=0.0.0
+pkgrel=1
+pkgdesc='Fjord Files, a Quickshell file manager (development snapshot)'
+arch=('x86_64' 'aarch64')
+url='https://github.com/Febsho/Fjord-Files'
+license=('MIT' 'OFL-1.1' 'Apache-2.0')
+depends=('quickshell' 'qt6-svg')
+makedepends=('go>=1.27.3')
+optdepends=('qt6-multimedia: audio and video previews'
+            'qt6-webengine: Qt PDF previews'
+            'sweep: optional disk usage scanning and cleanup')
+source=("${pkgname}-source.tar.gz")
+sha256sums=('SNAPSHOT_CHECKSUM')
+
+build() {
+  cd "$srcdir/$pkgname"
+  export GOTOOLCHAIN=local
+  export GOFLAGS='-trimpath -buildvcs=false -mod=readonly'
+  make build VERSION="$pkgver" COMMIT=snapshot BUILD_TIME="$(date -u -d "@$SOURCE_DATE_EPOCH" '+%Y-%m-%d_%H:%M:%S')"
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  make install PREFIX=/usr DESTDIR="$pkgdir" FJORD_LIBEXECDIR=/usr/lib/fjord-files
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 vendor/fjord-qml-common/LICENSE "$pkgdir/usr/share/licenses/$pkgname/fjord-qml-common-LICENSE"
+  install -Dm644 vendor/fjord-qml-common/DCommon/assets/fonts/nerd-fonts/LICENSE "$pkgdir/usr/share/licenses/$pkgname/nerd-fonts-LICENSE"
+  install -Dm644 vendor/fjord-qml-common/DCommon/assets/fonts/material-design-icons/LICENSE "$pkgdir/usr/share/licenses/$pkgname/material-design-icons-LICENSE"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/go"
+  cp -a assets/licenses/fjord-go/. "$pkgdir/usr/share/licenses/$pkgname/go/"
+}

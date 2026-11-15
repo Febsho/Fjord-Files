@@ -1,0 +1,151 @@
+id: dev.duxlabs.files
+runtime: org.kde.Platform
+runtime-version: '6.11'
+sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+command: dfiles
+
+# A file manager is only useful with the host filesystem, which leaves little
+# of the sandbox standing. See README.md for what each line buys and what
+# breaks without it.
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --filesystem=host
+  - --filesystem=/tmp
+  - --filesystem=/var
+  - --filesystem=xdg-run/gvfs
+  - --filesystem=xdg-run/gvfsd
+  - --talk-name=org.gtk.vfs.*
+  - --talk-name=org.freedesktop.Flatpak
+  - --own-name=org.freedesktop.FileManager1
+  - --system-talk-name=org.freedesktop.UDisks2
+
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /lib/libSPIRV-Tools*
+  - /lib/dfiles/libdux-qt-base.so
+  - /lib/dfiles/pkgconfig
+  - /bin/spirv-*
+
+build-options:
+  append-path: /usr/lib/sdk/golang/bin
+  env:
+    GOTOOLCHAIN: local
+
+modules:
+  - name: cli11
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCLI11_BUILD_DOCS=OFF
+      - -DCLI11_BUILD_EXAMPLES=OFF
+      - -DCLI11_BUILD_TESTS=OFF
+    sources:
+      - type: git
+        url: https://github.com/CLIUtils/CLI11.git
+        tag: v2.6.1
+        commit: bfffd37e1f804ca4fae1caae106935791696b6a9
+
+  - name: spirv-tools
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DSPIRV_SKIP_TESTS=ON
+      - -DSPIRV_WERROR=OFF
+    sources:
+      - type: git
+        url: https://github.com/KhronosGroup/SPIRV-Tools.git
+        tag: v2026.2
+        commit: 0539c81f69a3daeb706fd3477dca61435b475156
+      - type: git
+        url: https://github.com/KhronosGroup/SPIRV-Headers.git
+        commit: ad9184e76a66b1001c29db9b0a3e87f646c64de0
+        dest: external/spirv-headers
+
+  # dfiles looks for the runtime in ../lib/dfiles next to /app/bin/dfiles
+  - name: dux-qt-base
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DCMAKE_INSTALL_LIBDIR=lib/dfiles
+      - -DDISTRIBUTOR=Dux Files Flatpak
+      - -DSOCKETS=ON
+      - -DWAYLAND=ON
+      - -DWAYLAND_WLR_LAYERSHELL=OFF
+      - -DWAYLAND_SESSION_LOCK=OFF
+      - -DWAYLAND_TOPLEVEL_MANAGEMENT=ON
+      - -DHYPRLAND=OFF
+      - -DSCREENCOPY=OFF
+      - -DX11=ON
+      - -DI3=OFF
+      - -DSERVICE_STATUS_NOTIFIER=OFF
+      - -DSERVICE_PIPEWIRE=OFF
+      - -DSERVICE_MPRIS=OFF
+      - -DSERVICE_PAM=OFF
+      - -DSERVICE_POLKIT=OFF
+      - -DSERVICE_GREETD=OFF
+      - -DSERVICE_UPOWER=OFF
+      - -DSERVICE_NOTIFICATIONS=OFF
+      - -DBLUETOOTH=OFF
+      - -DNETWORK=OFF
+    sources:
+      - type: git
+        url: https://github.com/duxlabs-dev/dux-qt-base.git
+        commit: c0b79cde2f8b451cf1cf538c5a4c7d03167c90d6
+        disable-submodules: true
+
+  - name: qtpdf
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DINSTALL_LIBDIR=lib
+      - -DINSTALL_QMLDIR=lib/qml
+      - -DINSTALL_PLUGINSDIR=lib/plugins
+      - -DQT_FEATURE_qtwebengine_build=OFF
+      - -DQT_FEATURE_qtpdf_build=ON
+      - -DQT_FEATURE_qtpdf_quick_build=ON
+      - -DQT_FEATURE_qtpdf_widgets_build=OFF
+      - -DQT_FEATURE_pdf_v8=OFF
+      - -DQT_FEATURE_pdf_xfa=OFF
+    sources:
+      - type: archive
+        url: https://download.qt.io/official_releases/qt/6.11/6.11.1/submodules/qtwebengine-everywhere-src-6.11.1.tar.xz
+        sha256: 679c66ccc6c158fc215e9c58ef160331ecd29974232e345c05161889f8667083
+
+  - name: dux-files
+    buildsystem: simple
+    build-commands:
+      - make -C core sync-shell
+      - >-
+        go build -C core -mod=vendor -tags withshell
+        -ldflags=-s\ -w\ -X\ main.Version=0.1.0\ -X\ main.Commit=49e38e29
+        -o dfiles ./cmd/dfiles
+      - install -Dm755 core/dfiles /app/bin/dfiles
+      - >-
+        install -Dm644 assets/dev.duxlabs.files.desktop
+        /app/share/applications/dev.duxlabs.files.desktop
+      - >-
+        install -Dm644 assets/dev.duxlabs.files.metainfo.xml
+        /app/share/metainfo/dev.duxlabs.files.metainfo.xml
+      - >-
+        install -Dm644 assets/dev.duxlabs.files.svg
+        /app/share/icons/hicolor/scalable/apps/dev.duxlabs.files.svg
+      - >-
+        install -Dm644 LICENSE
+        /app/share/licenses/dev.duxlabs.files/LICENSE
+    sources:
+      - type: git
+        url: https://github.com/duxlabs-dev/dux-files.git
+        commit: 49e38e29bb039487ff710ee83cb2c93bce9b1994
+      - go.mod.yml

@@ -1,0 +1,83 @@
+{
+  "conditions": {
+    "platform": "Linux-6.18.60-2-cachyos-lts-x86_64-with-glibc2.44",
+    "cpu": "AMD Ryzen 5 7600X3D 6-Core Processor",
+    "logical_cpus": 12,
+    "mem_total": "MemTotal:       31938272 kB",
+    "filesystem": "btrfs rw,noatime,compress=zstd:1,ssd,discard=async,space_cache=v2,subvolid=257,subvol=/@home",
+    "binary_sha256": "eecd9106dcb934572b757eace5a9d3c71ed2669c966018326f3ad4bbfb6d16cf",
+    "binary_version": "dfiles dev (commit unknown, built unknown)",
+    "python_version": "3.14.10",
+    "sweep_version": null,
+    "fixture_files": 1000,
+    "fixture_bytes_each": 16,
+    "repeats": 3,
+    "large_copy_mib": 128,
+    "small_copy_files": 1000,
+    "cache": "uncontrolled; fixture creation and warmup precede samples",
+    "bus": "isolated/unavailable",
+    "timing": "wall-clock including CLI startup and IPC"
+  },
+  "measurements": {
+    "daemon_start_ready_ms": 7.954148,
+    "daemon_idle_rss": "VmRSS:\t   22684 kB",
+    "directory_first_page": {
+      "unit": "ms",
+      "samples": [
+        14.187593,
+        13.783776,
+        13.401588
+      ],
+      "median": 13.783776
+    },
+    "text_preview_head": {
+      "unit": "ms",
+      "samples": [
+        3.077624,
+        2.441223,
+        2.527517
+      ],
+      "median": 2.527517
+    },
+    "thumbnail_generate_512px": {
+      "unit": "ms",
+      "samples": [
+        10.999109,
+        11.397777,
+        12.541703
+      ],
+      "median": 11.397777
+    },
+    "search_direct_complete": {
+      "unit": "ms",
+      "samples": [
+        2.969277,
+        2.99156,
+        3.249952
+      ],
+      "median": 2.99156
+    },
+    "copy_large_complete": {
+      "unit": "ms",
+      "samples": [
+        92.73319,
+        96.779306,
+        128.400045
+      ],
+      "median": 96.779306
+    },
+    "copy_small_complete": {
+      "unit": "ms",
+      "samples": [
+        127.454046,
+        114.94276,
+        114.345865
+      ],
+      "median": 114.94276
+    }
+  },
+  "not_measured": {
+    "GUI startup": "headless daemon only; no window or rendering measured",
+    "Sweep scans": "sweep executable was not found in PATH"
+  }
+}

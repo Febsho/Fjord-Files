@@ -1,0 +1,65 @@
+name: Update Vendor Hash
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "core/go.mod"
+      - "core/go.sum"
+    branches:
+      - master
+      - "stable-*"
+
+permissions:
+  contents: write
+
+jobs:
+  update-vendor-hash:
+    if: github.repository == 'duxlabs-dev/dux-files'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub App token
+        id: app_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app_token.outputs.token }}
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Update vendorHash in flake.nix
+        run: |
+          set -euo pipefail
+          fake_hash="sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          sed -i -E "s|vendorHash = [^;]+;|vendorHash = \"${fake_hash}\";|" flake.nix
+          echo "Building go modules with a fake vendorHash to force a fresh hash..."
+          output=$(nix build .#dux-files.goModules 2>&1) && { echo "Expected a hash mismatch"; echo "$output"; exit 1; }
+          new_hash=$(echo "$output" | grep -oP "got:\s+\K\S+" | head -n1 || true)
+          [ -n "$new_hash" ] || { echo "Could not extract new vendorHash"; echo "$output"; exit 1; }
+          sed -i -E "s|vendorHash = [^;]+;|vendorHash = \"${new_hash}\";|" flake.nix
+          echo "Verifying build with new vendorHash..."
+          nix build .#dux-files
+          echo "vendorHash updated successfully!"
+
+      - name: Commit and push vendorHash update
+        env:
+          GH_TOKEN: ${{ steps.app_token.outputs.token }}
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet flake.nix; then
+            git config user.name "dux-ci[bot]"
+            git config user.email "344434142+dux-ci[bot]@users.noreply.github.com"
+            git add flake.nix
+            git commit -m "nix: update vendorHash for go.mod changes" || exit 0
+            git pull --rebase origin ${{ github.ref_name }}
+            git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}
+          else
+            echo "No changes to flake.nix"
+          fi

@@ -1,0 +1,135 @@
+name: Create Release
+
+# Tag push: creates the GitHub release and attaches the prebuilt Arch libraries
+# for the AUR dux-qt-base-bin package. Manual run with an existing tag attaches
+# fresh assets built against the Arch Qt of the day (Qt rebuilds).
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to build the Arch assets for (e.g. v1.2.3)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
+
+jobs:
+  release:
+    name: GitHub release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ env.TAG }}
+
+      - name: Check tag matches project version
+        if: github.event_name == 'push'
+        run: |
+          version=$(sed -nE 's/^project\(dux-qt-base VERSION "([^"]+)".*/\1/p' CMakeLists.txt)
+          if [ "v$version" != "$TAG" ]; then
+            echo "::error::tag $TAG does not match CMakeLists.txt version $version"
+            exit 1
+          fi
+
+      - name: Create release
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "release $TAG exists"
+            exit 0
+          fi
+          if [ -f "changelog/$TAG.md" ]; then
+            gh release create "$TAG" --title "$TAG" --notes-file "changelog/$TAG.md"
+          else
+            gh release create "$TAG" --title "$TAG" --generate-notes
+          fi
+
+      - name: Check release exists
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release view "$TAG" >/dev/null
+
+  arch-library:
+    name: Arch ${{ matrix.arch }} library
+    needs: release
+    runs-on: ${{ matrix.runner }}
+    container:
+      image: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x86_64
+            runner: ubuntu-latest
+            image: archlinux:base-devel
+          # Arch Linux ARM ships its own Qt builds; menci/archlinuxarm is rebuilt daily from its repos
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+            image: menci/archlinuxarm:base-devel
+    steps:
+      - name: Install dependencies
+        run: |
+          # pacman's landlock download sandbox cannot be applied inside the job container
+          sed -i 's/^#\?DisableSandbox.*/DisableSandbox/' /etc/pacman.conf
+          grep -q '^DisableSandbox' /etc/pacman.conf || sed -i '/^\[options\]/a DisableSandbox' /etc/pacman.conf
+          pacman -Syu --noconfirm --needed \
+            git github-cli zstd cmake ninja pkgconf \
+            qt6-base qt6-declarative qt6-wayland qt6-shadertools \
+            spirv-tools cli11 vulkan-headers \
+            wayland wayland-protocols libdrm libglvnd mesa libxcb libxkbcommon \
+            libpipewire pam polkit glib2
+
+      - name: Checkout tag
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ env.TAG }}
+
+      - name: Build
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          test "$(uname -m)" = "${{ matrix.arch }}"
+          cmake -GNinja -B build \
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DCMAKE_INSTALL_LIBDIR=lib \
+            -DDISTRIBUTOR="AUR (dux-qt-base-bin)" \
+            -DGIT_REVISION="$TAG"
+          cmake --build build
+          DESTDIR="$PWD/dest" cmake --install build
+          # makepkg strips at package time anyway; keep the asset small
+          find dest -name 'libdux-qt-base.so.*' -type f -exec strip --strip-unneeded {} +
+
+      - name: Package
+        id: package
+        run: |
+          VERSION="${TAG#v}"
+          QTVER=$(pacman -Q qt6-base | awk '{print $2}' | sed 's/-[0-9]*$//')
+          ASSET="dux-qt-base-${VERSION}-qt${QTVER}-${{ matrix.arch }}.tar.zst"
+          tar -C dest --zstd -cf "$ASSET" usr
+          sha256sum "$ASSET" > "$ASSET.sha256"
+          echo "asset=$ASSET" >> "$GITHUB_OUTPUT"
+          echo "qtver=$QTVER" >> "$GITHUB_OUTPUT"
+          tar -tf "$ASSET"
+
+      - name: Upload asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ASSET: ${{ steps.package.outputs.asset }}
+        run: |
+          gh release upload "$TAG" "$ASSET" "$ASSET.sha256" --clobber
+          echo "uploaded $ASSET (qt ${{ steps.package.outputs.qtver }}) to $TAG" >> "$GITHUB_STEP_SUMMARY"

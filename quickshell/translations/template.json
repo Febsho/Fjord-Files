@@ -1,0 +1,5455 @@
+[
+  {
+    "term": "%1 already exist in this folder. Do you want to overwrite them?",
+    "translation": "",
+    "context": "file chooser overwrite dialog message, %1 lists the file names",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 already exists in this folder.",
+    "translation": "",
+    "context": "file conflict dialog explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 bookmarks imported",
+    "translation": "",
+    "context": "toast after importing gtk bookmarks",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 can be run as a program. Open it in an editor instead to read it first.",
+    "translation": "",
+    "context": "executable file dialog explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 entries · %2 skipped",
+    "translation": "",
+    "context": "storage scan result counts",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 folders could not be read",
+    "translation": "",
+    "context": "search results header note",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 folders skipped",
+    "translation": "",
+    "context": "Sweep scan incomplete directory count",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 follows the handler on your %2.",
+    "translation": "",
+    "context": "file opener setting description, %1 is a command, %2 is an environment variable",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 h %2 min left",
+    "translation": "",
+    "context": "time left for a file operation, in hours and minutes",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 has not been marked as trusted. Running it allows it to start any program.",
+    "translation": "",
+    "context": "untrusted desktop file dialog explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 hidden",
+    "translation": "",
+    "context": "count of hidden items left out of a folder listing",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 holds it; Files takes over when it quits.",
+    "translation": "",
+    "context": "file manager registration setting description while another file manager holds the name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 is encrypted. Enter its passphrase to unlock it.",
+    "translation": "",
+    "context": "unlock dialog explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 is password protected.",
+    "translation": "",
+    "context": "archive password dialog explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 items copied",
+    "translation": "",
+    "context": "clipboard indicator for copied items",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 items cut",
+    "translation": "",
+    "context": "clipboard indicator for cut items",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 items · %2 failed",
+    "translation": "",
+    "context": "Sweep history item counts",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 keys",
+    "translation": "",
+    "context": "toggle label for vim style navigation, %1 is Vim",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 levels deep",
+    "translation": "",
+    "context": "search results header note giving how far below the folder the index reaches",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 matching “%2”",
+    "translation": "",
+    "context": "filter bar above a folder listing, count then the typed text",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 min left",
+    "translation": "",
+    "context": "time left for a file operation, in minutes",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 not detected, using %2.",
+    "translation": "",
+    "context": "auto font source status when the shell is missing, %1 is Dux Shell, %2 is a font family",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 not detected, using the %2 preset.",
+    "translation": "",
+    "context": "auto color source status when the shell is missing, %1 is Dux Shell, %2 is a preset name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 projects · %2 entries · %3 skipped",
+    "translation": "",
+    "context": "project scan result counts",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 px",
+    "translation": "",
+    "context": "icon size option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 running operations will be stopped part way through.",
+    "translation": "",
+    "context": "quit confirmation explanation for several running file operations",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 s left",
+    "translation": "",
+    "context": "time left for a file operation, in seconds",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 selected",
+    "translation": "",
+    "context": "count of selected items",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 selected · estimated %2",
+    "translation": "",
+    "context": "Sweep scan selection count and estimated size",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 used of %2",
+    "translation": "",
+    "context": "storage usage summary",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 used · %2 free · %3 total",
+    "translation": "",
+    "context": "storage volume usage, free space and total capacity",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 will be deleted permanently. This cannot be undone.",
+    "translation": "",
+    "context": "permanent delete confirmation explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 will be moved to the trash.",
+    "translation": "",
+    "context": "trash confirmation explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 with seconds",
+    "translation": "",
+    "context": "date format option, year-month-day hour:minute:second, %1 is ISO 8601",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 · %2",
+    "translation": "",
+    "context": "folder status: item count then hidden count | games sidebar row for the proton prefixes of a steam library, %1 is Proton, %2 is the library | properties size row: bytes then item count | transfer speed then time left",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1 …",
+    "translation": "",
+    "context": "properties size row while the folder is still being measured",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1, %2 matches",
+    "translation": "",
+    "context": "accessible description of a settings page while searching, name then count",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "%1/s",
+    "translation": "",
+    "context": "transfer speed, %1 is a size such as 12 MB",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "1 MB to 100 MB",
+    "translation": "",
+    "context": "search filter chip for medium files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "1 item copied",
+    "translation": "",
+    "context": "clipboard indicator for a single copied item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "1 item cut",
+    "translation": "",
+    "context": "clipboard indicator for a single cut item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "50 is the %1 default.",
+    "translation": "",
+    "context": "radius strength slider description, %1 is Material",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "? or F1 in the main window.",
+    "translation": "",
+    "context": "keyboard shortcuts settings row description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "API",
+    "translation": "",
+    "context": "about page daemon api version column label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "About",
+    "translation": "",
+    "context": "settings sidebar tab label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Accessed",
+    "translation": "",
+    "context": "properties row showing when an item was last read",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Activity is estimated from project-file modification times. Common generated folders are excluded from activity, but included in size.",
+    "translation": "",
+    "context": "project inventory explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Activity unknown",
+    "translation": "",
+    "context": "unknown project activity",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Add or remove one item",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Add or remove the item under the cursor",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Add to bookmarks",
+    "translation": "",
+    "context": "context menu entry pinning the selected folder to the sidebar",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Address",
+    "translation": "",
+    "context": "label for a server address input",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Administrator access is not available",
+    "translation": "",
+    "context": "file operation error dialog explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Administrator access is not available because %1 is not installed",
+    "translation": "",
+    "context": "file operation error dialog explanation, %1 is a command",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Administrator access is not available because the %1 policy is not installed",
+    "translation": "",
+    "context": "file operation error dialog explanation, %1 is polkit",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Administrator access is not available inside the sandbox",
+    "translation": "",
+    "context": "file operation error dialog explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "All projects",
+    "translation": "",
+    "context": "Sweep project activity filter",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Already here",
+    "translation": "",
+    "context": "file conflict dialog label for the existing item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Always",
+    "translation": "",
+    "context": "credential dialog option that stores the password in the keyring",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Always use the dark theme.",
+    "translation": "",
+    "context": "theme mode setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Always use the light theme.",
+    "translation": "",
+    "context": "theme mode setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Always use this application",
+    "translation": "",
+    "context": "open with dialog option that sets the default",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Amber",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Analysis complete",
+    "translation": "",
+    "context": "storage scan result",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Analyze current folder",
+    "translation": "",
+    "context": "storage scan action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Analyzing folder…",
+    "translation": "",
+    "context": "storage scan progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Another file manager holds it.",
+    "translation": "",
+    "context": "file manager registration setting description while an unknown file manager holds the name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Any size",
+    "translation": "",
+    "context": "search filter chip clearing the size range",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Any time",
+    "translation": "",
+    "context": "search filter chip clearing the date range",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Appearance",
+    "translation": "",
+    "context": "settings sidebar tab label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Apply",
+    "translation": "",
+    "context": "button applying the edited permissions",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Apply to everything inside",
+    "translation": "",
+    "context": "permissions option recursing into a folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Archive",
+    "translation": "",
+    "context": "default name for a new archive",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Archive created",
+    "translation": "",
+    "context": "toast after compressing files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Archive listing is incomplete",
+    "translation": "",
+    "context": "archive preview limit notice",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Archives",
+    "translation": "",
+    "context": "search filter chip for compressed files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Ask",
+    "translation": "",
+    "context": "drag label when the drop opens a copy, move or link menu",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Ask every time",
+    "translation": "",
+    "context": "drag default action option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Audio",
+    "translation": "",
+    "context": "audio preview | audio track | search filter chip for sound files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Audio track",
+    "translation": "",
+    "context": "media audio track selection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Author",
+    "translation": "",
+    "context": "PDF metadata",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Auto",
+    "translation": "",
+    "context": "color source button group option following DMS | font source button group option following DMS | theme mode button group option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Automatic",
+    "translation": "",
+    "context": "terminal dropdown option following $TERMINAL and the installed emulators",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Automatic uses %1.",
+    "translation": "",
+    "context": "terminal setting description, %1 is an environment variable",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Available",
+    "translation": "",
+    "context": "capability status on the about page",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Back",
+    "translation": "",
+    "context": "archive folder navigation | return to storage overview | tooltip on the button going to the previous location",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Back to the files",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Backend",
+    "translation": "",
+    "context": "about page daemon section header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Backend: not reachable, no activation file",
+    "translation": "",
+    "context": "portal chooser status line",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Backend: served by this instance",
+    "translation": "",
+    "context": "portal chooser status line",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Backend: started on demand through %1",
+    "translation": "",
+    "context": "portal chooser status line, %1 is a path",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Background blur",
+    "translation": "",
+    "context": "toggle asking the compositor to blur behind see-through windows",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Badges",
+    "translation": "",
+    "context": "folder appearance tab listing badge icons",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Balanced",
+    "translation": "",
+    "context": "spring bounce option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Behaviour",
+    "translation": "",
+    "context": "settings sidebar tab label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Being added",
+    "translation": "",
+    "context": "file conflict dialog label for the incoming item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Binary file",
+    "translation": "",
+    "context": "preview column note for files without readable text",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Blue",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Blurs what shows through the window. Needs an opacity below 100%.",
+    "translation": "",
+    "context": "background blur toggle description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Bookmark this folder",
+    "translation": "",
+    "context": "tooltip on the bookmark button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Cancel",
+    "translation": "",
+    "context": "cancel a running Sweep scan | cancel storage scan | dialog button to cancel",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Cancel crop",
+    "translation": "",
+    "context": "cancel selecting an image crop",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Cancelled",
+    "translation": "",
+    "context": "file operation was cancelled",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Cancelling…",
+    "translation": "",
+    "context": "Sweep scan cancellation progress | project scan progress | storage scan progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Capabilities",
+    "translation": "",
+    "context": "about page daemon capabilities label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Changing owner",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Changing permissions",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Choose a JSON color theme file.",
+    "translation": "",
+    "context": "custom theme hint when none selected",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Choose a badge image",
+    "translation": "",
+    "context": "file picker title for a folder badge image",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Choose folder…",
+    "translation": "",
+    "context": "setting option opening a folder picker",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Clear",
+    "translation": "",
+    "context": "folder appearance action clearing the badge",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Clear Recent",
+    "translation": "",
+    "context": "action emptying the recently used list without touching the files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Clear selection",
+    "translation": "",
+    "context": "Sweep selection action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Clear the clipboard",
+    "translation": "",
+    "context": "tooltip on the button dropping the copied or cut items",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Clear the recent files list?",
+    "translation": "",
+    "context": "confirmation header before emptying the recently used list",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Clear the selection",
+    "translation": "",
+    "context": "keyboard shortcut | tooltip on the button clearing the file selection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Close",
+    "translation": "",
+    "context": "close text search | dialog button closing the dialog | dialog button dismissing a dialog | dialog button to close | tooltip on the button closing the large preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Close behavior",
+    "translation": "",
+    "context": "close behavior setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Close other tabs",
+    "translation": "",
+    "context": "tab context menu entry closing every tab but this one",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Close tab",
+    "translation": "",
+    "context": "tooltip on the button closing a tab",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Close tabs to the right",
+    "translation": "",
+    "context": "tab context menu entry closing the tabs after this one",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Color source",
+    "translation": "",
+    "context": "color source setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Column view",
+    "translation": "",
+    "context": "view mode showing folders side by side",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Columns",
+    "translation": "",
+    "context": "view menu entry choosing which list columns are shown",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Comfortable",
+    "translation": "",
+    "context": "interface density option with the default spacing",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Compact",
+    "translation": "",
+    "context": "interface density option fitting the most items on screen",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Compress",
+    "translation": "",
+    "context": "compress dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Compressing",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Compress…",
+    "translation": "",
+    "context": "context menu entry packing the selection into an archive",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Confirm",
+    "translation": "",
+    "context": "dialog header for a question the server asked",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Confirm before moving to the trash",
+    "translation": "",
+    "context": "setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Connect",
+    "translation": "",
+    "context": "connect to server dialog action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Connect anonymously",
+    "translation": "",
+    "context": "credential dialog option that skips the login",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Connect to Server",
+    "translation": "",
+    "context": "connect to server dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Connect to Server…",
+    "translation": "",
+    "context": "sidebar entry opening the connect to server dialog",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Connected",
+    "translation": "",
+    "context": "about page daemon status value",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Connected, but the share has no local folder. The %1 service may not be running.",
+    "translation": "",
+    "context": "connect dialog error when a mounted share has no fuse path, %1 is the service name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Contents",
+    "translation": "",
+    "context": "search chip matching the text inside indexed files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Copied",
+    "translation": "",
+    "context": "toast after copying files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Copy",
+    "translation": "",
+    "context": "context menu entry copying the selection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Copy location path",
+    "translation": "",
+    "context": "menu entry copying the current path to the clipboard",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Copy name",
+    "translation": "",
+    "context": "context menu entry copying the selected item names to the clipboard",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Copy to",
+    "translation": "",
+    "context": "folder picker title for copying the selection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Copy to…",
+    "translation": "",
+    "context": "context menu entry copying the selection into a chosen folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Copying",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Coral",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Could not read that file, expected a JSON color theme.",
+    "translation": "",
+    "context": "custom theme error when file is invalid",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Count items in folders",
+    "translation": "",
+    "context": "folder counts toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Create",
+    "translation": "",
+    "context": "dialog button creating an item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Created",
+    "translation": "",
+    "context": "file list column header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Creating",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Creator",
+    "translation": "",
+    "context": "PDF metadata",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Crop image",
+    "translation": "",
+    "context": "start selecting an image crop",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Ctrl copies, Alt asks.",
+    "translation": "",
+    "context": "drag default action setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Ctrl+H toggles per window.",
+    "translation": "",
+    "context": "show hidden files setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Ctrl+Wheel resizes per window.",
+    "translation": "",
+    "context": "icon size setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Current folder",
+    "translation": "",
+    "context": "folder setting option keeping the folder in use",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Custom",
+    "translation": "",
+    "context": "color source button group option for a custom theme file | font source button group option for app-chosen fonts",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Cut",
+    "translation": "",
+    "context": "context menu entry marking the selection for a move",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Cyan",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Dark",
+    "translation": "",
+    "context": "theme mode button group option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Date format",
+    "translation": "",
+    "context": "setting label for how file timestamps are shown",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Decrease",
+    "translation": "",
+    "context": "slider row step down button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Default",
+    "translation": "",
+    "context": "font family dropdown option for the bundled font",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Default application",
+    "translation": "",
+    "context": "opener dropdown option launching the app registered for the file type",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Default applications",
+    "translation": "",
+    "context": "capability row on the about page",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Default icon size",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Default view",
+    "translation": "",
+    "context": "setting label for the view a new window starts in",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Delete",
+    "translation": "",
+    "context": "confirm dialog default confirm button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Delete permanently",
+    "translation": "",
+    "context": "context menu entry deleting the selection for good",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Delete permanently?",
+    "translation": "",
+    "context": "permanent delete confirmation header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Deleting",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Dense",
+    "translation": "",
+    "context": "interface density option denser than compact for small text and tight rows",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Density",
+    "translation": "",
+    "context": "appearance settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Details",
+    "translation": "",
+    "context": "properties tab with the basic facts about an item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Devices",
+    "translation": "",
+    "context": "sidebar section listing drives and volumes",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Devices in the sidebar",
+    "translation": "",
+    "context": "devices settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Disable word wrap",
+    "translation": "",
+    "context": "text viewer",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Discard",
+    "translation": "",
+    "context": "discard unsaved text changes",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Discard unsaved changes?",
+    "translation": "",
+    "context": "confirm leaving edited text",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Disconnect",
+    "translation": "",
+    "context": "network mount action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Display family",
+    "translation": "",
+    "context": "display font family dropdown label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Do this for the rest",
+    "translation": "",
+    "context": "file conflict dialog option to reuse the answer",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Docs",
+    "translation": "",
+    "context": "about page resource button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Document information",
+    "translation": "",
+    "context": "PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Documents",
+    "translation": "",
+    "context": "search filter chip for text and office files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Domain",
+    "translation": "",
+    "context": "label for a network domain input",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Double click",
+    "translation": "",
+    "context": "click to open option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Downloads each file.",
+    "translation": "",
+    "context": "network thumbnails toggle description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Drag and drop",
+    "translation": "",
+    "context": "behaviour settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Drives and mounting",
+    "translation": "",
+    "context": "settings sidebar tab hint",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Drives are unavailable because %1 is not running",
+    "translation": "",
+    "context": "sidebar explanation when the device service is missing, %1 is the service name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Drives are unavailable because the sandbox cannot reach %1",
+    "translation": "",
+    "context": "explanation when the flatpak lacks the udisks2 permission, %1 is the service name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Drop on a tab to move files there",
+    "translation": "",
+    "context": "tab overview hint shown while files are dragged",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Dropping without a modifier",
+    "translation": "",
+    "context": "drag default action setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Duplicate",
+    "translation": "",
+    "context": "context menu entry copying the selection beside itself",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Duplicate tab",
+    "translation": "",
+    "context": "tab context menu entry opening a copy of this tab beside it",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Duplicated",
+    "translation": "",
+    "context": "toast after copying files beside themselves",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Duplicating",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Duration",
+    "translation": "",
+    "context": "animation duration slider label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Each launcher's own configuration folder.",
+    "translation": "",
+    "context": "games setting description for the settings folders",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Edit text",
+    "translation": "",
+    "context": "enter text edit mode",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Eject",
+    "translation": "",
+    "context": "device action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Empty Trash",
+    "translation": "",
+    "context": "action deleting everything in the trash",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Empty file",
+    "translation": "",
+    "context": "new document menu entry creating a blank file",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Empty the trash?",
+    "translation": "",
+    "context": "confirmation header before deleting everything in the trash",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Emptying the trash",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Enable word wrap",
+    "translation": "",
+    "context": "text viewer",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Enter a file name without a folder path",
+    "translation": "",
+    "context": "image export name validation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Enter filename...",
+    "translation": "",
+    "context": "file browser save filename input placeholder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Estimated size: %1",
+    "translation": "",
+    "context": "Sweep history estimated size",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Estimating…",
+    "translation": "",
+    "context": "file operation is still measuring the work",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Every folder goes back to the default sort and view.",
+    "translation": "",
+    "context": "dialog message before clearing every remembered folder sort and view",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Everyone",
+    "translation": "",
+    "context": "permissions row for other users",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Everywhere",
+    "translation": "",
+    "context": "search scope chip covering home and every mounted local drive",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Execute",
+    "translation": "",
+    "context": "permission bit",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Export",
+    "translation": "",
+    "context": "confirm exporting an image",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Export image",
+    "translation": "",
+    "context": "image viewer export action | image viewer export dialog title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Extract archives on open",
+    "translation": "",
+    "context": "setting label for opening archives",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Extract here",
+    "translation": "",
+    "context": "context menu entry unpacking the selected archives",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Extract selected file beside the archive without overwriting",
+    "translation": "",
+    "context": "archive extraction",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Extract to",
+    "translation": "",
+    "context": "folder picker title for unpacking archives",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Extract to…",
+    "translation": "",
+    "context": "context menu entry unpacking the selected archives into a chosen folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Extracted",
+    "translation": "",
+    "context": "toast after unpacking an archive",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Extracted to %1",
+    "translation": "",
+    "context": "toast after unpacking into another folder, %1 is the folder name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Extracting",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Family",
+    "translation": "",
+    "context": "font family dropdown label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "File",
+    "translation": "",
+    "context": "storage scan item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "File changed on disk",
+    "translation": "",
+    "context": "external modification warning in text viewer",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "File extracted",
+    "translation": "",
+    "context": "archive extraction completed",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "File is too large to preview in full",
+    "translation": "",
+    "context": "text preview truncation notice",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "File operations",
+    "translation": "",
+    "context": "jobs popover header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "File system",
+    "translation": "",
+    "context": "storage volume containing the root directory",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Files",
+    "translation": "",
+    "context": "keyboard shortcut group | main window title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Files Settings",
+    "translation": "",
+    "context": "settings window title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Filter",
+    "translation": "",
+    "context": "typing in the file list option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Find",
+    "translation": "",
+    "context": "text viewer search",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Find in PDF",
+    "translation": "",
+    "context": "PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Finding projects…",
+    "translation": "",
+    "context": "project scan progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Finished",
+    "translation": "",
+    "context": "file operation completed",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Fit page",
+    "translation": "",
+    "context": "PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Fit to window",
+    "translation": "",
+    "context": "fit image to preview window",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Fit width",
+    "translation": "",
+    "context": "PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Flip horizontally",
+    "translation": "",
+    "context": "mirror image horizontally",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Focus ring",
+    "translation": "",
+    "context": "appearance settings section label | focus ring toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Focus the sidebar",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Folder",
+    "translation": "",
+    "context": "storage scan item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Folder appearance",
+    "translation": "",
+    "context": "context menu entry opening the folder appearance dialog | folder appearance dialog title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Folders",
+    "translation": "",
+    "context": "search filter chip for directories",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Folders before files",
+    "translation": "",
+    "context": "folders first toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Folders open in new tabs and files open in their applications.",
+    "translation": "",
+    "context": "explanation in the confirmation before opening many items",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Folders open in new tabs, archives are extracted and other files open in their applications.",
+    "translation": "",
+    "context": "explanation in the confirmation before opening many items, some of them archives",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Folders to skip",
+    "translation": "",
+    "context": "search exclusions setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Follow %1 colors, falling back to a preset.",
+    "translation": "",
+    "context": "color source description for auto, %1 is Dux Shell",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Following the system color scheme (currently %1).",
+    "translation": "",
+    "context": "theme mode setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Font source",
+    "translation": "",
+    "context": "font source setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Foreground layers",
+    "translation": "",
+    "context": "toggle keeping cards and panes solid over a see-through window",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Forget",
+    "translation": "",
+    "context": "dialog button clearing the remembered folder settings",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Forget all folder settings",
+    "translation": "",
+    "context": "settings row clearing every remembered folder sort and view",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Forget all folder settings?",
+    "translation": "",
+    "context": "dialog title before clearing every remembered folder sort and view",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Forward",
+    "translation": "",
+    "context": "tooltip on the button going to the next location",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "From the index",
+    "translation": "",
+    "context": "search results header note when danksearch served the search",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Fuzzy",
+    "translation": "",
+    "context": "search chip also matching names whose letters appear in order",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Games",
+    "translation": "",
+    "context": "sidebar section listing game libraries",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Games and prefixes %1 installed.",
+    "translation": "",
+    "context": "games setting description, %1 is a game launcher name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Games folder",
+    "translation": "",
+    "context": "games sidebar row for the launcher's games folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Games folders",
+    "translation": "",
+    "context": "games setting label hiding the folders holding the games",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Games in the sidebar",
+    "translation": "",
+    "context": "games settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "General",
+    "translation": "",
+    "context": "settings sidebar tab label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Getting around",
+    "translation": "",
+    "context": "keyboard shortcut group",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Go to that tab",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Go to the home folder",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Go to the parent folder",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Green",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Grid icon size",
+    "translation": "",
+    "context": "setting label for the grid view icon size",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Grid view",
+    "translation": "",
+    "context": "view mode showing items as tiles",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Group",
+    "translation": "",
+    "context": "permissions row for the owning group",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Hidden files after other files",
+    "translation": "",
+    "context": "hidden files last toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Hide line numbers",
+    "translation": "",
+    "context": "text viewer",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Home",
+    "translation": "",
+    "context": "file browser quick access location | sidebar entry for the user's home folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Host filesystem",
+    "translation": "",
+    "context": "capability row on the about page",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Icons",
+    "translation": "",
+    "context": "folder appearance tab listing folder icons",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Image exported",
+    "translation": "",
+    "context": "toast after exporting a transformed image",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Image pasted",
+    "translation": "",
+    "context": "toast after writing a clipboard image into the folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Image web address",
+    "translation": "",
+    "context": "placeholder of the folder appearance badge web address field",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Images",
+    "translation": "",
+    "context": "search filter chip for pictures",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Import",
+    "translation": "",
+    "context": "toast action importing gtk bookmarks",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Import your %1 bookmarks?",
+    "translation": "",
+    "context": "toast offering to copy the gtk file chooser bookmarks once, %1 is GTK",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Include hidden files",
+    "translation": "",
+    "context": "search hidden files toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Include ignored",
+    "translation": "",
+    "context": "search chip walking gitignored entries and heavy folders too",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Increase",
+    "translation": "",
+    "context": "slider row step up button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Index is still building, results may be incomplete",
+    "translation": "",
+    "context": "search results header note while danksearch is indexing",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Interface density",
+    "translation": "",
+    "context": "interface density setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Interrupted",
+    "translation": "",
+    "context": "Sweep history session",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Invert the selection",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Items in the trash cannot be opened",
+    "translation": "",
+    "context": "toast when opening an item inside the trash",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Jump to a folder you visited",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Jump to a name or filter the folder with what you type",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Jump to name",
+    "translation": "",
+    "context": "typing in the file list option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Jump to the start, the end or the next screen",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Keep a list of recent files",
+    "translation": "",
+    "context": "setting label for the recently used files list",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Keep both",
+    "translation": "",
+    "context": "file conflict dialog button to keep both items",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Keep running",
+    "translation": "",
+    "context": "close behavior button group option keeping the daemon warm",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Keeps cards and panes solid when the window is see-through.",
+    "translation": "",
+    "context": "foreground layers toggle description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Keyboard",
+    "translation": "",
+    "context": "general settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Keyboard shortcuts",
+    "translation": "",
+    "context": "overlay listing every keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Keywords",
+    "translation": "",
+    "context": "PDF metadata",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Language",
+    "translation": "",
+    "context": "interface language setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Larger icons",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Last project activity: %1",
+    "translation": "",
+    "context": "Sweep estimated last project activity",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Last project-file change (estimate): %1",
+    "translation": "",
+    "context": "estimated project activity",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Last used",
+    "translation": "",
+    "context": "startup folder option restoring the previous tabs",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Layer opacity",
+    "translation": "",
+    "context": "foreground layer opacity slider label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Lets the desktop show through the window. Text and controls stay solid.",
+    "translation": "",
+    "context": "window opacity slider description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Libraries and %1 prefixes.",
+    "translation": "",
+    "context": "steam games setting description, %1 is Proton",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Library",
+    "translation": "",
+    "context": "about page runtime library path",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Library · %1",
+    "translation": "",
+    "context": "games sidebar row for a steam library",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Light",
+    "translation": "",
+    "context": "theme mode button group option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Link",
+    "translation": "",
+    "context": "drag label for creating a symlink",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Linking",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Links to",
+    "translation": "",
+    "context": "properties row showing a symlink target",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "List icon size",
+    "translation": "",
+    "context": "setting label for the list view icon size",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "List projects",
+    "translation": "",
+    "context": "storage project inventory action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "List view",
+    "translation": "",
+    "context": "view mode showing one row per item",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Load colors from your own theme file.",
+    "translation": "",
+    "context": "color source description for custom",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Loading…",
+    "translation": "",
+    "context": "PDF preview | Sweep history progress | loading indicator",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Location",
+    "translation": "",
+    "context": "properties row showing the folder an item lives in",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Lock",
+    "translation": "",
+    "context": "device action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "MIT License",
+    "translation": "",
+    "context": "about page license footer link",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Media preview is not available. Install Qt Multimedia support to view this file.",
+    "translation": "",
+    "context": "preview warning when Qt Multimedia is missing",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Menu",
+    "translation": "",
+    "context": "settings header button that shows the section list on narrow windows",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Merge",
+    "translation": "",
+    "context": "file conflict dialog button to merge folders",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Modified",
+    "translation": "",
+    "context": "file browser sort criterion option | file list column header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Monochrome",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Monospace family",
+    "translation": "",
+    "context": "monospace font family dropdown label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "More actions",
+    "translation": "",
+    "context": "tooltip on the overflow menu button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Motion",
+    "translation": "",
+    "context": "appearance settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Mount",
+    "translation": "",
+    "context": "device action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Mounted and removable drives.",
+    "translation": "",
+    "context": "devices setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Mounted network locations and Connect to Server.",
+    "translation": "",
+    "context": "network setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move",
+    "translation": "",
+    "context": "drag label for moving files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move selected items",
+    "translation": "",
+    "context": "confirm moving Sweep cleanup items",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move the tab left",
+    "translation": "",
+    "context": "keyboard shortcut moving the tab toward the start of the tab row",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move the tab right",
+    "translation": "",
+    "context": "keyboard shortcut moving the tab toward the end of the tab row",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move through the folder",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move through the sidebar",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move to",
+    "translation": "",
+    "context": "folder picker title for moving the selection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move to Trash",
+    "translation": "",
+    "context": "context menu entry trashing the selection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move to the search filters",
+    "translation": "",
+    "context": "keyboard shortcut focusing the chips above search results",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move to…",
+    "translation": "",
+    "context": "context menu entry moving the selection into a chosen folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Move, copy across drives",
+    "translation": "",
+    "context": "drag default action option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Moved",
+    "translation": "",
+    "context": "toast after moving files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Moved to Sweep trash",
+    "translation": "",
+    "context": "Sweep history session",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Moved to trash",
+    "translation": "",
+    "context": "toast after trashing files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Moved: %1 · Failed: %2. The items remain in .sweep-trash; space has not been freed.",
+    "translation": "",
+    "context": "Sweep cleanup result",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Moving",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Moving to trash",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Name",
+    "translation": "",
+    "context": "file browser sort criterion option | label for a file name input",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Name the host terminal to launch.",
+    "translation": "",
+    "context": "terminal setting description inside flatpak",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Names or paths, comma separated. Build and cache folders are skipped anyway.",
+    "translation": "",
+    "context": "search exclusions setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Network",
+    "translation": "",
+    "context": "sidebar section listing network locations | sidebar section listing remote locations",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Network in the sidebar",
+    "translation": "",
+    "context": "network settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Network locations are unavailable because %1 is not running",
+    "translation": "",
+    "context": "sidebar explanation when the network service is missing, %1 is the service name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Network locations are unavailable because the sandbox cannot reach %1",
+    "translation": "",
+    "context": "explanation when the flatpak lacks the gvfs permissions, %1 is the service name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Never",
+    "translation": "",
+    "context": "credential dialog option that forgets the password",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "New document",
+    "translation": "",
+    "context": "context menu entry creating a file from a template",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "New folder",
+    "translation": "",
+    "context": "file browser toolbar button creating a folder | new folder dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "New folder with selection",
+    "translation": "",
+    "context": "context menu entry moving the selection into a new folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "New tab",
+    "translation": "",
+    "context": "context menu entry opening a folder in a new tab | tooltip on the button opening a new tab",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "New tab folder",
+    "translation": "",
+    "context": "setting label for the folder a new tab opens in",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "New window",
+    "translation": "",
+    "context": "menu entry opening another file manager window",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "New window folder",
+    "translation": "",
+    "context": "setting label for the folder a new window opens in",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Next image",
+    "translation": "",
+    "context": "image gallery navigation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Next page",
+    "translation": "",
+    "context": "PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Next result",
+    "translation": "",
+    "context": "PDF preview | text viewer search",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Next tab",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No activity for 180 days",
+    "translation": "",
+    "context": "Sweep project activity filter",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No activity for 30 days",
+    "translation": "",
+    "context": "Sweep project activity filter",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No activity for 90 days",
+    "translation": "",
+    "context": "Sweep project activity filter",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No candidates match this filter",
+    "translation": "",
+    "context": "Sweep project filter empty state",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No filesystem usage data is available",
+    "translation": "",
+    "context": "storage usage overview empty state",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No internal viewer is available for this file",
+    "translation": "",
+    "context": "message for an unsupported file type",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No limit",
+    "translation": "",
+    "context": "thumbnail size cap slider label at zero",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No project folders found",
+    "translation": "",
+    "context": "project inventory empty state",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No recent Sweep sessions",
+    "translation": "",
+    "context": "Sweep history empty state",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No recent files",
+    "translation": "",
+    "context": "recent files view placeholder when nothing was opened yet",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No results",
+    "translation": "",
+    "context": "search results header when nothing matched",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No session bus.",
+    "translation": "",
+    "context": "file manager registration setting description when the daemon has no session bus connection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "No theme file selected",
+    "translation": "",
+    "context": "custom theme empty state title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Not available",
+    "translation": "",
+    "context": "explanation for a feature the environment does not permit",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Not available because the sandbox cannot start programs on the host",
+    "translation": "",
+    "context": "explanation for a feature that needs flatpak-spawn",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Not available inside the sandbox",
+    "translation": "",
+    "context": "explanation for a feature the flatpak sandbox blocks",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Not available without access to the host filesystem",
+    "translation": "",
+    "context": "explanation for a feature that needs the flatpak host filesystem permission",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Nothing is running",
+    "translation": "",
+    "context": "jobs popover empty state",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Octal",
+    "translation": "",
+    "context": "permissions row showing the numeric mode",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Off",
+    "translation": "",
+    "context": "animation duration slider label at zero | disabled media track",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Off leaves decorations to the compositor. Applies to new windows.",
+    "translation": "",
+    "context": "window title bars toggle description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Off only mounts.",
+    "translation": "",
+    "context": "devices setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Office preview",
+    "translation": "",
+    "context": "sidebar Office preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Offline",
+    "translation": "",
+    "context": "about page daemon status value",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Only launchers with an installed game are listed.",
+    "translation": "",
+    "context": "games setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Only projects with a known activity estimate are shown; other projects are excluded.",
+    "translation": "",
+    "context": "Sweep inactivity filter explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Only the window process serves the portal",
+    "translation": "",
+    "context": "explanation when a daemon without a window answers a portal question",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Opacity",
+    "translation": "",
+    "context": "window opacity slider label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open",
+    "translation": "",
+    "context": "context menu entry opening a file | file browser open button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open %1 items?",
+    "translation": "",
+    "context": "confirmation before opening many selected items at once",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open and save dialogs",
+    "translation": "",
+    "context": "general settings section label for the portal file chooser",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open file",
+    "translation": "",
+    "context": "file chooser default title when picking one file",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open files",
+    "translation": "",
+    "context": "behaviour settings section label for the file opener | file chooser default title when picking several files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open files with",
+    "translation": "",
+    "context": "file opener setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open folders from other apps in a new tab",
+    "translation": "",
+    "context": "setting label for external open requests",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open full preview",
+    "translation": "",
+    "context": "sidebar PDF preview | sidebar media preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open in editor",
+    "translation": "",
+    "context": "executable file dialog action opening the file as text",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open in new tab",
+    "translation": "",
+    "context": "context menu entry opening a folder in a new tab",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open in new window",
+    "translation": "",
+    "context": "context menu entry opening a folder in another window",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open in terminal",
+    "translation": "",
+    "context": "context menu entry opening a terminal",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open in the other pane",
+    "translation": "",
+    "context": "context menu entry opening a folder beside the current one",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open items with",
+    "translation": "",
+    "context": "setting label choosing single or double click",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open supported files in the viewer",
+    "translation": "",
+    "context": "setting label for using the internal file viewer",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open the bookmark menu",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open the containing folder",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open the context menu",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open the place",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open the preview in a large view",
+    "translation": "",
+    "context": "keyboard shortcut opening the preview overlay",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open unmounted drives on click",
+    "translation": "",
+    "context": "devices setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Open with",
+    "translation": "",
+    "context": "open with dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Orange",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Original size",
+    "translation": "",
+    "context": "show image at its original pixel size",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Other applications",
+    "translation": "",
+    "context": "open with dialog section listing every remaining app",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Other application…",
+    "translation": "",
+    "context": "open with menu entry opening the full application picker",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Over 100 MB",
+    "translation": "",
+    "context": "search filter chip for large files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Owner",
+    "translation": "",
+    "context": "file list column header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "PDF preview",
+    "translation": "",
+    "context": "sidebar PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "PDF preview is not available. Install %1 support to view this file.",
+    "translation": "",
+    "context": "large preview warning when an optional module is missing, %1 is Qt PDF",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Page",
+    "translation": "",
+    "context": "PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Pages",
+    "translation": "",
+    "context": "PDF metadata",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Palette: %1",
+    "translation": "",
+    "context": "selected preset palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Passphrase",
+    "translation": "",
+    "context": "label for an encrypted device passphrase input",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Password",
+    "translation": "",
+    "context": "label for a password input",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Password required",
+    "translation": "",
+    "context": "archive password dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Paste",
+    "translation": "",
+    "context": "context menu entry pasting the clipboard here",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Paste as link",
+    "translation": "",
+    "context": "context menu entry creating symlinks from the clipboard",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Paste into folder",
+    "translation": "",
+    "context": "context menu entry pasting the clipboard into the selected folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Pasted image",
+    "translation": "",
+    "context": "file name for an image pasted from the clipboard",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Pasting image",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Pause",
+    "translation": "",
+    "context": "media playback",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Permissions",
+    "translation": "",
+    "context": "file list column header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Pink",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Places",
+    "translation": "",
+    "context": "sidebar section listing the user's places and saved folders",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Play",
+    "translation": "",
+    "context": "media playback",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Playback speed",
+    "translation": "",
+    "context": "media playback speed",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Playful",
+    "translation": "",
+    "context": "spring bounce option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Portal file: %1",
+    "translation": "",
+    "context": "portal chooser status line, %1 is a path",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Portal file: not installed",
+    "translation": "",
+    "context": "portal chooser status line",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Preference: %1 is used",
+    "translation": "",
+    "context": "portal chooser status line, %1 is another backend name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Preference: %2 names %1",
+    "translation": "",
+    "context": "portal chooser status line, %1 is the app name, %2 is a path",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Preference: no file chooser backend configured",
+    "translation": "",
+    "context": "portal chooser status line",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Prefix · %1",
+    "translation": "",
+    "context": "games sidebar row for one game's wine prefix",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Prefixes",
+    "translation": "",
+    "context": "games setting label hiding wine prefixes",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Preparing preview…",
+    "translation": "",
+    "context": "Office document preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Preset",
+    "translation": "",
+    "context": "color source button group option for bundled palettes",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Preview",
+    "translation": "",
+    "context": "view menu entry and shortcut showing or hiding the preview drawer",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Preview the next or previous selected item",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Previous image",
+    "translation": "",
+    "context": "image gallery navigation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Previous page",
+    "translation": "",
+    "context": "PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Previous result",
+    "translation": "",
+    "context": "PDF preview | text viewer search",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Previous tab",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Producer",
+    "translation": "",
+    "context": "PDF metadata",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Project activity unknown",
+    "translation": "",
+    "context": "Sweep project activity unavailable",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Project scan complete",
+    "translation": "",
+    "context": "project scan result",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Project: %1",
+    "translation": "",
+    "context": "Sweep candidate project",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Properties",
+    "translation": "",
+    "context": "menu entry showing details about the current folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Protect with a password",
+    "translation": "",
+    "context": "compress dialog option encrypting the archive",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Protocol",
+    "translation": "",
+    "context": "label for the network protocol picker",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Purple",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Quit",
+    "translation": "",
+    "context": "close behavior button group option to quit the app",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Quit while file operations are running?",
+    "translation": "",
+    "context": "confirmation header when closing the last window would stop running file operations",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Radius strength",
+    "translation": "",
+    "context": "global component corner rounding",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Read",
+    "translation": "",
+    "context": "permission bit",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Read-only inventory of projects in this folder. Project sizes can overlap for nested projects.",
+    "translation": "",
+    "context": "project inventory introduction",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Recent",
+    "translation": "",
+    "context": "header above previously used servers | recent files view header and sidebar entry",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Recent Sweep sessions; sizes are estimates.",
+    "translation": "",
+    "context": "Sweep history explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Recently used",
+    "translation": "",
+    "context": "open with dialog section listing apps picked before for this file type",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Recommended",
+    "translation": "",
+    "context": "open with dialog section listing apps registered for the file type",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Red",
+    "translation": "",
+    "context": "color palette name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Redo",
+    "translation": "",
+    "context": "toast action repeating the operation that was just undone",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Redone",
+    "translation": "",
+    "context": "toast after repeating an undone operation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Reduce motion",
+    "translation": "",
+    "context": "reduce motion toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Register as the session file manager",
+    "translation": "",
+    "context": "setting label for owning org.freedesktop.FileManager1",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Relative",
+    "translation": "",
+    "context": "date format option showing today, yesterday or the weekday",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Relevance",
+    "translation": "",
+    "context": "sort criterion for search results, best match first",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Reload",
+    "translation": "",
+    "context": "menu entry re-reading the current folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Reload from disk",
+    "translation": "",
+    "context": "reload an externally changed text file",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Remember password",
+    "translation": "",
+    "context": "credential dialog option controlling password storage",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Remember view and sort per folder",
+    "translation": "",
+    "context": "setting label for per-folder sort and view memory",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Remove bookmark",
+    "translation": "",
+    "context": "tooltip on the bookmark button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Remove from Recent",
+    "translation": "",
+    "context": "action dropping the selected files from the recently used list without touching the files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Remove the bookmark or eject the drive",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Removed",
+    "translation": "",
+    "context": "Sweep history session",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Rename",
+    "translation": "",
+    "context": "rename dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Rename the bookmark",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Renamed",
+    "translation": "",
+    "context": "toast after renaming a file",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Renaming",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Reopen the closed tab",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Replace",
+    "translation": "",
+    "context": "file conflict dialog button to overwrite the existing item | text viewer search | text viewer search action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Reset the view",
+    "translation": "",
+    "context": "tooltip on the button restoring zoom and rotation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Reset this folder",
+    "translation": "",
+    "context": "view menu entry dropping this folder's own sort and view",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Resize icons",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Resize the preview, or reset its width",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Restart",
+    "translation": "",
+    "context": "dialog button restarting xdg-desktop-portal",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Restart the portal service",
+    "translation": "",
+    "context": "settings row restarting xdg-desktop-portal",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Restart the portal service?",
+    "translation": "",
+    "context": "dialog title before restarting xdg-desktop-portal",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Restore",
+    "translation": "",
+    "context": "trash action returning items to where they were deleted from",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Restore default",
+    "translation": "",
+    "context": "folder appearance action dropping color and badge",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Restored",
+    "translation": "",
+    "context": "toast after restoring items from the trash",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Restoring",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Results for “%1” in %2",
+    "translation": "",
+    "context": "search results header, query then folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Results in %1",
+    "translation": "",
+    "context": "search results header without a query",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Results may be incomplete",
+    "translation": "",
+    "context": "project scan partial result | storage scan partial result",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Retry as administrator",
+    "translation": "",
+    "context": "file operation error dialog action | file operation error dialog button to retry with elevated rights",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Reverse the sort order",
+    "translation": "",
+    "context": "keyboard shortcut flipping between ascending and descending",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Review cleanup",
+    "translation": "",
+    "context": "Sweep cleanup confirmation title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Review selection",
+    "translation": "",
+    "context": "review Sweep cleanup selection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Revision",
+    "translation": "",
+    "context": "about page runtime build revision",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Ripple effects",
+    "translation": "",
+    "context": "ripple effects toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Rotate left",
+    "translation": "",
+    "context": "tooltip on the button turning the large preview left",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Rotate right",
+    "translation": "",
+    "context": "tooltip on the button turning the large preview right",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Run",
+    "translation": "",
+    "context": "executable file dialog action running the file",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Run programs",
+    "translation": "",
+    "context": "capability row on the about page",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Run this desktop file?",
+    "translation": "",
+    "context": "untrusted desktop file dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Run this file?",
+    "translation": "",
+    "context": "executable file dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Runtime",
+    "translation": "",
+    "context": "about page runtime section header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sandbox",
+    "translation": "",
+    "context": "about page row naming the flatpak id",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Save",
+    "translation": "",
+    "context": "dialog button to confirm a name | file browser save button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Save as a new file",
+    "translation": "",
+    "context": "save edited text as a new file, keeping the original",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Save file",
+    "translation": "",
+    "context": "file chooser default title when saving one file",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Save files",
+    "translation": "",
+    "context": "file chooser default title when saving several files into a folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Save here",
+    "translation": "",
+    "context": "file chooser accept button when several files go into the chosen folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Saving %1 into the chosen folder",
+    "translation": "",
+    "context": "file chooser footer listing the names an app wants to save",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Saving creates a new file",
+    "translation": "",
+    "context": "text editor save behavior",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Scale",
+    "translation": "",
+    "context": "font scale slider label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Scan current folder with Sweep",
+    "translation": "",
+    "context": "storage overview action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Scan has not started yet; try again.",
+    "translation": "",
+    "context": "Sweep scan cancellation status | storage scan cancellation status",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Scan with Sweep",
+    "translation": "",
+    "context": "context menu action scanning the current folder for build artifacts",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Scanned logical size: %1. Bars show each item's share; files can be inside listed folders. Hard links are counted once.",
+    "translation": "",
+    "context": "storage scan explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Scroll the preview",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search applications",
+    "translation": "",
+    "context": "open with dialog search placeholder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search archive paths",
+    "translation": "",
+    "context": "archive preview search",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search icon",
+    "translation": "",
+    "context": "placeholder of the folder appearance icon search",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search icons",
+    "translation": "",
+    "context": "folder appearance button toggling the icon search",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search in Files",
+    "translation": "",
+    "context": "placeholder in the search field",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search results",
+    "translation": "",
+    "context": "settings page header while a search query is typed",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search settings",
+    "translation": "",
+    "context": "placeholder in the settings search field",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search subfolders",
+    "translation": "",
+    "context": "chip that turns the folder filter into a recursive search",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search the disk",
+    "translation": "",
+    "context": "search chip bypassing the danksearch index and walking the folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search with the %1 index",
+    "translation": "",
+    "context": "capability row on the about page, %1 is the search service name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Search your home folder",
+    "translation": "",
+    "context": "keyboard shortcut opening search with the Home scope",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Searching…",
+    "translation": "",
+    "context": "search results header while the daemon walks the tree",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Seek",
+    "translation": "",
+    "context": "media playback position",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Select a range",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Select all",
+    "translation": "",
+    "context": "menu entry selecting every item in the folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Select folder",
+    "translation": "",
+    "context": "file chooser default title when picking a folder | folder picker window title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Select items to review. No files have been removed.",
+    "translation": "",
+    "context": "Sweep selection notice",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Select visible",
+    "translation": "",
+    "context": "Sweep selection action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Selection",
+    "translation": "",
+    "context": "keyboard shortcut group",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Settings",
+    "translation": "",
+    "context": "settings window header title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Settings folder",
+    "translation": "",
+    "context": "games sidebar row for the launcher's settings folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Settings folders",
+    "translation": "",
+    "context": "games setting label hiding the launcher config folders",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Shape",
+    "translation": "",
+    "context": "appearance settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Share of scanned size",
+    "translation": "",
+    "context": "storage scan bar",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Shared with other apps.",
+    "translation": "",
+    "context": "setting description for the recently used files list",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Shares on %1",
+    "translation": "",
+    "context": "header above the shares of a browsed server, %1 is the server",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show",
+    "translation": "",
+    "context": "toast action revealing the extracted files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show all tabs",
+    "translation": "",
+    "context": "tooltip on the button opening the tab overview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show devices",
+    "translation": "",
+    "context": "devices setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show file extensions",
+    "translation": "",
+    "context": "toggle showing the file type suffix in names",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show games",
+    "translation": "",
+    "context": "games setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show hidden files",
+    "translation": "",
+    "context": "menu entry listing dot files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show line numbers",
+    "translation": "",
+    "context": "text viewer",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show network",
+    "translation": "",
+    "context": "network setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show system partitions",
+    "translation": "",
+    "context": "devices setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Show thumbnails",
+    "translation": "",
+    "context": "thumbnails toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Showing the first %1 results",
+    "translation": "",
+    "context": "search results header when the cap was hit",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Shown in the size column.",
+    "translation": "",
+    "context": "folder counts toggle description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sidebar",
+    "translation": "",
+    "context": "keyboard shortcut group",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sign in",
+    "translation": "",
+    "context": "credential dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Single click",
+    "translation": "",
+    "context": "click to open option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Size",
+    "translation": "",
+    "context": "file browser sort criterion option | file list column header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Skip",
+    "translation": "",
+    "context": "file conflict dialog button to leave the item alone",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Skip images larger than",
+    "translation": "",
+    "context": "thumbnail size cap slider label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Smaller icons",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Smooth",
+    "translation": "",
+    "context": "spring bounce option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Socket",
+    "translation": "",
+    "context": "about page daemon socket row label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Some matches may be missing",
+    "translation": "",
+    "context": "search results header note when the index could not return every candidate",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sort by",
+    "translation": "",
+    "context": "setting label for the default sort key",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sort by the next column",
+    "translation": "",
+    "context": "keyboard shortcut cycling the sort criterion",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sort descending",
+    "translation": "",
+    "context": "sort direction option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Spacious",
+    "translation": "",
+    "context": "interface density option with the most room between items",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Split view",
+    "translation": "",
+    "context": "tooltip on the button showing a second pane",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Spring",
+    "translation": "",
+    "context": "spring bounce setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Square",
+    "translation": "",
+    "context": "radius strength slider label at zero",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Startup folder",
+    "translation": "",
+    "context": "setting label for the folder shown when the app opens",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Status",
+    "translation": "",
+    "context": "about page daemon status column label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Stop measuring",
+    "translation": "",
+    "context": "properties action halting the recursive size scan",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Storage",
+    "translation": "",
+    "context": "storage usage overview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Subject",
+    "translation": "",
+    "context": "PDF metadata",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Subtitle",
+    "translation": "",
+    "context": "subtitle track",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Subtitle track",
+    "translation": "",
+    "context": "media subtitle track selection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Such as a separate %1.",
+    "translation": "",
+    "context": "devices setting description, %1 is a mount point",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Support %1",
+    "translation": "",
+    "context": "about page hero button, opens the Ko-fi donation page, %1 is Dux Labs",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sweep history",
+    "translation": "",
+    "context": "open Sweep cleanup history",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sweep scan",
+    "translation": "",
+    "context": "Sweep scan dialog title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sweep will move the listed items into a .sweep-trash folder inside the scan target. This is not the desktop trash and does not immediately free space. Sweep checks items again before moving them.",
+    "translation": "",
+    "context": "Sweep permanent deletion warning",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Switch pane",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "System",
+    "translation": "",
+    "context": "font source button group option for the Qt system font",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "System default",
+    "translation": "",
+    "context": "language dropdown option that follows the system language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "System locale",
+    "translation": "",
+    "context": "date format option using the locale's short date and time",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "System preference unavailable, using dark.",
+    "translation": "",
+    "context": "theme mode setting description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Terminal",
+    "translation": "",
+    "context": "setting label for the terminal emulator",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Terminal, drag and thumbnails",
+    "translation": "",
+    "context": "settings sidebar tab hint",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "The %1 prefix of each game.",
+    "translation": "",
+    "context": "games setting description for the wine prefixes, %1 is Wine",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "The change takes effect after %1 restarts. Open and save dialogs other apps have open will close.",
+    "translation": "",
+    "context": "dialog message before restarting the portal, %1 is the service name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "The files themselves stay where they are.",
+    "translation": "",
+    "context": "explanation under the clear recent confirmation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "The operation was interrupted; scan again before retrying.",
+    "translation": "",
+    "context": "Sweep interrupted result",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "The portal list is managed by the system.",
+    "translation": "",
+    "context": "portal chooser setting description when XDG_DESKTOP_PORTAL_DIR is set",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "The running operation will be stopped part way through.",
+    "translation": "",
+    "context": "quit confirmation explanation for a single running file operation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "The session bus refused it.",
+    "translation": "",
+    "context": "file manager registration setting description when requesting the name failed",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "The system application chooser opens instead",
+    "translation": "",
+    "context": "explanation when open with is handed to the desktop portal",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Theme",
+    "translation": "",
+    "context": "appearance settings section label | theme mode setting label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Theme, shape and motion",
+    "translation": "",
+    "context": "settings sidebar tab hint",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Thickness",
+    "translation": "",
+    "context": "focus ring thickness slider label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This file could not be opened",
+    "translation": "",
+    "context": "PDF preview | large preview placeholder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This file is available in read-only preview.",
+    "translation": "",
+    "context": "text preview cannot be edited safely",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This folder",
+    "translation": "",
+    "context": "search scope chip limiting the search to the current folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This folder is empty",
+    "translation": "",
+    "context": "empty directory placeholder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This instance cannot reach the session bus.",
+    "translation": "",
+    "context": "file manager registration setting description when the daemon has no session bus connection",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This item already exists",
+    "translation": "",
+    "context": "file conflict dialog header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This month",
+    "translation": "",
+    "context": "search filter chip for files changed in the last thirty days",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This server offers no shares",
+    "translation": "",
+    "context": "connect dialog note when a browsed server lists nothing",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This session",
+    "translation": "",
+    "context": "credential dialog option that keeps the password until logout",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This step cannot be retried as administrator",
+    "translation": "",
+    "context": "file operation error dialog explanation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "This week",
+    "translation": "",
+    "context": "search filter chip for files changed in the last seven days",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Thumbnails",
+    "translation": "",
+    "context": "capability row on the about page",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Thumbnails on network locations",
+    "translation": "",
+    "context": "network thumbnails toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Title",
+    "translation": "",
+    "context": "PDF metadata",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Title bars",
+    "translation": "",
+    "context": "window title bars toggle label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Today",
+    "translation": "",
+    "context": "search filter chip for files changed today",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Toggle page thumbnails",
+    "translation": "",
+    "context": "PDF preview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Toggle sidebar",
+    "translation": "",
+    "context": "tooltip on the button showing or hiding the sidebar",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Trash",
+    "translation": "",
+    "context": "capability row on the about page | trash view header and sidebar entry",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Trash is empty",
+    "translation": "",
+    "context": "trash view placeholder and sidebar tooltip when nothing is trashed",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Trust and run",
+    "translation": "",
+    "context": "untrusted desktop file dialog action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Try again",
+    "translation": "",
+    "context": "file operation error dialog button to retry",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Type",
+    "translation": "",
+    "context": "file browser sort criterion option | file list column header",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Type a location",
+    "translation": "",
+    "context": "keyboard shortcut",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Typing in the file list",
+    "translation": "",
+    "context": "setting label choosing what typed letters do in the file list",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Typography",
+    "translation": "",
+    "context": "appearance settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Unavailable until its drive is mounted",
+    "translation": "",
+    "context": "games sidebar row for a library on a drive that is not mounted",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Under 1 MB",
+    "translation": "",
+    "context": "search filter chip for small files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Undo",
+    "translation": "",
+    "context": "toast action reversing the last operation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Undone",
+    "translation": "",
+    "context": "toast after reversing an operation",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Unknown",
+    "translation": "",
+    "context": "capability status when the daemon did not report it",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Unlock",
+    "translation": "",
+    "context": "unlock dialog header for an encrypted device",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Unmount",
+    "translation": "",
+    "context": "device action",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Unpacks into a folder beside it.",
+    "translation": "",
+    "context": "setting description for opening archives",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Unsaved changes",
+    "translation": "",
+    "context": "edited text has unsaved changes",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Untitled document",
+    "translation": "",
+    "context": "default name for a new empty file",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Untitled folder",
+    "translation": "",
+    "context": "default name for a new folder",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Usage of mounted filesystems",
+    "translation": "",
+    "context": "storage usage overview",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Use",
+    "translation": "",
+    "context": "folder appearance button applying the typed badge web address",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Use %1 for open and save dialogs",
+    "translation": "",
+    "context": "setting label for serving the desktop portal file chooser, %1 is the app name",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Use a bundled color palette.",
+    "translation": "",
+    "context": "color source description for preset",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Use an image from a web address",
+    "translation": "",
+    "context": "folder appearance button typing a web badge address",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Use an image from this computer",
+    "translation": "",
+    "context": "folder appearance button picking a local badge image",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Use these settings for all folders",
+    "translation": "",
+    "context": "view menu entry making this folder's sort and view the defaults",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Use this folder",
+    "translation": "",
+    "context": "file browser folder selection confirm button",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Username",
+    "translation": "",
+    "context": "label for a user name input",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Using %1 dynamic colors.",
+    "translation": "",
+    "context": "auto color source status when the shell is active, %1 is Dux Shell | auto color source status when the shell is active, %1 is Noctalia",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Version",
+    "translation": "",
+    "context": "about page daemon version column label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Version and capabilities",
+    "translation": "",
+    "context": "settings sidebar tab hint",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Video",
+    "translation": "",
+    "context": "search filter chip for video files",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "View",
+    "translation": "",
+    "context": "keyboard shortcut group",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "View text",
+    "translation": "",
+    "context": "leave text edit mode",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Views, sorting and defaults",
+    "translation": "",
+    "context": "settings sidebar tab hint",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Volume",
+    "translation": "",
+    "context": "media playback volume",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Waiting",
+    "translation": "",
+    "context": "file operation is queued",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Weight",
+    "translation": "",
+    "context": "font weight slider label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Where the launcher keeps the games.",
+    "translation": "",
+    "context": "games setting description for the games folders",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Window",
+    "translation": "",
+    "context": "general settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Windows",
+    "translation": "",
+    "context": "appearance settings section label",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Working",
+    "translation": "",
+    "context": "file operation in progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Working…",
+    "translation": "",
+    "context": "Sweep operation progress",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Write",
+    "translation": "",
+    "context": "permission bit",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Wrong password",
+    "translation": "",
+    "context": "archive password dialog error after a failed attempt",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Your changes have not been saved.",
+    "translation": "",
+    "context": "confirm leaving edited text",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Your compositor does not support background blur.",
+    "translation": "",
+    "context": "hint shown instead of the background blur toggle",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Zoom in",
+    "translation": "",
+    "context": "menu entry making the file view bigger | tooltip on the button zooming the large preview in",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Zoom out",
+    "translation": "",
+    "context": "menu entry making the file view smaller | tooltip on the button zooming the large preview out",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "accessibility animation disable",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "animation click feedback",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "animation speed motion",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "bounce animation motion",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "capability available sandbox",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "cards panes contrast glass",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "config folder launcher wine prefix",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "console emulator shell command line",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "corners rounding shape square",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "custom theme json file",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "daemon connected offline socket",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "daemon path unix",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "daemon protocol",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "daemon release build",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "dark",
+    "translation": "",
+    "context": "current scheme name in theme mode description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "decorations csd window header",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "default file manager dbus reveal",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "default folder directory start open home",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "delete confirmation prompt",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "density compact dense spacious comfortable spacing padding rows",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "directories first sort",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "documentation help manual",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "dotfiles invisible",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "dotfiles sort last bottom",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "drag drop copy move ask default action",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "drives usb volumes sidebar hide",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "flatpak app id",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "focus ring width outline",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "folder memory per-folder remember",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "font bold typography",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "font family typeface dms system qt",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "font size text zoom typography",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "font typeface",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "font typeface code mono",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "font typeface headline title",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "frosted glass compositor",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "games library steamapps common",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "gvfs smb sftp remote servers sidebar hide",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "h j k l move, / searches and letters run commands instead of jumping to a name.",
+    "translation": "",
+    "context": "vim keys toggle description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "h j k l move, / searches.",
+    "translation": "",
+    "context": "vim keys toggle description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "heroic epic gog amazon",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "history recently used opened sidebar",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "hjkl keyboard navigation modal",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "internal drives udisks home boot",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "keyboard outline accessibility",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "keys bindings hotkeys F1",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "light",
+    "translation": "",
+    "context": "current scheme name in theme mode description",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "light dark mode system color scheme",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "list grid columns icons tiles",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "locale translation interface",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "lutris wine prefix",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "mount usb removable sidebar",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "order direction ascending reverse",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "order name size modified type date",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "palette dms preset custom accent",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "portal file chooser picker xdg",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "preset palette swatch colors",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "preview image text pdf default application",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "previews images video pdf",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "quit exit hide daemon keep running",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "remote sftp smb previews",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "reset clear per-folder memory",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "search dotfiles recursive",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "search exclude ignore",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "single double click activate",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "size column entries",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "source code repository issues",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "steam heroic lutris proton games sidebar hide",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "steam proton valve",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "suffix type filename",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "tabs external open location",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "thumbnail size limit cap megabytes",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "time modified timestamp iso relative seconds",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "transparency translucent glass see-through",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "type-ahead jump filter search keyboard",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "wine prefix proton compatdata",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "xdg-desktop-portal",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "xdg-open handlr mimeo opener default application launch",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "zip tar unpack compressed",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "zoom rows",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "zoom thumbnails tiles",
+    "translation": "",
+    "context": "settings search keywords, space separated, add synonyms in your language",
+    "reference": "",
+    "comment": ""
+  }
+]

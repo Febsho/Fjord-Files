@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.febsho.fjordfiles</id>
+  <launchable type="desktop-id">io.github.febsho.fjordfiles.desktop</launchable>
+  <name>Fjord Files</name>
+  <summary>Browse and manage files on Linux</summary>
+  <description>
+    <p>Fjord Files is a development fork of Dux Files and a native Linux file manager with tabs, split views, file previews, and asynchronous file operations.</p>
+  </description>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <developer id="io.github.febsho">
+    <name>Fjord Files contributors</name>
+  </developer>
+  <url type="homepage">https://github.com/Febsho/Fjord-Files</url>
+  <url type="vcs-browser">https://github.com/Febsho/Fjord-Files</url>
+  <releases>
+    <release version="0.1.0" date="2026-11-15">
+      <description>
+        <p>First Fjord Files preview release with native Linux file management, tabs, split views, previews, and asynchronous file operations.</p>
+      </description>
+    </release>
+  </releases>
+  <provides>
+    <mediatype>inode/directory</mediatype>
+  </provides>
+</component>

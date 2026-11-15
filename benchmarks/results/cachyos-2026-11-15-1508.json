@@ -1,0 +1,83 @@
+{
+  "conditions": {
+    "platform": "Linux-6.18.60-2-cachyos-lts-x86_64-with-glibc2.44",
+    "cpu": "AMD Ryzen 5 7600X3D 6-Core Processor",
+    "logical_cpus": 12,
+    "mem_total": "MemTotal:       31938272 kB",
+    "filesystem": "btrfs rw,noatime,compress=zstd:1,ssd,discard=async,space_cache=v2,subvolid=257,subvol=/@home",
+    "binary_sha256": "3eb7cbc7fea0c27617bfc3cd064c9b22691ac8aed49e8e4cd3b6be1bbbd7fd49",
+    "binary_version": "dfiles 2.1.0+git172.7a89d083 (commit 7a89d083, built 2026-11-15_14:08:35)",
+    "python_version": "3.14.10",
+    "sweep_version": null,
+    "fixture_files": 10000,
+    "fixture_bytes_each": 16,
+    "repeats": 3,
+    "large_copy_mib": 16,
+    "small_copy_files": 1000,
+    "cache": "uncontrolled; fixture creation and warmup precede samples",
+    "bus": "isolated/unavailable",
+    "timing": "wall-clock including CLI startup and IPC"
+  },
+  "measurements": {
+    "daemon_start_ready_ms": 7.789422,
+    "daemon_idle_rss": "VmRSS:\t   23052 kB",
+    "directory_first_page": {
+      "unit": "ms",
+      "samples": [
+        50.618722,
+        45.097684,
+        45.160294
+      ],
+      "median": 45.160294
+    },
+    "text_preview_head": {
+      "unit": "ms",
+      "samples": [
+        2.602889,
+        2.846162,
+        2.348666
+      ],
+      "median": 2.602889
+    },
+    "thumbnail_generate_512px": {
+      "unit": "ms",
+      "samples": [
+        26.229215,
+        27.007615,
+        25.321539
+      ],
+      "median": 26.229215
+    },
+    "search_direct_complete": {
+      "unit": "ms",
+      "samples": [
+        6.78409,
+        7.490333,
+        7.484562
+      ],
+      "median": 7.484562
+    },
+    "copy_large_complete": {
+      "unit": "ms",
+      "samples": [
+        17.141555,
+        17.515096,
+        17.583295
+      ],
+      "median": 17.515096
+    },
+    "copy_small_complete": {
+      "unit": "ms",
+      "samples": [
+        117.003134,
+        115.908523,
+        114.834591
+      ],
+      "median": 115.908523
+    }
+  },
+  "not_measured": {
+    "GUI startup": "headless daemon only; no window or rendering measured",
+    "Sweep scans": "sweep executable was not found in PATH"
+  }
+}

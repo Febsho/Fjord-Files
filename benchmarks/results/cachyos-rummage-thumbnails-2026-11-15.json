@@ -1,0 +1,39 @@
+{
+  "purpose": "Compare cached 512x512 PNG thumbnail generation with Fjord isolated decoder and optional Rummage protocol 4 decoder.",
+  "source": {
+    "fjord_commit": "7a89d083",
+    "rummage_commit": "2789dd25c6a40693c68b80cd6e1d6d9123cd64b7"
+  },
+  "fixture": {
+    "files": 1000,
+    "thumbnail_input": "512x512 generated PNG",
+    "repeats": 3,
+    "filesystem": "tmpfs rw,noatime,inode64",
+    "cache": "uncontrolled; fixture creation and warmup precede samples"
+  },
+  "fjord_binary_sha256": "bc7d5a2d0f3f37ad1a4466dfeb36ed78c4e8ad57ea333b9535d300a2126f1a9c",
+  "rummage_helper_sha256": "3686f8094daaa01f3b342f0a25037f2f1dbae518e40b6f2681550a5ad967a61f",
+  "platform": "Linux-6.18.60-2-cachyos-lts-x86_64-with-glibc2.44",
+  "cpu": "AMD Ryzen 5 7600X3D 6-Core Processor",
+  "measurements": {
+    "fjord_isolated_decoder": {
+      "unit": "ms",
+      "samples": [
+        26.783593,
+        25.106363,
+        25.318225
+      ],
+      "median": 25.318225
+    },
+    "rummage_protocol_v4_with_fjord_fallback": {
+      "unit": "ms",
+      "samples": [
+        21.195194,
+        20.003287,
+        18.43814
+      ],
+      "median": 20.003287
+    }
+  },
+  "interpretation": "Only three repetitions; uncontrolled cache and external load. This run is a local comparison, not evidence of a general performance improvement or a performance target being met."
+}

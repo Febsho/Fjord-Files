@@ -1,0 +1,101 @@
+{
+  "conditions": {
+    "platform": "Linux-6.18.60-2-cachyos-lts-x86_64-with-glibc2.44",
+    "cpu": "AMD Ryzen 5 7600X3D 6-Core Processor",
+    "logical_cpus": 12,
+    "mem_total": "MemTotal:       31938272 kB",
+    "filesystem": "tmpfs rw,noatime,inode64",
+    "binary_sha256": "e1d174b1077097c3a859dd25a7f3cc261b0d00500dd74f0e2331e8183e40c13d",
+    "gui_launcher_sha256": "41ce56c8a5226085253a03439839d3e2875172217b670435db082708ddf9d363",
+    "binary_version": "dfiles 2.1.0+git172.7a89d083 (commit 7a89d083, built 2026-11-15_16:33:57)",
+    "python_version": "3.14.10",
+    "sweep_version": "0.5.2",
+    "sweep_sha256": "dd6638ea1e2858daf42e760a87fc4ef65d22a9f8127dc7ab9cf8e8bcb86ea4e4",
+    "fixture_files": 10000,
+    "fixture_bytes_each": 16,
+    "repeats": 3,
+    "large_copy_mib": 16,
+    "small_copy_files": 1000,
+    "cache": "uncontrolled; fixture creation and warmup precede samples",
+    "bus": "isolated/unavailable",
+    "timing": "wall-clock including CLI startup and IPC",
+    "gui_observer": "Umbriel mapped visible window; isolated XDG/D-Bus; not first rendered frame"
+  },
+  "measurements": {
+    "daemon_start_ready_ms": 8.331089,
+    "daemon_idle_rss": "VmRSS:\t   25348 kB",
+    "directory_first_page": {
+      "unit": "ms",
+      "samples": [
+        48.461692,
+        46.630607,
+        46.768861
+      ],
+      "median": 46.768861
+    },
+    "text_preview_head": {
+      "unit": "ms",
+      "samples": [
+        2.596198,
+        3.056605,
+        3.021758
+      ],
+      "median": 3.021758
+    },
+    "thumbnail_generate_512px": {
+      "unit": "ms",
+      "samples": [
+        27.425073,
+        27.698663,
+        28.44379
+      ],
+      "median": 27.698663
+    },
+    "sweep_scan_complete": {
+      "unit": "ms",
+      "samples": [
+        145.719801,
+        145.726383,
+        142.151142
+      ],
+      "median": 145.719801
+    },
+    "search_direct_complete": {
+      "unit": "ms",
+      "samples": [
+        7.301029,
+        6.871482,
+        7.12265
+      ],
+      "median": 7.12265
+    },
+    "copy_large_complete": {
+      "unit": "ms",
+      "samples": [
+        18.485896,
+        19.355181,
+        18.15672
+      ],
+      "median": 18.485896
+    },
+    "copy_small_complete": {
+      "unit": "ms",
+      "samples": [
+        74.298021,
+        74.887943,
+        76.074811
+      ],
+      "median": 74.887943
+    },
+    "gui_window_visible": {
+      "unit": "ms",
+      "samples": [
+        1241.815729,
+        1142.742968,
+        1147.188765
+      ],
+      "median": 1147.188765
+    }
+  },
+  "not_measured": {}
+}

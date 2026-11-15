@@ -1,0 +1,1053 @@
+pragma ComponentBehavior: Bound
+
+import QtQuick
+import QtQuick.Window
+import Quickshell
+import Quickshell.Wayland
+import qs.Common
+import qs.Services
+import qs.DCommon.Widgets
+import qs.DCommon.FileBrowser
+
+FloatingWindow {
+    id: window
+
+    signal closeRequested(bool force)
+    signal newWindowRequested(var locations)
+
+    required property int windowId
+    readonly property bool primary: WindowService.primaryId === windowId
+    property var toplevel: null
+
+    property int activePaneIndex: 0
+    property bool splitView: false
+    property real splitRatio: 0.5
+    property bool showHidden: SessionData.lastUsed("showHidden", SettingsData.showHidden)
+    property bool previewOpen: SessionData.lastUsed("previewOpen", true)
+    property bool overviewOpen: false
+
+    readonly property string opScope: "window" + windowId
+    readonly property var cutSet: {
+        const set = ({});
+        if (!ClipboardService.cut)
+            return set;
+        for (const path of ClipboardService.paths)
+            set[path] = true;
+        return set;
+    }
+    readonly property var secondPane: splitLoader.item
+    readonly property var panes: [primaryPane, secondPane]
+    readonly property TabManager tabManager: tabManager
+    readonly property WindowDialogs dialogs: dialogs
+    readonly property WindowMenus menus: menus
+    readonly property DragController drag: drag
+    readonly property FileOpenFlow openFlow: openFlow
+    readonly property WindowActions actions: actions
+    readonly property PaneActions paneActions: paneActions
+    readonly property WindowSidebarHost sidebar: sidebarHost
+    readonly property FilesTopbar topbar: topbar
+    readonly property bool headerHostsJobs: !header.compositorDecorated
+    readonly property PreviewOverlay preview: previewOverlay
+    readonly property var activePane: splitView && activePaneIndex === 1 && secondPane ? secondPane : primaryPane
+    readonly property string currentPath: activePane.path
+    readonly property bool dialogOpen: dialogs.anyOpen
+    readonly property bool textEditing: surface.focusItem instanceof TextInput || surface.focusItem instanceof TextEdit
+    readonly property bool sidebarFocused: sidebarHost.focused
+    readonly property bool tabRowFocused: ItemTree.isInside(surface.focusItem, tabRow)
+    readonly property bool shortcutsEnabled: !dialogOpen && !textEditing && !overviewOpen && !(preview?.open ?? false)
+    readonly property bool lastActive: WindowService.lastActiveId === windowId
+    readonly property var previewTarget: {
+        const entries = selectedEntries();
+        return entries.length === 1 ? entries[0] : null;
+    }
+    readonly property bool previewExpandable: previewTarget !== null && !previewTarget.isDir
+    readonly property var contentEntry: tabManager.tabState(tabManager.currentTab)?.content ?? null
+
+    Component.onDestruction: FileOpsService.forget(opScope)
+
+    title: tabManager.folderTitle(currentPath) + " — Fjord Files"
+    implicitWidth: SessionData.windowWidth
+    implicitHeight: SessionData.windowHeight
+    minimumSize: Qt.size(FilesMetrics.windowMinWidth, FilesMetrics.windowMinHeight)
+    color: Theme.windowSurface
+    surfaceFormat.opaque: false
+    visible: true
+
+    onClosed: requestClose()
+
+    WindowBlur {
+        targetWindow: window
+        blurEnabled: Theme.translucentWindows
+        blurWidth: window.width
+        blurHeight: window.height
+    }
+    onMaximizedChanged: SessionData.maximized = maximized
+
+    onWidthChanged: {
+        if (!maximized && backingWindowVisible)
+            SessionData.windowWidth = width;
+    }
+
+    onHeightChanged: {
+        if (!maximized && backingWindowVisible)
+            SessionData.windowHeight = height;
+    }
+
+    Component.onCompleted: {
+        keepOwnBrowsing();
+        const initial = WindowService.takePendingLocations(windowId);
+        if (primary) {
+            splitView = SessionData.splitView;
+            splitRatio = SessionData.splitRatio;
+            tabManager.restoreSession();
+        } else {
+            splitRatio = SessionData.splitRatio;
+            tabManager.startFresh();
+        }
+        maximized = SessionData.maximized;
+        if (primary)
+            offerGtkImport();
+        primaryPane.focusBody();
+        if (initial.length > 0)
+            openLocations(initial, true);
+    }
+
+    function claimToplevel() {
+        if (!surface.windowActive)
+            return;
+        const active = ToplevelManager.activeToplevel;
+        if (active && active.appId === "io.github.febsho.fjordfiles")
+            toplevel = active;
+    }
+
+    function offerGtkImport() {
+        if (!BookmarksService.importOffer)
+            return;
+        BookmarksService.declineImport();
+        ToastService.show(I18n.tr("Import your %1 bookmarks?", "toast offering to copy the gtk file chooser bookmarks once, %1 is GTK").arg("GTK"), {
+            "actionLabel": I18n.tr("Import", "toast action importing gtk bookmarks"),
+            "duration": ToastService.offerDuration,
+            "action": () => BookmarksService.importGtk(added => ToastService.info(I18n.tr("%1 bookmarks imported", "toast after importing gtk bookmarks").arg(added)))
+        });
+    }
+
+    function confirmViewerLeave(action) {
+        contentViewer.confirmLeave(() => previewOverlay.confirmLeave(action));
+    }
+
+    function requestClose() {
+        if (!visible && (contentViewer.textDirty || previewOverlay.textDirty))
+            visible = true;
+        confirmViewerLeave(() => closeRequested(false));
+    }
+
+    function confirmQuit() {
+        if (!visible)
+            visible = true;
+        dialogs.confirmQuit();
+    }
+
+    function setSplitRatio(value) {
+        splitRatio = Math.max(FilesMetrics.minimumPaneFraction, Math.min(1 - FilesMetrics.minimumPaneFraction, value));
+        if (primary)
+            SessionData.splitRatio = splitRatio;
+    }
+
+    function resizeSplit(fraction) {
+        setSplitRatio(splitRatio + fraction);
+    }
+
+    function openPath(path, inNewTab) {
+        if (path === "")
+            return;
+        if (inNewTab) {
+            tabManager.newTab(path, false);
+            return;
+        }
+        activePane.navigate(path);
+    }
+
+    function openLocations(locations, fresh) {
+        locations.forEach((location, index) => openLocation(location, index > 0 || (!fresh && SettingsData.openLocationIn === "tab")));
+    }
+
+    function openLocation(location, inNewTab) {
+        switch (location.kind) {
+        case "servers":
+            dialogs.askServer();
+            return;
+        case "recent":
+            openPath(RecentService.path, inNewTab);
+            return;
+        case "remote":
+            dialogs.connectRemote(location.uri, location.password);
+            return;
+        case "archive":
+            openArchive(location.path, inNewTab);
+            return;
+        }
+        if ((location.select ?? []).length === 0) {
+            openPath(location.path, inNewTab);
+            return;
+        }
+        if (inNewTab)
+            tabManager.newTab(location.path, false);
+        activePane.reveal(location.select);
+    }
+
+    function openArchive(path, inNewTab) {
+        openPath(FilePaths.parentOf(path), inNewTab);
+        if (!SettingsData.extractOnOpen) {
+            activePane.reveal([path]);
+            return;
+        }
+        openFlow.extractBeside(path, "enter");
+    }
+
+    function toggleSplit() {
+        tabManager.captureTabs();
+        splitView = !splitView;
+        if (primary)
+            SessionData.splitView = splitView;
+        if (splitView)
+            return;
+        activePaneIndex = 0;
+        primaryPane.focusBody();
+    }
+
+    function keepOwnBrowsing() {
+        showHidden = showHidden;
+        previewOpen = previewOpen;
+    }
+
+    function resolvePanes(keepBrowsingView) {
+        for (const pane of [primaryPane, secondPane]) {
+            if (pane && pane.path !== "")
+                pane.resolveFolder(pane.path, keepBrowsingView ? pane.browsingView : "");
+        }
+    }
+
+    function useForAllFolders() {
+        const values = {
+            "sortKey": activePane.sortKey,
+            "sortDescending": activePane.sortDescending,
+            "viewMode": activePane.viewMode
+        };
+        SettingsData.defaultSort = values.sortKey;
+        SettingsData.defaultSortDescending = values.sortDescending;
+        SettingsData.defaultView = values.viewMode;
+        SessionData.remember(values);
+        FolderViews.dropMatching(values);
+    }
+
+    function setShowHidden(show) {
+        showHidden = show;
+        SessionData.remember({
+            "showHidden": show
+        });
+    }
+
+    function closeOverview() {
+        overviewOpen = false;
+        activePane.focusBody();
+    }
+
+    function toggleOverview() {
+        if (overviewOpen) {
+            closeOverview();
+            return;
+        }
+        overviewOpen = true;
+    }
+
+    function escapeBack() {
+        if (overviewOpen) {
+            closeOverview();
+            return true;
+        }
+        if (sidebarHost.overlayOpen) {
+            sidebarHost.leave();
+            return true;
+        }
+        if (!activePane.resultsActive && activePane.nameFilter === "")
+            return false;
+        topbar.clearSearch();
+        return true;
+    }
+
+    function selectedPaths() {
+        return activePane.selection.paths;
+    }
+
+    function selectedEntries() {
+        return activePane.selectedEntries;
+    }
+
+    function firstSelected() {
+        return selectedEntries()[0] ?? null;
+    }
+
+    function dismissEditors(position) {
+        for (const pane of [primaryPane, secondPane]) {
+            if (!pane)
+                continue;
+            const local = pane.mapFromItem(surface, position.x, position.y);
+            pane.dismissPathEditor(local.x, local.y);
+        }
+        if (!topbar.searchFocused)
+            return;
+        const local = topbar.mapFromItem(surface, position.x, position.y);
+        if (!topbar.searchContains(local.x, local.y))
+            activePane.focusBody();
+    }
+
+    Connections {
+        target: SettingsData
+
+        function onDefaultViewChanged() {
+            SessionData.remember({
+                "viewMode": SettingsData.defaultView
+            });
+            window.resolvePanes();
+        }
+
+        function onDefaultSortChanged() {
+            SessionData.remember({
+                "sortKey": SettingsData.defaultSort
+            });
+            window.resolvePanes(true);
+        }
+
+        function onDefaultSortDescendingChanged() {
+            SessionData.remember({
+                "sortDescending": SettingsData.defaultSortDescending
+            });
+            window.resolvePanes(true);
+        }
+
+        function onShowHiddenChanged() {
+            window.setShowHidden(SettingsData.showHidden);
+        }
+    }
+
+    ServiceErrorToasts {
+        active: window.lastActive
+    }
+
+    Connections {
+        target: BookmarksService
+
+        function onImportOfferChanged() {
+            window.offerGtkImport();
+        }
+    }
+
+    TabManager {
+        id: tabManager
+
+        panes: window.panes
+        activePane: window.activePane
+        activePaneIndex: window.activePaneIndex
+        primary: window.primary
+        confirmLeave: action => contentViewer.confirmLeave(action)
+        onActivePaneRequested: index => window.activePaneIndex = index
+        onDropRequested: (paths, dest, action) => window.drag.applyDrop(paths, dest, action)
+    }
+
+    FloatingWindowControls {
+        id: windowControls
+
+        targetWindow: window
+    }
+
+    component WindowPane: FilesPane {
+        id: pane
+
+        property int paneIndex: 0
+
+        active: window.activePaneIndex === paneIndex
+        framed: false
+        internalPreview: false
+        showHidden: window.showHidden
+        previewOpen: window.previewOpen
+        showActiveOutline: window.splitView
+        cutSet: window.cutSet
+        onActivateRequested: entry => window.openFlow.activate(entry)
+        onOpenRequested: entries => window.openFlow.openEntries(entries)
+        onTabRequested: path => window.tabManager.newTab(path, true)
+        onPathMenuRequested: (path, pointX, pointY) => window.menus.presentPlaceMenu("folder", path, pane, pointX, pointY)
+        onItemMenuRequested: (index, pointX, pointY, modifiers) => window.menus.showItemMenu(pointX, pointY)
+        onBackgroundMenuRequested: (pointX, pointY) => window.menus.showBackgroundMenu(pointX, pointY)
+        onDropRequested: (paths, dest, action) => window.drag.applyDrop(paths, dest, action)
+        onDragRequested: paths => window.drag.beginDrag(paths, window.firstSelected())
+        onRenameRequested: (target, name) => FileOpsService.rename(target, name, window.opScope)
+        onSortRequested: key => pane.toggleSort(key)
+        onColumnsMenuRequested: (pointX, pointY) => window.menus.showColumnsMenu(pointX, pointY)
+        onFocusRequested: {
+            window.activePaneIndex = paneIndex;
+            if (window.sidebarFocused)
+                pane.focusBody();
+        }
+        onPreviewToggleRequested: window.actions.runAction("togglePreview")
+        onPreviewKeyRequested: (action, step) => previewDrawer.handleKey(action, step)
+        onServerDialogRequested: window.dialogs.askServer()
+        onConnectFailed: (uri, result) => window.dialogs.presentServer(uri, result)
+        onRestoreRequested: window.actions.runAction("restore")
+        onEmptyTrashRequested: window.actions.runAction("emptyTrash")
+        onRemoveFromRecentRequested: window.actions.runAction("removeFromRecent")
+        onClearRecentRequested: window.actions.runAction("clearRecent")
+        onFilterRequested: text => topbar.openFilter(text)
+        onFilterFocusRequested: topbar.focusFilter()
+        onPathChanged: {
+            window.tabManager.captureTabs();
+            if (!window.tabManager.applyingTab)
+                FolderHistory.visit(path);
+        }
+    }
+
+    Item {
+        id: surface
+
+        anchors.fill: parent
+        readonly property bool isFloatingWindowSurface: true
+        readonly property color surfaceColor: window.color
+        readonly property bool windowActive: Window.active
+        readonly property Item focusItem: Window.activeFocusItem
+
+        LayoutMirroring.enabled: I18n.isRtl
+        LayoutMirroring.childrenInherit: true
+
+        FocusFallback {
+            onTriggered: {
+                if (!window.overviewOpen)
+                    window.activePane.focusBody();
+            }
+        }
+
+        WheelHandler {
+            property var forwardedScroller: null
+
+            acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+            acceptedModifiers: Qt.NoModifier
+            enabled: !window.dialogOpen
+            onWheel: event => {
+                forwardedScroller = sidebarHost.dockedScrollerAt(surface, event.x, event.y) ?? window.activePane.scroller;
+                if (!forwardedScroller?.forwardWheel) {
+                    event.accepted = false;
+                    return;
+                }
+                forwardedScroller.forwardWheel(event);
+            }
+            onActiveChanged: {
+                if (active)
+                    return;
+                forwardedScroller?.forwardWheelEnd();
+                forwardedScroller = null;
+            }
+        }
+
+        onWindowActiveChanged: {
+            if (!windowActive)
+                return;
+            WindowService.activate(window.windowId);
+            window.claimToplevel();
+            ClipboardService.refresh();
+            TrashService.refresh();
+            RecentService.refresh();
+            primaryPane.refreshOnActivate();
+            window.secondPane?.refreshOnActivate();
+        }
+
+        Keys.onPressed: event => {
+            if (window.textEditing)
+                return;
+            if (window.overviewOpen) {
+                if (event.key === Qt.Key_Tab || event.key === Qt.Key_Backtab)
+                    return;
+                if (event.key === Qt.Key_Escape)
+                    window.closeOverview();
+                event.accepted = true;
+                return;
+            }
+            if (!window.sidebarFocused && !ItemTree.isInside(surface.focusItem, window.activePane)) {
+                window.activePane.handleStrayKey(event);
+                if (event.accepted)
+                    return;
+            }
+            switch (event.key) {
+            case Qt.Key_Escape:
+                if (!window.escapeBack())
+                    return;
+                break;
+            default:
+                if (window.sidebarFocused || !window.actions.handleVimKey(event))
+                    return;
+            }
+            event.accepted = true;
+        }
+
+        DWindowHeader {
+            id: header
+
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: Math.max(implicitHeight, tabBand.height)
+            controls: windowControls
+            onCloseRequested: window.requestClose()
+
+            JobsButton {
+                anchors.verticalCenter: parent.verticalCenter
+                hosted: window.headerHostsJobs
+            }
+        }
+
+        Item {
+            id: tabBand
+
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: FilesMetrics.tabBandHeight
+            enabled: !window.preview.open
+
+            FlatButton {
+                anchors.left: parent.left
+                anchors.leftMargin: (FilesMetrics.sidebarRailWidth - width) / 2
+                anchors.verticalCenter: parent.verticalCenter
+                visible: sidebarHost.docked
+                iconName: sidebarHost.rail ? "menu" : "menu_open"
+                tooltipText: I18n.tr("Toggle sidebar", "tooltip on the button showing or hiding the sidebar")
+                onClicked: sidebarHost.toggle()
+            }
+
+            TabRow {
+                id: tabRow
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.leftMargin: content.anchors.leftMargin
+                anchors.rightMargin: header.collapsed ? FilesMetrics.contentMarginH : header.buttonsReserve
+                anchors.verticalCenter: parent.verticalCenter
+                tabs: window.tabManager.tabs.map(state => window.tabManager.tabLabel(state))
+                currentIndex: window.tabManager.currentTab
+                onTabSelected: index => window.tabManager.selectTab(index)
+                onTabClosed: index => window.tabManager.closeTab(index)
+                onTabAdded: window.tabManager.newTab("", false)
+                onTabDropHovered: index => window.tabManager.selectTab(index)
+                onTabDropped: (index, drop) => window.tabManager.dropOnTab(index, drop)
+                onTabMoved: (from, to) => window.tabManager.moveTab(from, to)
+                onTabMenuRequested: (index, pointX, pointY) => window.menus.presentTabMenu(index, tabRow, pointX, pointY)
+            }
+        }
+
+        Item {
+            id: content
+
+            anchors.top: tabBand.bottom
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottomMargin: FilesMetrics.contentMarginV
+            anchors.leftMargin: Math.max(FilesMetrics.contentMarginH, sidebarHost.dockedWidth)
+            anchors.rightMargin: FilesMetrics.contentMarginH
+            enabled: !window.preview.open
+
+            Item {
+                id: card
+
+                readonly property color surfaceColor: topSegment.color
+                readonly property real minimumWidth: topbar.minimumWidth + FilesMetrics.cardPadding * 2
+
+                anchors.top: parent.top
+                anchors.bottom: footer.top
+                anchors.bottomMargin: Theme.groupedListGap
+                anchors.left: parent.left
+                anchors.right: previewDrawer.left
+
+                CardSegment {
+                    id: topSegment
+
+                    first: true
+                    anchors.top: parent.top
+                    height: topbar.height + FilesMetrics.cardPadding * 2
+                }
+
+                CardSegment {
+                    anchors.top: topSegment.bottom
+                    anchors.bottom: parent.bottom
+                    anchors.topMargin: Theme.groupedListGap
+                }
+
+                FilesTopbar {
+                    id: topbar
+
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.margins: FilesMetrics.cardPadding
+                    splitView: window.splitView
+                    backEnabled: window.activePane.canGoBack
+                    forwardEnabled: window.activePane.canGoForward
+                    sortKey: window.activePane.effectiveSortKey
+                    sortDescending: window.activePane.effectiveSortDescending
+                    resultsActive: window.activePane.resultsActive
+                    compact: sidebarHost.compact
+                    showSidebarToggle: sidebarHost.compact
+                    showViewControls: false
+                    flatNavigation: true
+                    hostsPath: true
+                    placeTitle: window.splitView ? window.title : window.activePane.placeTitle
+                    selectionCount: window.activePane.editingPath ? 0 : window.selectedPaths().length
+                    selectionBytes: window.activePane.body.selectedBytes()
+                    selectionActions: !window.activePane.virtualActive
+                    showTabOverview: true
+                    overviewOpen: window.overviewOpen
+                    tabCount: window.tabManager.tabs.length
+                    showJobs: !window.headerHostsJobs
+                    viewMode: window.activePane.viewMode
+                    folderRemembered: window.activePane.folderRemembered
+                    folderHasSettings: window.activePane.hasFolderSettings
+                    previewOpen: window.previewOpen
+                    previewExpandable: window.previewExpandable
+                    trashActive: window.activePane.trashActive
+                    recentActive: window.activePane.recentActive
+                    filterText: window.activePane.nameFilter
+                    currentPath: window.currentPath
+                    onFilterChanged: text => window.activePane.nameFilter = text
+                    onSearchRequested: query => window.activePane.startSearch(query, null)
+                    onSearchCleared: {
+                        window.activePane.closeSearch();
+                        window.activePane.focusBody();
+                    }
+                    onLocationRequested: location => {
+                        window.openLocation(location, false);
+                        window.activePane.focusBody();
+                    }
+                    onResultsRequested: {
+                        window.activePane.focusBody();
+                        window.activePane.body.jumpTo(0, Qt.NoModifier);
+                    }
+                    onSelectionCleared: window.activePane.selection.clear()
+                    onSelectionActionRequested: action => window.actions.runAction(action)
+                    onOverviewToggled: window.toggleOverview()
+                    onOverviewDropHovered: window.overviewOpen = true
+                    onSettingsRequested: window.dialogs.openSettings()
+                    onShortcutsRequested: window.actions.runAction("shortcuts")
+                    onSidebarToggled: sidebarHost.toggle()
+                    onBackRequested: window.activePane.back()
+                    onForwardRequested: window.activePane.forward()
+                    onSplitToggled: window.toggleSplit()
+                    onSortKeySelected: key => window.activePane.sortBy(key)
+                    onSortDirectionToggled: window.activePane.flipSort()
+                    onViewModeSelected: mode => window.activePane.setViewMode(mode)
+                    onPreviewToggled: window.actions.runAction("togglePreview")
+                    onCopyPathRequested: window.paneActions.copyText(window.currentPath)
+                    onNewFolderRequested: window.actions.runAction("newFolder")
+                    onNewDocumentRequested: (parentMenu, row) => window.menus.showNewDocumentSubmenu(parentMenu, row)
+                    onColumnsMenuRequested: (parentMenu, row) => window.menus.showColumnsSubmenu(parentMenu, row)
+                    onZoomRequested: step => window.activePane.body.zoomBy(step)
+                    onUseForAllFoldersRequested: window.useForAllFolders()
+                    onResetFolderRequested: window.activePane.resetFolder()
+                    onPreviewExpandRequested: window.actions.runAction("previewExpand")
+                    onReloadRequested: window.actions.runAction("reload")
+                    onTerminalRequested: window.actions.runAction("openTerminal")
+                    onPropertiesRequested: window.actions.runAction("properties")
+                    onNewWindowRequested: window.actions.runAction("newWindow")
+                }
+
+                Item {
+                    id: panesRow
+
+                    anchors.top: topSegment.bottom
+                    anchors.bottom: parent.bottom
+                    anchors.topMargin: Theme.groupedListGap
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    visible: !window.overviewOpen
+
+                    readonly property real usableWidth: width - (window.splitView ? FilesMetrics.splitterWidth : 0)
+
+                    WindowPane {
+                        id: primaryPane
+
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.left: parent.left
+                        width: window.splitView ? panesRow.usableWidth * window.splitRatio : panesRow.width
+                        pathBarHost: window.splitView ? null : topbar.pathSlot
+                    }
+
+                    PaneSplitter {
+                        id: splitter
+
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.left: primaryPane.right
+                        visible: window.splitView
+                        onMoved: delta => window.resizeSplit(delta / Math.max(1, panesRow.usableWidth))
+                        onReset: window.setSplitRatio(0.5)
+                    }
+
+                    Loader {
+                        id: splitLoader
+
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.left: splitter.right
+                        anchors.right: parent.right
+                        active: window.splitView
+                        sourceComponent: WindowPane {
+                            paneIndex: 1
+                        }
+                        onLoaded: {
+                            if (window.tabManager.tabs.length === 0)
+                                return;
+                            const stored = window.tabManager.tabState(window.tabManager.currentTab)?.panes?.[1];
+                            item.restoreState(stored ?? {
+                                "path": primaryPane.path
+                            });
+                            window.tabManager.leaveMissingFolder(item);
+                        }
+                    }
+                }
+
+                Loader {
+                    anchors.fill: panesRow
+                    active: window.overviewOpen
+                    sourceComponent: TabOverview {
+                        tabs: window.tabManager.tabs
+                        currentIndex: window.tabManager.currentTab
+                        titleFor: state => window.tabManager.tabLabel(state)
+                        pathFor: (state, index) => window.tabManager.tabPath(index)
+                        showHidden: window.showHidden
+                        onTabSelected: index => {
+                            window.tabManager.selectTab(index);
+                            window.closeOverview();
+                        }
+                        onTabClosed: index => window.tabManager.closeTab(index)
+                        onTabAdded: {
+                            window.tabManager.newTab("", false);
+                            window.closeOverview();
+                        }
+                        onTabDropped: (index, drop) => {
+                            window.tabManager.dropOnTab(index, drop);
+                            window.closeOverview();
+                        }
+                        onNewTabDropped: drop => {
+                            window.tabManager.newTab("", true);
+                            window.tabManager.dropOnTab(window.tabManager.tabs.length - 1, drop);
+                            window.closeOverview();
+                        }
+                    }
+                }
+            }
+
+            CardSegment {
+                id: footer
+
+                readonly property bool underPreview: previewDrawer.width > 0
+
+                last: true
+                anchors.bottom: parent.bottom
+                height: statusBar.implicitHeight + FilesMetrics.cardPadding * 2
+                topRightRadius: underPreview ? FilesMetrics.paneRadius : topRadius
+            }
+
+            StatusBar {
+                id: statusBar
+
+                anchors.fill: footer
+                anchors.margins: FilesMetrics.cardPadding
+                total: window.activePane.itemTotal
+                hidden: window.activePane.hiddenTotal
+                hint: window.activePane.selectionHint
+                viewMode: window.activePane.viewMode
+                viewModes: topbar.viewModes
+                previewOpen: window.previewOpen
+                previewLabel: topbar.previewLabel
+                sortKeys: topbar.activeSortKeys
+                sortKey: window.activePane.effectiveSortKey
+                sortDescending: window.activePane.effectiveSortDescending
+                onViewModeSelected: mode => window.activePane.setViewMode(mode)
+                onPreviewToggled: window.actions.runAction("togglePreview")
+                onSortKeySelected: key => window.activePane.sortBy(key)
+                onSortDirectionToggled: window.activePane.flipSort()
+            }
+
+            FilePreviewDrawer {
+                id: previewDrawer
+
+                anchors.top: parent.top
+                chipColor: Theme.surfaceContainerLowest
+                rowColor: card.surfaceColor
+                viewMinimum: card.minimumWidth
+                closable: false
+                anchors.bottom: footer.top
+                anchors.bottomMargin: footer.underPreview ? FilesMetrics.contentSpacing : 0
+                anchors.right: parent.right
+                body: window.activePane.body
+                open: window.previewOpen && !window.activePane.body.columnsMode
+                available: content.width
+                preferredWidth: CacheData.previewWidth
+                onResized: width => window.activePane.setPreviewWidth(width)
+                onFocusRequested: window.activePane.focusRequested()
+
+                // Keep the shared drawer and its resize grip; replace its contents
+                // only for one readable local PDF when Qt PDF is available.
+                property int verificationSerial: 0
+                property string verifiedPath: ""
+                property string verifiedViewer: ""
+                property string verifiedMime: ""
+                readonly property string verificationTarget: shown && !window.preview.open && !window.contentEntry
+                    && window.previewTarget && !window.previewTarget.isDir && !window.previewTarget.unreadable && !window.previewTarget.symlinkBroken
+                    && (body.directory.pollOnFocus !== true || body.directory.networkThumbnails === true)
+                    && ((window.previewTarget.mime ?? "") === "application/pdf" || /^(audio|video)\//.test(window.previewTarget.mime ?? ""))
+                    ? window.previewTarget.path : ""
+                onVerificationTargetChanged: {
+                    verificationSerial++;
+                    verifiedPath = "";
+                    verifiedViewer = "";
+                    verifiedMime = "";
+                    verifySidePreview.restart();
+                }
+                Timer {
+                    id: verifySidePreview
+                    interval: 150
+                    onTriggered: {
+                        const target = previewDrawer.verificationTarget;
+                        const serial = previewDrawer.verificationSerial;
+                        if (!target) return;
+                        window.openFlow.viewerResolver(target, response => {
+                            if (serial !== previewDrawer.verificationSerial || target !== previewDrawer.verificationTarget || response.error) return;
+                            previewDrawer.verifiedPath = target;
+                            previewDrawer.verifiedViewer = response.viewer ?? "";
+                            previewDrawer.verifiedMime = response.mime ?? "";
+                        });
+                    }
+                }
+                readonly property bool sidePdfCandidate: verifiedPath !== "" && verifiedPath === verificationTarget && verifiedViewer === "pdf" && window.previewTarget?.mime === "application/pdf"
+                    && !window.previewTarget?.isDir && !window.previewTarget?.unreadable && !window.previewTarget?.symlinkBroken
+                    && (body.directory.pollOnFocus !== true || body.directory.networkThumbnails === true)
+                onSidePdfCandidateChanged: if (sidePdfCandidate) PdfService.ensureProbed()
+                readonly property bool sideMediaCandidate: verifiedPath !== "" && verifiedPath === verificationTarget && verifiedViewer === "media" && /^(audio|video)\//.test(verifiedMime)
+                    && !window.previewTarget?.isDir && !window.previewTarget?.unreadable && !window.previewTarget?.symlinkBroken
+                    && (body.directory.pollOnFocus !== true || body.directory.networkThumbnails === true)
+                readonly property bool sideOfficeCandidate: verifiedPath !== "" && verifiedPath === verificationTarget && verifiedViewer === "office"
+                    && !window.previewTarget?.isDir && !window.previewTarget?.unreadable && !window.previewTarget?.symlinkBroken
+                    && (body.directory.pollOnFocus !== true || body.directory.networkThumbnails === true)
+                onSideOfficeCandidateChanged: if (sideOfficeCandidate) PdfService.ensureProbed()
+                Loader {
+                    objectName: "sidePdfLoader"
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    anchors.right: parent.right
+                    width: Math.max(0, parent.width - parent.gap)
+                    active: parent.sidePdfCandidate && PdfService.available
+                    source: active ? "PreviewPdfSide.qml" : ""
+                    onLoaded: {
+                        item.source = Qt.binding(() => FilePaths.toFileUrl(window.previewTarget?.path ?? ""));
+                        item.expandRequested.connect(() => window.openFlow.quickLook(window.previewTarget));
+                    }
+                }
+                Loader {
+                    objectName: "sideMediaLoader"
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    anchors.right: parent.right
+                    width: Math.max(0, parent.width - parent.gap)
+                    active: parent.sideMediaCandidate
+                    source: active ? "PreviewMediaSide.qml" : ""
+                    onLoaded: {
+                        item.source = Qt.binding(() => FilePaths.toFileUrl(window.previewTarget?.path ?? ""));
+                        item.video = Qt.binding(() => previewDrawer.verifiedMime.startsWith("video/"));
+                        item.expandRequested.connect(() => window.openFlow.quickLook(window.previewTarget));
+                    }
+                }
+                Loader {
+                    objectName: "sideOfficeLoader"
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    anchors.right: parent.right
+                    width: Math.max(0, parent.width - parent.gap)
+                    active: parent.sideOfficeCandidate && PdfService.available
+                    source: active ? "PreviewOfficeSide.qml" : ""
+                    onLoaded: {
+                        item.path = Qt.binding(() => window.previewTarget?.path ?? "");
+                        item.expandRequested.connect(() => window.openFlow.quickLook(window.previewTarget));
+                    }
+                }
+            }
+        }
+
+        WindowSidebarHost {
+            id: sidebarHost
+
+            contentMinWidth: Math.max(FilesMetrics.windowMinWidth, card.minimumWidth + FilesMetrics.contentMarginH + (previewDrawer.open ? FilesMetrics.previewMinWidth : 0))
+            anchors.top: tabBand.bottom
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            mainWindow: window
+            focusItem: surface.focusItem
+            enabled: !window.preview.open
+        }
+
+        DragController {
+            id: drag
+
+            anchors.fill: parent
+            anchorItem: surface
+            opScope: window.opScope
+            currentPath: window.currentPath
+            onTrashRequested: (paths, subject) => window.paneActions.trashPaths(paths, subject)
+        }
+
+        Item {
+            anchors.fill: parent
+            z: 1
+
+            TapHandler {
+                acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
+                enabled: primaryPane.editingPath || (window.secondPane?.editingPath ?? false) || topbar.searchFocused
+                onPressedChanged: {
+                    if (pressed)
+                        window.dismissEditors(point.position);
+                }
+            }
+        }
+
+        PaneActions {
+            id: paneActions
+
+            opScope: window.opScope
+            panes: [window.activePane].concat(window.panes)
+        }
+
+        PreviewOverlay {
+            id: contentViewer
+            objectName: "contentViewer"
+
+            x: content.x
+            y: content.y
+            width: content.width
+            height: content.height
+            embedded: true
+            shortcutsActive: !previewOverlay.open
+            onClosed: window.tabManager.closeContentTab()
+            onSavedAs: entry => window.tabManager.updateContentEntry(entry)
+            onGalleryStepRequested: direction => window.openFlow.galleryStep(direction, contentViewer, true)
+            onArchiveExtractRequested: (archive, member) => FileOpsService.extractMember(archive, member, FilePaths.parentOf(archive), window.opScope)
+
+            function syncEntry() {
+                const target = window.contentEntry;
+                if (target && supports(target)) {
+                    if (!open || entry?.path !== target.path || entry?.mime !== target.mime || entry?.viewer !== target.viewer)
+                        present(target);
+                } else {
+                    dismiss(false);
+                }
+            }
+
+            Connections {
+                target: window
+                function onContentEntryChanged() { contentViewer.syncEntry(); }
+            }
+            Component.onCompleted: syncEntry()
+        }
+
+        PreviewOverlay {
+            id: previewOverlay
+
+            anchors.fill: parent
+            onClosed: window.activePane.focusBody()
+            onGalleryStepRequested: direction => window.openFlow.galleryStep(direction, previewOverlay, false)
+            onArchiveExtractRequested: (archive, member) => FileOpsService.extractMember(archive, member, FilePaths.parentOf(archive), window.opScope)
+        }
+    }
+
+    Instantiator {
+        model: Shortcuts.bound("window")
+
+        Shortcut {
+            required property var modelData
+
+            enabled: window.shortcutsEnabled && (modelData.id !== "contextMenu" || !(window.sidebarFocused || window.tabRowFocused))
+            sequences: modelData.keys
+            onActivated: window.actions.runAction(modelData.id)
+        }
+    }
+
+    Instantiator {
+        model: Shortcuts.bound("selection")
+
+        Shortcut {
+            required property var modelData
+
+            enabled: window.shortcutsEnabled && !window.sidebarFocused && window.selectedPaths().length > 0
+            sequences: modelData.keys
+            onActivated: window.actions.runAction(modelData.id)
+        }
+    }
+
+    Instantiator {
+        model: FilesMetrics.tabShortcutCount
+
+        Shortcut {
+            required property int index
+
+            enabled: window.shortcutsEnabled
+            sequence: "Alt+" + (index + 1)
+            onActivated: window.tabManager.selectTab(index)
+        }
+    }
+
+    Instantiator {
+        model: Shortcuts.bound("path")
+
+        Shortcut {
+            required property var modelData
+
+            enabled: !window.dialogOpen && !(modelData.id === "search" && ((contentViewer.open && contentViewer.kind === "text") || (previewOverlay.open && previewOverlay.kind === "text")))
+            sequences: modelData.keys
+            onActivated: window.actions.runAction(modelData.id)
+        }
+    }
+
+    WindowMenus {
+        id: menus
+
+        anchors.fill: parent
+        mainWindow: window
+        anchorItem: surface
+    }
+
+    WindowDialogs {
+        id: dialogs
+
+        mainWindow: window
+    }
+
+    FileOpenFlow {
+        id: openFlow
+
+        mainWindow: window
+    }
+
+    WindowActions {
+        id: actions
+
+        mainWindow: window
+    }
+
+    Connections {
+        target: ToplevelManager
+        function onActiveToplevelChanged() {
+            window.claimToplevel();
+        }
+    }
+
+    Toast {
+        anchors.fill: surface
+        shown: window.lastActive
+    }
+}

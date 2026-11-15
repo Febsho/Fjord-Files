@@ -1,0 +1,92 @@
+{
+  "conditions": {
+    "platform": "Linux-6.18.60-2-cachyos-lts-x86_64-with-glibc2.44",
+    "cpu": "AMD Ryzen 5 7600X3D 6-Core Processor",
+    "logical_cpus": 12,
+    "mem_total": "MemTotal:       31938272 kB",
+    "filesystem": "tmpfs rw,noatime,inode64",
+    "binary_sha256": "e1d174b1077097c3a859dd25a7f3cc261b0d00500dd74f0e2331e8183e40c13d",
+    "binary_version": "dfiles 2.1.0+git172.7a89d083 (commit 7a89d083, built 2026-11-15_16:33:57)",
+    "python_version": "3.14.10",
+    "sweep_version": null,
+    "fixture_files": 10000,
+    "fixture_bytes_each": 16,
+    "repeats": 3,
+    "large_copy_mib": 16,
+    "small_copy_files": 1000,
+    "cache": "uncontrolled; fixture creation and warmup precede samples",
+    "bus": "isolated/unavailable",
+    "timing": "wall-clock including CLI startup and IPC",
+    "gui_observer": "Umbriel mapped visible window; isolated XDG/D-Bus; not first rendered frame"
+  },
+  "measurements": {
+    "daemon_start_ready_ms": 7.869591,
+    "daemon_idle_rss": "VmRSS:\t   23468 kB",
+    "directory_first_page": {
+      "unit": "ms",
+      "samples": [
+        49.308332,
+        49.671473,
+        50.939375
+      ],
+      "median": 49.671473
+    },
+    "text_preview_head": {
+      "unit": "ms",
+      "samples": [
+        3.416039,
+        2.624923,
+        2.637307
+      ],
+      "median": 2.637307
+    },
+    "thumbnail_generate_512px": {
+      "unit": "ms",
+      "samples": [
+        28.747789,
+        27.396879,
+        28.117069
+      ],
+      "median": 28.117069
+    },
+    "search_direct_complete": {
+      "unit": "ms",
+      "samples": [
+        6.282963,
+        8.729226,
+        7.328161
+      ],
+      "median": 7.328161
+    },
+    "copy_large_complete": {
+      "unit": "ms",
+      "samples": [
+        18.243055,
+        18.280796,
+        18.985417
+      ],
+      "median": 18.280796
+    },
+    "copy_small_complete": {
+      "unit": "ms",
+      "samples": [
+        75.779561,
+        75.580883,
+        75.698437
+      ],
+      "median": 75.698437
+    },
+    "gui_window_visible": {
+      "unit": "ms",
+      "samples": [
+        1310.142368,
+        1200.056144,
+        1204.00732
+      ],
+      "median": 1204.00732
+    }
+  },
+  "not_measured": {
+    "Sweep scans": "sweep executable was not found in PATH"
+  }
+}

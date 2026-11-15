@@ -1,0 +1,234 @@
+//@ pragma Env QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+//@ pragma Env QSG_RENDER_LOOP=threaded
+//@ pragma Env QT_QUICK_CONTROLS_STYLE=Material
+//@ pragma UseQApplication
+//@ pragma AppId io.github.febsho.fjordfiles
+//@ pragma RenderControl
+//@ pragma DiskCache
+
+pragma ComponentBehavior: Bound
+
+import QtQuick
+import Quickshell
+import Quickshell.Wayland
+import qs.Common
+import qs.DCommon.Common as DC
+import qs.Modules
+import qs.Services
+
+ShellRoot {
+    id: root
+
+    readonly property var log: Log.scoped("Shell")
+    readonly property bool enableHotReload: Quickshell.env("DFILES_ENABLE_HOTRELOAD") === "1" || Quickshell.env("DFILES_ENABLE_HOTRELOAD") === "true"
+
+    readonly property bool dbusActivated: Quickshell.env("DFILES_DBUS_ACTIVATED") === "1"
+    readonly property bool quitOnLastClose: SettingsData.closeBehavior === "quit" && !SettingsData.keepRunning
+    readonly property bool idle: WindowService.count === 0 && ChooserService.count === 0 && FileOpsService.activeCount === 0
+    property bool quitDeferred: false
+
+    Component.onCompleted: {
+        Quickshell.watchFiles = enableHotReload;
+        DC.Style.theme = Theme;
+        DC.Style.settings = SettingsData;
+        DC.I18n.backend = I18n;
+        DC.Paths.backend = Paths;
+        DC.Log.backend = Log;
+        DC.Host.session = SessionService;
+        DC.Host.cache = CacheData;
+        DC.Host.files = DirectoryService;
+        DC.Host.appearance = FolderAppearances;
+        DC.Host.ownWindowDecorations = Qt.binding(() => SettingsData.windowTitleBars);
+        if (Quickshell.env("DFILES_START_HIDDEN") !== "1")
+            WindowService.create([]);
+    }
+
+    function windowObject(windowId) {
+        for (let i = 0; i < windowInstances.count; i++) {
+            const instance = windowInstances.objectAt(i) as MainWindow;
+            if (instance && instance.windowId === windowId)
+                return instance;
+        }
+        return null;
+    }
+
+    function ownToplevels() {
+        const toplevels = ToplevelManager.toplevels;
+        if (!toplevels || !toplevels.values)
+            return [];
+        return toplevels.values.filter(t => t.appId === "io.github.febsho.fjordfiles");
+    }
+
+    function unclaimedToplevel() {
+        const claimed = [];
+        for (let i = 0; i < windowInstances.count; i++) {
+            const instance = windowInstances.objectAt(i) as MainWindow;
+            if (instance?.toplevel)
+                claimed.push(instance.toplevel);
+        }
+        return ownToplevels().find(t => !claimed.includes(t)) ?? null;
+    }
+
+    function focusWindow(windowId) {
+        const instance = windowObject(windowId);
+        const t = instance?.toplevel ?? unclaimedToplevel();
+        if (!t)
+            return;
+        if (t.minimized)
+            t.minimized = false;
+        t.activate();
+    }
+
+    function showAndFocus() {
+        const target = WindowService.target();
+        if (target === 0) {
+            WindowService.create([]);
+            return;
+        }
+        focusWindow(target);
+    }
+
+    function anyWindowVisible() {
+        const target = windowObject(WindowService.target());
+        if (!target)
+            return false;
+        const t = target.toplevel ?? unclaimedToplevel();
+        return !t || !t.minimized;
+    }
+
+    function hideWindows(index = 0) {
+        if (index >= WindowService.count) {
+            WindowService.closeAll();
+            return;
+        }
+        const instance = windowObject(WindowService.windows.get(index).windowId);
+        if (!instance) { hideWindows(index + 1); return; }
+        instance.confirmViewerLeave(() => hideWindows(index + 1));
+    }
+
+    function handleWindowAction(action) {
+        switch (action) {
+        case "show":
+            showAndFocus();
+            break;
+        case "hide":
+            hideWindows();
+            break;
+        case "toggle":
+            if (anyWindowVisible()) {
+                hideWindows();
+                return;
+            }
+            showAndFocus();
+            break;
+        }
+    }
+
+    function closeOutcome(force) {
+        if (WindowService.count > 1 || !quitOnLastClose)
+            return "close";
+        if (ChooserService.count > 0)
+            return "defer";
+        if (!force && FileOpsService.activeCount > 0)
+            return "confirm";
+        return "quit";
+    }
+
+    function closeWindow(windowId, force) {
+        switch (closeOutcome(force)) {
+        case "close":
+            WindowService.close(windowId);
+            return;
+        case "defer":
+            quitDeferred = true;
+            WindowService.close(windowId);
+            return;
+        case "confirm":
+            windowObject(windowId)?.confirmQuit();
+            return;
+        case "quit":
+            FolderHistory.unload();
+            DuxFilesService.quit();
+            return;
+        }
+    }
+
+    function quitWhenIdle() {
+        if (!idle)
+            return;
+        FolderHistory.unload();
+        DuxFilesService.quit();
+    }
+
+    Connections {
+        target: DuxFilesService
+        function onWindowActionRequested(action) {
+            root.handleWindowAction(action);
+        }
+        function onOpenRequested(locations, newWindow) {
+            if (locations.length === 0 && !newWindow)
+                return;
+            const windowId = WindowService.open(locations, newWindow);
+            root.focusWindow(windowId);
+        }
+        function onPropertiesRequested(paths) {
+            if (paths.length === 0)
+                return;
+            const windowId = WindowService.target() === 0 ? WindowService.create([]) : WindowService.target();
+            root.focusWindow(windowId);
+            root.windowObject(windowId)?.showPropertiesFor(paths);
+        }
+        function onChooserRequested(request) {
+            ChooserService.open(request);
+        }
+        function onChooserCloseRequested(id) {
+            ChooserService.close(id);
+        }
+    }
+
+    Connections {
+        target: WindowService
+        function onOpenInWindow(windowId, locations) {
+            root.windowObject(windowId)?.openLocations(locations, false);
+        }
+        function onWindowAdded() {
+            focusRetry.restart();
+        }
+    }
+
+    Timer {
+        interval: 30000
+        running: root.idle && !SettingsData.keepRunning && (root.dbusActivated || root.quitDeferred)
+        onTriggered: root.quitWhenIdle()
+    }
+
+    Timer {
+        id: focusRetry
+        interval: 150
+        repeat: false
+        onTriggered: root.focusWindow(WindowService.lastActiveId)
+    }
+
+    Instantiator {
+        id: chooserInstances
+
+        model: ChooserService.requests
+
+        ChooserWindow {
+            required property var model
+
+            request: ChooserService.requestFor(model.requestId)
+        }
+    }
+
+    Instantiator {
+        id: windowInstances
+
+        model: WindowService.windows
+
+        MainWindow {
+            onNewWindowRequested: locations => WindowService.create(locations)
+            onCloseRequested: force => root.closeWindow(windowId, force)
+        }
+    }
+}
