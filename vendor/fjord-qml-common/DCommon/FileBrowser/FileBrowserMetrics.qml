@@ -44,7 +44,7 @@ Singleton {
     readonly property real columnMinPaneWidth: Style.sidebarWidth * 0.7
     readonly property real previewPaneWidth: Style.sidebarWidth * 1.5
     readonly property real columnSlideDistance: Style.spacingXL
-    readonly property real previewIconSize: gridIconSizes[4]
+    readonly property real previewIconSize: gridIconSizes[5]
     readonly property int previewBytes: 262144
     readonly property int previewLineChunk: 1024
     readonly property real previewInfoRatio: 0.5

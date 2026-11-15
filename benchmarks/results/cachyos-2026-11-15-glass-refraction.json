@@ -1,0 +1,117 @@
+{
+  "repeats": 3,
+  "warmupSeconds": 1.0,
+  "measureSeconds": 3.0,
+  "medianFps": {
+    "plain": 240,
+    "glass": 240,
+    "refraction": 240
+  },
+  "glassFpsChangePercent": 0.0,
+  "refractionFpsChangePercent": 0.0,
+  "runs": {
+    "plain": [
+      {
+        "mode": "plain",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "plain",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "plain",
+        "frames": 719,
+        "seconds": 3,
+        "fps": 239.66666666666666,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      }
+    ],
+    "glass": [
+      {
+        "mode": "glass",
+        "frames": 685,
+        "seconds": 3,
+        "fps": 228.33333333333334,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "glass",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "glass",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      }
+    ],
+    "refraction": [
+      {
+        "mode": "refraction",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "refraction",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "refraction",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      }
+    ]
+  },
+  "conditions": {
+    "display": "wayland-0",
+    "desktop": "umbriel",
+    "qtQuickVersion": "6.12.0",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti, 620.70.06",
+    "notes": "plain/glass modes render 100 static cards; refraction mode renders one app-owned-texture strip; FrameAnimation frame cadence; compositor blur remains compositor-controlled."
+  }
+}

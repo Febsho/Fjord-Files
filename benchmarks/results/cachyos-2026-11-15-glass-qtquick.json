@@ -1,0 +1,83 @@
+{
+  "repeats": 3,
+  "warmupSeconds": 2.0,
+  "measureSeconds": 3.0,
+  "medianFps": {
+    "plain": 240,
+    "glass": 240
+  },
+  "glassFpsChangePercent": 0.0,
+  "runs": {
+    "plain": [
+      {
+        "mode": "plain",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "plain",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "plain",
+        "frames": 432,
+        "seconds": 3,
+        "fps": 144,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      }
+    ],
+    "glass": [
+      {
+        "mode": "glass",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "glass",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      },
+      {
+        "mode": "glass",
+        "frames": 720,
+        "seconds": 3,
+        "fps": 240,
+        "compositorBlurProtocol": false,
+        "rendererInfo": [
+          "Prefer software device: 0"
+        ]
+      }
+    ]
+  },
+  "conditions": {
+    "display": "wayland-0",
+    "desktop": "umbriel",
+    "qtQuickVersion": "6.12.0",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti, 620.70.06",
+    "notes": "100 static cards; FrameAnimation frame cadence; compositor blur remains controlled by the compositor."
+  }
+}

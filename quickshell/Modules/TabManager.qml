@@ -233,7 +233,7 @@ QtObject {
 
     function folderTitle(path) {
         if (path === "")
-            return I18n.tr("Files", "main window title");
+            return I18n.tr("Fjord Files", "main window title");
         if (path === TrashService.filesPath)
             return I18n.tr("Trash", "trash view header and sidebar entry");
         if (path === RecentService.path)

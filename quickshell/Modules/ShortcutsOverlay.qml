@@ -4,7 +4,7 @@ import QtQuick
 import qs.Common
 import qs.DCommon.Widgets
 
-OverlayDialog {
+GlassDialog {
     id: overlay
 
     readonly property bool vimKeys: SettingsData.vimKeys

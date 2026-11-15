@@ -715,7 +715,7 @@ FocusScope {
             id: stage
 
             anchors.top: textSearch.visible ? textSearch.bottom : header.bottom
-            anchors.bottom: controls.top
+            anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.margins: Theme.spacingM
@@ -1035,10 +1035,13 @@ FocusScope {
             }
         }
 
-        RowLayout {
+        GlassViewerControls {
             id: controls
 
             visible: overlay.kind === "image" || overlay.kind === "pdf"
+            refractionSource: overlay.kind === "image" ? stage : null
+            refractionLive: false
+            refractionRevision: [overlay.path, overlay.zoom, overlay.panX, overlay.panY, overlay.angle, overlay.rasterBucket, picture.status, picture.sourceSize.width, picture.sourceSize.height].join(":")
 
             enabled: overlay.kind !== "pdf" || overlay.pageView?.ready === true
             anchors.bottom: parent.bottom

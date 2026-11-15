@@ -1,7 +1,7 @@
 import QtQuick
 import qs.Services
 
-OverlayDialog {
+GlassDialog {
     id: root
 
     property string opScope: ""

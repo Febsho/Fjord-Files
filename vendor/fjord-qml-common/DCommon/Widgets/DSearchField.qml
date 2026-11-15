@@ -12,4 +12,20 @@ DTextField {
     leftIconName: "search"
     hidePlaceholderOnFocus: false
     showClearButton: true
+
+    // The search icon and its padding sit outside the inner TextInput. Keep
+    // that leading area clickable so clicking the visible start of the field
+    // places the caret at the beginning instead of doing nothing.
+    MouseArea {
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: parent.leftPadding
+        acceptedButtons: Qt.LeftButton
+        cursorShape: Qt.IBeamCursor
+        onPressed: {
+            parent.forceActiveFocus();
+            parent.cursorPosition = 0;
+        }
+    }
 }

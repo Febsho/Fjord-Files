@@ -237,17 +237,7 @@ Item {
                                         FileIcon {
                                             anchors.horizontalCenter: parent.horizontalCenter
                                             iconName: thumb.modelData.iconName ?? (thumb.modelData.isDir ? "folder" : "")
-                                            size: Theme.iconSize
-                                        }
-
-                                        StyledText {
-                                            width: parent.width - Theme.spacingXS
-                                            anchors.horizontalCenter: parent.horizontalCenter
-                                            text: thumb.modelData.name
-                                            color: Theme.surfaceVariantText
-                                            font.pixelSize: Theme.fontSizeSmall
-                                            horizontalAlignment: Text.AlignHCenter
-                                            elide: Text.ElideMiddle
+                                            size: Theme.iconSizeLarge * 1.5
                                         }
                                     }
                                 }

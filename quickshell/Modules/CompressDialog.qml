@@ -3,7 +3,7 @@ import qs.Common
 import qs.DCommon.Widgets
 import qs.DCommon.FileBrowser
 
-OverlayDialog {
+GlassDialog {
     id: root
 
     property var paths: []

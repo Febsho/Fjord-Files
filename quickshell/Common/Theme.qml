@@ -553,6 +553,21 @@ Singleton {
     readonly property real foregroundAlpha: floatingWindowForegroundAlpha
     readonly property bool blurLayersActive: BlurService.enabled
     readonly property bool connectedSurfaceBlurEnabled: true
+    readonly property real glassMaterialStrength: {
+        if (SettingsData.performanceMode)
+            return 0;
+        switch (SettingsData.glassStrength) {
+        case "subtle":
+            return 0.35;
+        case "full":
+            return 1;
+        default:
+            return 0.68;
+        }
+    }
+    readonly property real glassHighlightAlpha: glassMaterialStrength * (isLightMode ? 0.34 : 0.22)
+    readonly property real glassEdgeAlpha: glassMaterialStrength * (isLightMode ? 0.24 : 0.31)
+    readonly property color glassTint: blend(surfaceContainerLow, primary, 0.035 + glassMaterialStrength * 0.045)
 
     readonly property color windowSurface: withAlpha(surface, floatingWindowTransparency)
     readonly property color floatingWindowPaneSurface: withAlpha(surfaceContainer, floatingWindowForegroundAlpha)
@@ -589,7 +604,7 @@ Singleton {
     }
 
     readonly property int currentAnimationBaseDuration: SettingsData.animationDuration
-    readonly property int currentAnimationSpeed: currentAnimationBaseDuration > 0 ? Style.AnimationSpeed.Custom : Style.AnimationSpeed.None
+    readonly property int currentAnimationSpeed: currentAnimationBaseDuration > 0 && !SettingsData.performanceMode ? Style.AnimationSpeed.Custom : Style.AnimationSpeed.None
     readonly property int shorterDuration: Math.round(currentAnimationBaseDuration * 0.2)
     readonly property int shortDuration: Math.round(currentAnimationBaseDuration * 0.3)
     readonly property int mediumDuration: Math.round(currentAnimationBaseDuration * 0.6)
@@ -609,9 +624,9 @@ Singleton {
             "default": [300, 24]
         })
     readonly property var springDampingScales: [1.22, 1.0, 0.82]
-    readonly property bool springMotionDisabled: currentAnimationBaseDuration <= 0
+    readonly property bool springMotionDisabled: currentAnimationBaseDuration <= 0 || SettingsData.performanceMode
     readonly property bool reduceMotion: SettingsData.reduceMotion
-    readonly property bool animationsEnabled: !reduceMotion && currentAnimationBaseDuration > 0
+    readonly property bool animationsEnabled: !reduceMotion && !SettingsData.performanceMode && currentAnimationBaseDuration > 0
 
     function springPreset(name, baseDuration) {
         const spec = springSpecs[name] ?? springSpecs["default"];

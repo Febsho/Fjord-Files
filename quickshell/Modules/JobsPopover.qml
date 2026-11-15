@@ -17,13 +17,16 @@ Popup {
     focus: false
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
 
-    background: Item {
+    background: GlassPopover {
+        id: popover
+
         DC.ElevationShadow {
             anchors.fill: parent
+            z: -1
             level: Theme.elevationLevel2
             fallbackOffset: Theme.spacingXS
             targetRadius: Theme.cornerRadiusL
-            targetColor: Theme.surfaceContainer
+            targetColor: popover.materialColor
             borderColor: Theme.outlineMedium
             borderWidth: Theme.layerOutlineWidth
             shadowEnabled: Theme.elevationEnabled && SettingsData.popoutElevationEnabled

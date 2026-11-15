@@ -34,25 +34,24 @@ Rectangle {
         }
     }
 
-    readonly property var accentPair: Theme.accent(accent)
-    readonly property color badgeColor: accentPair?.container ?? Theme.withAlpha(Theme.primary, Theme.tonalTintAlpha)
-    readonly property color glyphColor: accentPair?.onContainer ?? Theme.primary
+    readonly property color badgeColor: Theme.withAlpha(Theme.primary, root.active ? 0.14 : 0)
+    readonly property color glyphColor: root.active ? Theme.primary : Theme.surfaceVariantText
     readonly property real topRadius: isFirstInGroup ? Theme.groupedListOuterRadius : Theme.groupedListInnerRadius
     readonly property real bottomRadius: isLastInGroup ? Theme.groupedListOuterRadius : Theme.groupedListInnerRadius
 
     width: parent?.width ?? 0
-    height: Math.max(SettingsMetrics.navItemMinHeight, textColumn.implicitHeight + Theme.spacingS * 2)
+    height: SettingsMetrics.navItemMinHeight
     topLeftRadius: topRadius
     topRightRadius: topRadius
     bottomLeftRadius: bottomRadius
     bottomRightRadius: bottomRadius
-    border.width: Theme.layerOutlineWidth
-    border.color: Theme.outlineMedium
+    border.width: 0
+    border.color: "transparent"
     color: {
         if (active)
             return SettingsMetrics.selectedRowColor;
         if (highlighted)
-            return Theme.blend(SettingsMetrics.sidebarRowColor, Theme.primary, SettingsMetrics.highlightBlend);
+            return Theme.withAlpha(Theme.surfaceText, Theme.isLightMode ? 0.055 : 0.10);
         return SettingsMetrics.sidebarRowColor;
     }
 
@@ -72,7 +71,7 @@ Rectangle {
         bottomLeftRadius: root.bottomRadius
         bottomRightRadius: root.bottomRadius
         color: Theme.surfaceText
-        opacity: mouseArea.pressed ? Theme.stateLayerPressed : (mouseArea.containsMouse ? Theme.stateLayerHover : 0)
+        opacity: mouseArea.pressed ? Theme.stateLayerHover : (mouseArea.containsMouse ? Theme.stateLayerHover * 0.45 : 0)
 
         Behavior on opacity {
             enabled: Theme.animationsEnabled
@@ -82,15 +81,6 @@ Rectangle {
                 easing.bezierCurve: Theme.expressiveCurves.expressiveEffects
             }
         }
-    }
-
-    DRipple {
-        id: ripple
-        rippleColor: Theme.surfaceText
-        topLeftRadius: root.topRadius
-        topRightRadius: root.topRadius
-        bottomLeftRadius: root.bottomRadius
-        bottomRightRadius: root.bottomRadius
     }
 
     Rectangle {
@@ -110,9 +100,9 @@ Rectangle {
         id: iconCircle
         width: SettingsMetrics.navIconSize
         height: SettingsMetrics.navIconSize
-        radius: Theme.fullRadius(width, height)
+        radius: Theme.cornerRadiusS
         anchors.left: parent.left
-        anchors.leftMargin: Theme.spacingL
+        anchors.leftMargin: Theme.spacingS
         anchors.verticalCenter: parent.verticalCenter
         color: root.badgeColor
 
@@ -128,7 +118,7 @@ Rectangle {
         DIcon {
             anchors.centerIn: parent
             name: root.iconName
-            size: Theme.iconSizeMedium
+            size: Theme.iconSizeSmall
             color: root.glyphColor
         }
     }
@@ -136,7 +126,7 @@ Rectangle {
     StyledText {
         id: countBadge
         anchors.right: parent.right
-        anchors.rightMargin: Theme.spacingL
+        anchors.rightMargin: Theme.spacingM
         anchors.verticalCenter: parent.verticalCenter
         visible: root.matchCount > 0
         text: root.matchCount
@@ -148,18 +138,18 @@ Rectangle {
     Column {
         id: textColumn
         anchors.left: iconCircle.right
-        anchors.leftMargin: Theme.spacingM
+        anchors.leftMargin: Theme.spacingS
         anchors.right: countBadge.visible ? countBadge.left : parent.right
         anchors.rightMargin: countBadge.visible ? Theme.spacingM : Theme.spacingL
         anchors.verticalCenter: parent.verticalCenter
-        spacing: Theme.spacingXXS
+        spacing: 0
 
         StyledText {
             width: parent.width
             text: root.title
             font.pixelSize: Theme.fontSizeMedium
-            font.weight: Theme.fontWeightMedium
-            color: Theme.surfaceText
+            font.weight: root.active ? Theme.fontWeightMedium : Theme.fontWeight
+            color: root.active ? Theme.primary : Theme.surfaceText
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignLeft
         }
@@ -172,7 +162,7 @@ Rectangle {
             wrapMode: Text.WordWrap
             maximumLineCount: 2
             elide: Text.ElideRight
-            visible: root.hint !== ""
+            visible: false
             horizontalAlignment: Text.AlignLeft
         }
     }
@@ -182,7 +172,6 @@ Rectangle {
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
-        onPressed: mouse => ripple.trigger(mouse.x, mouse.y)
         onClicked: root.clicked()
     }
 }

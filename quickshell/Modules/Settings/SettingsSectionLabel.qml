@@ -22,9 +22,9 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: (SettingsMetrics.sectionLabelTopGap - SettingsMetrics.sectionLabelBottomGap) / 2
         text: root.text
-        font.pixelSize: Theme.fontSizeMedium
+        font.pixelSize: Theme.fontSizeSmall
         font.weight: Theme.fontWeightMedium
-        color: Theme.primary
+        color: Theme.surfaceVariantText
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignLeft
     }

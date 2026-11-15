@@ -5,7 +5,7 @@ import Quickshell
 
 Singleton {
     readonly property string library: value("LIBRARY")
-    readonly property string name: library ? "dux-qt-base" : "Quickshell"
+    readonly property string name: library ? "Bundled Quickshell runtime" : "Quickshell"
     readonly property string version: value("VERSION") || Qt.application.version
     readonly property string revision: value("REVISION")
 

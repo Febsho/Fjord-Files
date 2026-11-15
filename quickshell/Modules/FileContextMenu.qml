@@ -5,7 +5,7 @@ import qs.Common
 import qs.Services
 import qs.DCommon.FileBrowser
 
-FileMenu {
+GlassContextMenu {
     id: menu
 
     property int selectionCount: 0

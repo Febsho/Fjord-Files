@@ -1,7 +1,7 @@
 import QtQuick
 import qs.Common
 
-Rectangle {
+GlassSurface {
     property bool first: false
     property bool last: false
 
@@ -10,7 +10,8 @@ Rectangle {
 
     anchors.left: parent.left
     anchors.right: parent.right
-    color: Theme.foregroundColor(Theme.cardSurface, true)
+    baseColor: Theme.foregroundColor(Theme.cardSurface, true)
+    edgeLightingEnabled: first || last
     topLeftRadius: topRadius
     topRightRadius: topRadius
     bottomLeftRadius: bottomRadius

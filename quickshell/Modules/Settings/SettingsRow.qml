@@ -25,7 +25,7 @@ T.Control {
     property color trailingBadgeColor: Theme.surfaceVariantText
     property real paddingH: SettingsMetrics.rowPaddingH
     property real paddingV: SettingsMetrics.rowPaddingV
-    property color rowColor: SettingsMetrics.rowColor
+    property color rowColor: "transparent"
     property color iconColor: Theme.primary
     property color titleColor: Theme.surfaceText
 
@@ -99,7 +99,7 @@ T.Control {
 
     Rectangle {
         anchors.fill: parent
-        color: root.flashing ? Theme.blend(root.rowColor, Theme.primary, SettingsMetrics.highlightBlend) : root.rowColor
+        color: root.flashing ? Theme.blend(SettingsMetrics.rowColor, Theme.primary, SettingsMetrics.highlightBlend) : root.rowColor
         topLeftRadius: root.topRadius
         topRightRadius: root.topRadius
         bottomLeftRadius: root.bottomRadius
@@ -113,6 +113,17 @@ T.Control {
                 easing.bezierCurve: Theme.expressiveCurves.expressiveEffects
             }
         }
+    }
+
+    Rectangle {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: root.paddingH
+        anchors.rightMargin: root.paddingH
+        height: 1
+        color: Theme.withAlpha(Theme.outline, 0.12)
+        visible: !root.isLastInGroup && root.parent?.parent?.isSettingsGroup === true
     }
 
     Rectangle {

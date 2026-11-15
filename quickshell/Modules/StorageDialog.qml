@@ -7,7 +7,7 @@ import qs.Services
 import qs.DCommon.Widgets
 import qs.DCommon.FileBrowser
 
-OverlayDialog {
+GlassDialog {
     id: root
     objectName: "storageDialog"
 
@@ -198,7 +198,7 @@ OverlayDialog {
                 color: Theme.surfaceText
                 elide: Text.ElideMiddle
             }
-            ProgressBar {
+            GlassProgressIndicator {
                 width: parent.width
                 from: 0
                 to: 1
@@ -272,7 +272,7 @@ OverlayDialog {
                 color: Theme.surfaceVariantText
                 font.pixelSize: Theme.fontSizeSmall
             }
-            ProgressBar {
+            GlassProgressIndicator {
                 objectName: "storageShare"
                 width: parent.width
                 from: 0

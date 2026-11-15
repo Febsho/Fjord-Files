@@ -11,9 +11,8 @@ Item {
     LayoutMirroring.enabled: I18n.isRtl
     LayoutMirroring.childrenInherit: true
 
-    readonly property string githubUrl: "https://github.com/duxlabs-dev/dux-files"
-    readonly property string docsUrl: "https://duxlabs.dev/docs"
-    readonly property string kofiUrl: "https://ko-fi.com/duxlabs"
+    readonly property string githubUrl: "https://github.com/Febsho/Fjord-Files"
+    readonly property string docsUrl: "https://github.com/Febsho/Fjord-Files/blob/master/README-FJORD.md"
     readonly property string licenseUrl: githubUrl + "/blob/master/LICENSE"
     readonly property string version: DuxFilesService.daemonVersion.match(/^v?(\d+\.\d+)/)?.[1] ?? ""
 
@@ -60,7 +59,7 @@ Item {
         },
         {
             "id": "indexSearch",
-            "label": I18n.tr("Search with the %1 index", "capability row on the about page, %1 is the search service name").arg("danksearch")
+            "label": I18n.tr("Indexed search", "capability row on the about page")
         }
     ]
 
@@ -93,7 +92,7 @@ Item {
 
     SettingsPage {
         DHeroCard {
-            brand: I18n.tr("Files", "main window title")
+            brand: I18n.tr("Fjord Files", "about page product name")
             caption: root.version ? `Fjord Files ${root.version}` : "Fjord Files"
 
             Image {
@@ -106,12 +105,6 @@ Item {
                 fillMode: Image.PreserveAspectFit
             }
 
-            DButton {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: I18n.tr("Support %1", "about page hero button, opens the Ko-fi donation page, %1 is Dux Labs").arg("Dux Labs")
-                iconName: "favorite"
-                onClicked: DuxFilesService.openUri(root.kofiUrl)
-            }
         }
 
         SettingsGroup {

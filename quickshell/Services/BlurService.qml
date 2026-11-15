@@ -16,7 +16,12 @@ Singleton {
     property bool probed: false
 
     readonly property bool requested: SettingsData.blurEnabled
-    readonly property bool enabled: available && requested
+    readonly property bool supported: available || compositorManaged
+    readonly property bool enabled: supported && requested && !SettingsData.performanceMode
+    readonly property bool compositorManaged: {
+        const desktops = (Quickshell.env("XDG_CURRENT_DESKTOP") ?? "").toLowerCase().split(":");
+        return desktops.includes("umbriel");
+    }
 
     onRequestedChanged: {
         if (requested)

@@ -15,6 +15,8 @@ Popup {
     property alias maximumWidth: dialog.maximumWidth
     property alias acceptEnabled: dialog.acceptEnabled
     property alias closeEnabled: dialog.closeEnabled
+    property alias surfaceColor: dialog.surfaceColor
+    property alias surfaceRadius: dialog.surfaceRadius
     default property alias content: dialog.content
     property alias actions: dialog.actions
 

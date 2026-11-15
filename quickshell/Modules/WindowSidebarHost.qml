@@ -132,6 +132,16 @@ Item {
             }
         }
 
+        GlassSidebar {
+            anchors.fill: parent
+            visible: parent.width > 0
+            baseColor: Theme.withAlpha(Theme.surfaceContainerLow, Math.min(0.82, Theme.floatingWindowForegroundAlpha * 0.82))
+            topLeftRadius: 0
+            topRightRadius: 0
+            bottomLeftRadius: 0
+            bottomRightRadius: 0
+        }
+
         WindowSidebar {
             id: dockedSidebar
 
@@ -213,7 +223,7 @@ Item {
         }
     }
 
-    Rectangle {
+    GlassSidebar {
         id: sidebarOverlay
 
         anchors.top: parent.top
@@ -221,7 +231,7 @@ Item {
         width: Math.max(FilesMetrics.sidebarMinWidth, Math.min(host.width - FilesMetrics.contentMarginH * 2, CacheData.sidebarWidth))
         visible: x > -width
         x: host.overlayOpen ? 0 : -width
-        color: Theme.foregroundColor(Theme.surfaceContainerLow, true)
+        baseColor: Theme.foregroundColor(Theme.surfaceContainerLow, true)
         topRightRadius: Theme.windowRadius
         bottomRightRadius: Theme.windowRadius
 
@@ -230,7 +240,7 @@ Item {
             z: -1
             level: Theme.elevationLevel1
             targetRadius: Theme.windowRadius
-            targetColor: sidebarOverlay.color
+            targetColor: sidebarOverlay.baseColor
             shadowEnabled: Theme.elevationEnabled
         }
 

@@ -126,6 +126,8 @@ def run_fixture(fixture, qs):
             probe.write_text("#!/bin/sh\nexit 0\n")
             probe.chmod(0o755)
             env["PATH"] = str(fake_bin) + os.pathsep + env.get("PATH", "")
+        if fixture.stem == "glass":
+            env["XDG_CURRENT_DESKTOP"] = "umbriel"
         process, error = start([qs, "-p", str(harness)], root, env)
         if process is None:
             return fixture.stem, False, time.monotonic() - started, error

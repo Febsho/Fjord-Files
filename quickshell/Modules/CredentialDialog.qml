@@ -5,7 +5,7 @@ import qs.Common
 import qs.Services
 import qs.DCommon.Widgets
 
-OverlayDialog {
+GlassDialog {
     id: root
 
     property var ask: null

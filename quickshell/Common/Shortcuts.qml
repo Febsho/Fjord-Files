@@ -588,7 +588,7 @@ Singleton {
         },
         {
             "id": "operations",
-            "label": I18n.tr("Files", "keyboard shortcut group")
+            "label": I18n.tr("File actions", "keyboard shortcut group")
         },
         {
             "id": "sidebar",

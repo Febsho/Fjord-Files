@@ -898,7 +898,7 @@ Item {
             }
 
             SettingsCard {
-                title: I18n.tr("Files", "keyboard shortcut group")
+                title: I18n.tr("File actions", "keyboard shortcut group")
 
                 OptionGroupRow {
                     text: I18n.tr("Open items with", "setting label choosing single or double click")
@@ -1020,7 +1020,7 @@ Item {
                         case "custom":
                             return I18n.tr("Load colors from your own theme file.", "color source description for custom");
                         default:
-                            return I18n.tr("Follow %1 colors, falling back to a preset.", "color source description for auto, %1 is Dux Shell").arg("Dux Shell");
+                            return I18n.tr("Follow desktop colors, falling back to a preset.", "color source description for automatic desktop colors");
                         }
                     }
                     optionList: root.colorSourceOptions
@@ -1032,7 +1032,7 @@ Item {
                     visible: SettingsData.colorSource === "auto"
                     iconName: (Theme.noctaliaColorsAvailable || Theme.dmsColorsAvailable) ? "check_circle" : "info"
                     iconColor: (Theme.noctaliaColorsAvailable || Theme.dmsColorsAvailable) ? Theme.success : Theme.surfaceVariantText
-                    title: Theme.noctaliaColorsAvailable ? I18n.tr("Using %1 dynamic colors.", "auto color source status when the shell is active, %1 is Noctalia").arg("Noctalia") : Theme.dmsColorsAvailable ? I18n.tr("Using %1 dynamic colors.", "auto color source status when the shell is active, %1 is Dux Shell").arg("Dux Shell") : I18n.tr("%1 not detected, using the %2 preset.", "auto color source status when the shell is missing, %1 is Dux Shell, %2 is a preset name").arg("Dux Shell").arg(Theme.presetLabel(SettingsData.presetTheme))
+                    title: Theme.noctaliaColorsAvailable ? I18n.tr("Using %1 dynamic colors.", "auto color source status when the shell is active, %1 is Noctalia").arg("Noctalia") : Theme.dmsColorsAvailable ? I18n.tr("Using desktop dynamic colors.", "automatic color source status when desktop colors are active") : I18n.tr("Desktop colors are not available; using the %1 palette.", "automatic color source fallback status").arg(Theme.presetLabel(SettingsData.presetTheme))
                 }
 
                 SettingsRow {
@@ -1099,75 +1099,107 @@ Item {
 
                 OptionGroupRow {
                     text: I18n.tr("Material", "glass strength setting label")
-                    keywords: I18n.tr("liquid glass transparency reflection depth subtle balanced full", "settings search keywords, space separated, add synonyms in your language")
+                    keywords: I18n.tr("glass reflection refraction depth subtle balanced full", "settings search keywords, space separated, add synonyms in your language")
                     description: SettingsData.glassStrength === "subtle"
-                        ? I18n.tr("Low transparency, maximum readability.", "glass strength option description")
+                        ? I18n.tr("Quiet highlights and a restrained glass treatment.", "glass strength option description")
                         : SettingsData.glassStrength === "full"
-                            ? I18n.tr("More transparency, reflections and depth.", "glass strength option description")
-                            : I18n.tr("A balanced glass look for everyday use.", "glass strength option description")
+                            ? I18n.tr("Stronger reflections, refraction and edge lighting.", "glass strength option description")
+                            : I18n.tr("Balanced reflections and material tint.", "glass strength option description")
                     optionList: [
                         { value: "subtle", label: I18n.tr("Subtle", "glass strength option") },
                         { value: "balanced", label: I18n.tr("Balanced", "glass strength option") },
                         { value: "full", label: I18n.tr("Full Glass", "glass strength option") }
                     ]
                     current: SettingsData.glassStrength
-                    onPicked: value => {
-                        SettingsData.glassStrength = value;
-                        SettingsData.floatingWindowTransparency = value === "subtle" ? 0.97 : value === "full" ? 0.80 : 0.90;
-                        SettingsData.floatingWindowForegroundTransparency = value === "subtle" ? 0.98 : value === "full" ? 0.88 : 0.94;
-                        SettingsData.floatingWindowForegroundLayers = true;
-                    }
+                    onPicked: value => SettingsData.glassStrength = value
+                }
+
+                SettingsToggleRow {
+                    text: I18n.tr("Performance mode", "appearance setting disabling optional visual effects")
+                    keywords: I18n.tr("gpu battery reduce blur shader glass animations", "settings search keywords, space separated, add synonyms in your language")
+                    description: I18n.tr("Turns off glass highlights, client blur, and interface animations. Umbriel window rules remain compositor-controlled.", "description for performance mode")
+                    settingKey: "performanceMode"
                 }
 
                 SettingsRow {
-                    title: I18n.tr("Schematic design preview", "glass strength preview label")
-                    subtitle: I18n.tr("Illustrative only; this preview does not render a shader.", "glass strength preview description")
+                    title: I18n.tr("Material preview", "glass strength preview label")
+                    subtitle: I18n.tr("Live preview of the selected Fjord glass material.", "glass strength preview description")
 
                     body: Item {
                         width: parent.width
-                        height: 94
+                        height: 128
 
                         Rectangle {
+                            id: materialBackdrop
                             anchors.fill: parent
                             radius: Theme.cornerRadiusM
-                            color: Theme.withAlpha(Theme.surfaceContainerHigh, SettingsData.glassStrength === "full" ? 0.56 : SettingsData.glassStrength === "subtle" ? 0.92 : 0.76)
-                            border.width: 1
-                            border.color: Theme.withAlpha(Theme.surfaceText, SettingsData.glassStrength === "full" ? 0.30 : 0.12)
-
-                            Rectangle {
-                                anchors { left: parent.left; right: parent.right; top: parent.top }
-                                height: SettingsData.glassStrength === "full" ? 3 : 1
-                                radius: parent.radius
-                                color: Theme.withAlpha(Theme.surface, SettingsData.glassStrength === "full" ? 0.72 : 0.32)
+                            clip: true
+                            gradient: Gradient {
+                                GradientStop { position: 0; color: Theme.blend(Theme.primaryContainer, Theme.surface, 0.18) }
+                                GradientStop { position: 0.52; color: Theme.blend(Theme.tertiaryContainer, Theme.surface, 0.16) }
+                                GradientStop { position: 1; color: Theme.blend(Theme.secondaryContainer, Theme.surface, 0.12) }
                             }
 
                             Rectangle {
-                                anchors { left: parent.left; top: parent.top; bottom: parent.bottom; margins: Theme.spacingM }
-                                width: 52
-                                radius: Theme.cornerRadiusS
-                                color: Theme.withAlpha(Theme.primary, SettingsData.glassStrength === "subtle" ? 0.16 : 0.28)
+                                width: 76
+                                height: 76
+                                radius: width / 2
+                                x: materialBackdrop.width * 0.68
+                                y: -20
+                                color: Theme.withAlpha(Theme.tertiary, 0.48)
                             }
 
-                            Column {
-                                anchors { left: parent.left; leftMargin: 78; verticalCenter: parent.verticalCenter }
-                                spacing: Theme.spacingS
-                                Repeater {
-                                    model: [0.76, 0.48, 0.64]
-                                    Rectangle {
-                                        required property real modelData
-                                        width: (parent.parent.width - 100) * modelData
-                                        height: 6
-                                        radius: 3
-                                        color: Theme.withAlpha(Theme.surfaceText, SettingsData.glassStrength === "subtle" ? 0.32 : 0.20)
+                            Rectangle {
+                                width: 64
+                                height: 64
+                                radius: width / 2
+                                x: materialBackdrop.width * 0.38
+                                y: materialBackdrop.height * 0.52
+                                color: Theme.withAlpha(Theme.primary, 0.40)
+                            }
+
+                            GlassSurface {
+                                anchors.centerIn: parent
+                                width: Math.min(parent.width - Theme.spacingXL * 2, 390)
+                                height: 82
+                                baseColor: Theme.withAlpha(Theme.surfaceContainer, 0.40)
+                                refractionSource: materialBackdrop
+                                refractionLive: false
+                                refractionRevision: SettingsData.glassStrength
+                                topLeftRadius: Theme.cornerRadiusM
+                                topRightRadius: topLeftRadius
+                                bottomLeftRadius: topLeftRadius
+                                bottomRightRadius: topLeftRadius
+
+                                Row {
+                                    anchors.fill: parent
+                                    anchors.margins: Theme.spacingM
+                                    spacing: Theme.spacingM
+
+                                    FileIcon {
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        iconName: "folder"
+                                        size: Theme.iconSizeLarge
+                                    }
+
+                                    Column {
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        spacing: Theme.spacingXS
+
+                                        StyledText {
+                                            text: I18n.tr("Downloads", "folder name shown in the glass material preview")
+                                            font.pixelSize: Theme.fontSizeMedium
+                                            font.weight: Theme.fontWeightMedium
+                                            color: Theme.surfaceText
+                                        }
+
+                                        StyledText {
+                                            text: I18n.tr("Files stay clear above the glass.", "caption shown in the glass material preview")
+                                            font.pixelSize: Theme.fontSizeSmall
+                                            color: Theme.surfaceVariantText
+                                        }
                                     }
                                 }
-                            }
-
-                            Rectangle {
-                                visible: SettingsData.glassStrength === "full"
-                                x: parent.width - 62; y: 9; width: 42; height: 1
-                                rotation: -28
-                                color: Theme.withAlpha(Theme.surface, 0.75)
                             }
                         }
                     }
@@ -1217,7 +1249,7 @@ Item {
                     visible: SettingsData.fontSource === "auto" && !Theme.typography.followingDms
                     iconName: "info"
                     iconColor: Theme.surfaceVariantText
-                    title: I18n.tr("%1 not detected, using %2.", "auto font source status when the shell is missing, %1 is Dux Shell, %2 is a font family").arg("Dux Shell").arg(Theme.fontFamily)
+                    title: I18n.tr("Desktop font settings are not available; using %1.", "automatic font source fallback status").arg(Theme.fontFamily)
                 }
 
                 FontFamilyRow {
@@ -1310,15 +1342,17 @@ Item {
                 }
 
                 SettingsToggleRow {
-                    visible: BlurService.available
+                    visible: BlurService.supported
                     text: I18n.tr("Background blur", "toggle asking the compositor to blur behind see-through windows")
                     keywords: I18n.tr("frosted glass compositor", "settings search keywords, space separated, add synonyms in your language")
-                    description: I18n.tr("Blurs what shows through the window. Needs an opacity below 100%.", "background blur toggle description")
+                    description: BlurService.compositorManaged
+                        ? I18n.tr("Request compositor blur for this window. Umbriel applies blur through its window rules.", "background blur toggle description for Umbriel")
+                        : I18n.tr("Blurs what shows through the window. Needs an opacity below 100%.", "background blur toggle description")
                     settingKey: "blurEnabled"
                 }
 
                 SettingsRow {
-                    visible: BlurService.probed && !BlurService.available
+                    visible: BlurService.probed && !BlurService.supported
                     title: I18n.tr("Background blur", "toggle asking the compositor to blur behind see-through windows")
                     subtitle: I18n.tr("Your compositor does not support background blur.", "hint shown instead of the background blur toggle")
                 }

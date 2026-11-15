@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Common
+import qs.Modules
 import qs.DCommon.Widgets
 
 SettingsRow {
@@ -56,7 +57,7 @@ SettingsRow {
             onClicked: root.nudge(-1)
         }
 
-        DSlider {
+        GlassSlider {
             id: slider
             Accessible.name: root.text
             Accessible.description: root.description

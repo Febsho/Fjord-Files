@@ -15,6 +15,11 @@
   <url type="homepage">https://github.com/Febsho/Fjord-Files</url>
   <url type="vcs-browser">https://github.com/Febsho/Fjord-Files</url>
   <releases>
+    <release version="0.2.0" date="2026-11-15">
+      <description>
+        <p>Adds adjustable liquid-glass styling with a live preview, independent opacity controls, and an optional compositor-managed background blur setting. Refines the settings layout, tab overview, search-field clicks, and Fjord branding.</p>
+      </description>
+    </release>
     <release version="0.1.0" date="2026-11-15">
       <description>
         <p>First Fjord Files preview release with native Linux file management, tabs, split views, previews, and asynchronous file operations.</p>

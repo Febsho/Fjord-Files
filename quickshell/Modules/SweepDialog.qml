@@ -7,7 +7,7 @@ import qs.Services
 import qs.DCommon.Widgets
 import qs.DCommon.FileBrowser
 
-OverlayDialog {
+GlassDialog {
     id: root
     objectName: "sweepDialog"
 

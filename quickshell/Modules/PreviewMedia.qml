@@ -62,7 +62,7 @@ Item {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: controls.top
+        anchors.bottom: options.top
         visible: root.video
         fillMode: VideoOutput.PreserveAspectFit
     }
@@ -75,7 +75,7 @@ Item {
     Text {
         objectName: "mediaSubtitleText"
         anchors.horizontalCenter: videoOutput.horizontalCenter
-        anchors.bottom: videoOutput.bottom
+        anchors.bottom: controls.top
         anchors.bottomMargin: Theme.spacingM
         width: Math.max(0, videoOutput.width - Theme.spacingXL * 2)
         text: root.currentSubtitle
@@ -122,11 +122,12 @@ Item {
         }
     }
 
-    RowLayout {
+    GlassViewerControls {
         id: controls
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: options.top
+        refractionSource: root.video ? videoOutput : null
         spacing: Theme.spacingS
 
         DActionButton {

@@ -103,7 +103,7 @@ FloatingWindow {
 
     WindowBlur {
         targetWindow: window
-        blurEnabled: Theme.translucentWindows
+        blurEnabled: Theme.translucentWindows && Theme.blurLayersActive
         blurWidth: window.width
         blurHeight: window.height
     }

@@ -33,12 +33,12 @@ FloatingWindow {
 
     WindowBlur {
         targetWindow: settingsModal
-        blurEnabled: Theme.translucentWindows
+        blurEnabled: Theme.translucentWindows && Theme.blurLayersActive
         blurWidth: settingsModal.width
         blurHeight: settingsModal.height
     }
 
-    title: I18n.tr("Files Settings", "settings window title")
+    title: `${I18n.tr("Fjord Files", "product name in window titles")} ${I18n.tr("Settings", "settings window header title")}`
     minimumSize: Qt.size(SettingsMetrics.windowMinWidth, SettingsMetrics.windowMinHeight)
     implicitWidth: screen ? Math.min(SettingsMetrics.windowWidth, screen.width - Theme.spacingXL * 2) : SettingsMetrics.windowWidth
     implicitHeight: screen ? Math.min(SettingsMetrics.windowHeight, screen.height - Theme.spacingXL * 2) : SettingsMetrics.windowHeight
@@ -105,6 +105,15 @@ FloatingWindow {
                     buttonSize: Theme.buttonHeightXXS
                     Accessible.name: I18n.tr("Menu", "settings header button that shows the section list on narrow windows")
                     onClicked: settingsModal.menuVisible = !settingsModal.menuVisible
+                }
+
+                DActionButton {
+                    visible: !SettingsData.windowTitleBars
+                    iconName: "close"
+                    buttonSize: Theme.buttonHeightXS
+                    Accessible.name: I18n.tr("Close settings", "accessible label for the settings window close button")
+                    tooltipText: I18n.tr("Close", "window close button tooltip")
+                    onClicked: settingsModal.hide()
                 }
             }
 

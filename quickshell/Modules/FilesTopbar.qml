@@ -7,7 +7,7 @@ import qs.DCommon.Widgets
 import qs.DCommon.FileBrowser
 import "../DCommon/FileBrowser/PathCompletion.js" as PathCompletion
 
-Item {
+GlassToolbar {
     id: topbar
 
     property bool splitView: false
@@ -274,7 +274,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         spacing: FilesMetrics.topbarGroupSpacing
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.showSidebarToggle
             iconName: "menu"
@@ -282,7 +282,7 @@ Item {
             onClicked: topbar.sidebarToggled()
         }
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.flatNavigation && !topbar.sidebarToggleOnly
             enabled: topbar.backEnabled
@@ -291,7 +291,7 @@ Item {
             onClicked: topbar.backRequested()
         }
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.flatNavigation && !topbar.sidebarToggleOnly
             enabled: topbar.forwardEnabled
@@ -309,7 +309,7 @@ Item {
             onForwardRequested: topbar.forwardRequested()
         }
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.showNewFolder
             enabled: topbar.currentPath !== "" && !topbar.virtualActive
@@ -327,7 +327,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         spacing: FilesMetrics.topbarSpacing
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.showHiddenToggle
             iconName: topbar.hiddenShown ? "visibility" : "visibility_off"
@@ -337,7 +337,7 @@ Item {
             onClicked: topbar.hiddenToggled()
         }
 
-        FlatButton {
+        GlassButton {
             id: viewButton
 
             anchors.verticalCenter: parent.verticalCenter
@@ -348,7 +348,7 @@ Item {
             onClicked: menu.toggle(viewButton, "view")
         }
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.showViewControls && !topbar.compact
             iconName: "view_sidebar"
@@ -358,7 +358,7 @@ Item {
             onClicked: topbar.previewToggled()
         }
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.showViewControls && !topbar.compact && topbar.previewExpandable
             iconName: "open_in_full"
@@ -367,7 +367,7 @@ Item {
             onClicked: topbar.previewExpandRequested()
         }
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.showViewControls && !topbar.compact && topbar.showSplit
             iconName: "splitscreen_vertical_add"
@@ -399,7 +399,7 @@ Item {
             backgroundColor: Theme.chipLayer
         }
 
-        FlatButton {
+        GlassButton {
             anchors.verticalCenter: parent.verticalCenter
             visible: topbar.searchCollapsed
             iconName: "search"
@@ -407,7 +407,7 @@ Item {
             onClicked: topbar.focusSearch()
         }
 
-        FlatButton {
+        GlassButton {
             id: overviewButton
 
             anchors.verticalCenter: parent.verticalCenter
@@ -453,7 +453,7 @@ Item {
             }
         }
 
-        FlatButton {
+        GlassButton {
             id: overflowButton
 
             anchors.verticalCenter: parent.verticalCenter
@@ -661,7 +661,7 @@ Item {
         }
     }
 
-    DSearchField {
+    GlassSearchField {
         id: search
 
         anchors.right: rightActions.left
@@ -671,7 +671,7 @@ Item {
         width: topbar.searchTakesAll ? topbar.centerWidth : Math.max(FilesMetrics.searchMinWidth, Math.min(FilesMetrics.searchMaxWidth, topbar.centerWidth * FilesMetrics.searchShare))
         fieldHeight: FilesMetrics.topbarControlSize
         leftIconSize: Theme.iconSizeMedium
-        backgroundColor: Theme.surfaceContainerLowest
+        backgroundColor: Theme.withAlpha(Theme.glassTint, Theme.floatingWindowForegroundAlpha)
         borderWidth: 0
         focusedBorderWidth: Math.max(Theme.outlineWidthFocused, Theme.focusRingWidth)
         placeholderText: I18n.tr("Search in Files", "placeholder in the search field")
@@ -733,7 +733,7 @@ Item {
             anchors.fill: parent
             visible: topbar.selectionShown
 
-            FlatButton {
+            GlassButton {
                 id: clearSelection
 
                 anchors.left: parent.left
@@ -769,7 +769,7 @@ Item {
                 Repeater {
                     model: ["copy", "cut", "trash"]
 
-                    FlatButton {
+                    GlassButton {
                         required property string modelData
 
                         iconName: FileActions.icon(modelData)

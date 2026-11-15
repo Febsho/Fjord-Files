@@ -7,7 +7,7 @@ Column {
     readonly property bool isSettingsCard: true
 
     property string title: ""
-    default property alias content: contentGroup.data
+    default property alias content: contentGroup.content
 
     width: parent?.width ?? 0
     spacing: 0
